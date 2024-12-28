@@ -18,6 +18,7 @@ struct PersistenceController {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
         }
+        loadSampleDataIfNeeded(context: viewContext)
         do {
             try viewContext.save()
         } catch {

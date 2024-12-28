@@ -10,7 +10,12 @@ import SwiftUI
 @main
 struct RippleApp: App {
     let persistenceController = PersistenceController.shared
-
+    
+    init() {
+        // Load sample data on app launch
+        loadSampleDataIfNeeded(context: persistenceController.container.viewContext)
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
