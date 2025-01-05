@@ -13,69 +13,81 @@ struct CalendarView: View {
     
     var body: some View {
         
-        HStack {
-            
-            VStack(alignment: .leading) {
+        VStack {
+            HStack {
                 Text("Calendar")
                     .font(.display)
                 
-                Text("Step Count")
-                    .font(.title)
-                    .foregroundColor(.grayColor)
+                Spacer()
                 
-            }
-            
-            Button(action: {
-                // TODO
-            }) {
-                HStack(spacing: 16) {
-                    Image(systemName: "shoeprints.fill")
+                VStack {
+                    Text("Show Dates")
                         .font(.headline)
-                    
-                    Text("About Step Count")
-                        .font(.headline)
-                }
-                .foregroundColor(.black)
-            }
-            .padding(.horizontal, 52)
-            .padding(.vertical, 20)
-            .background(Color(hue: 0, saturation: 0, brightness: 0.85, opacity: 1.0))
-            .addBorder(Color.clear, width: 1, cornerRadius: 8)
-            
-            Button(action: {
-                // TODO
-            }) {
-                HStack(spacing: 16) {
-                    Image(systemName: "questionmark.circle.dashed")
-                        .font(.headline)
-                    
-                    Text("Help")
-                        .font(.headline)
-                }
-                .foregroundColor(.black)
-            }
-            .padding(.horizontal, 44)
-            .padding(.vertical, 20)
-            .background(Color(hue: 0, saturation: 0, brightness: 0.85, opacity: 1.0))
-            .addBorder(Color.clear, width: 1, cornerRadius: 8)
-            
-            VStack {
-                Text("Show Dates")
-                HStack {
-                    Text("Off")
-                        .foregroundStyle(showDates ? .gray : .black)
-                    Toggle("", isOn: $showDates)
-                        .labelsHidden()
-                    Text("On")
-                        .foregroundStyle(showDates ? .black : .gray)
+                    HStack {
+                        Text("Off")
+                            .font(.subheadline)
+                            .foregroundStyle(showDates ? .gray : .black)
+                        Toggle("", isOn: $showDates)
+                            .labelsHidden()
+                        Text("On")
+                            .font(.subheadline)
+                            .foregroundStyle(showDates ? .black : .gray)
+                    }
                 }
             }
+            .padding(.horizontal)
+            
+            HStack {
+                CalendarLegend()
+                Spacer()
+            }
+            
+            HStack(spacing: 70) {
+                Button(action: {
+                    // TODO
+                }) {
+                    HStack(spacing: 16) {
+                        Image(systemName: "shoeprints.fill")
+                            .font(.title)
+                        
+                        Text("About Step Count")
+                            .font(.headline)
+                    }
+                    .foregroundColor(.black)
+                }
+                .padding(.horizontal, 52)
+                .padding(.vertical, 20)
+                .background(Color(hue: 0, saturation: 0, brightness: 0.85, opacity: 1.0))
+                .addBorder(Color.clear, width: 1, cornerRadius: 8)
+                
+                Button(action: {
+                    // TODO
+                }) {
+                    HStack(spacing: 16) {
+                        Image(systemName: "questionmark.circle")
+                            .font(.title)
+                        
+                        Text("Help")
+                            .font(.headline)
+                    }
+                    .foregroundColor(.black)
+                }
+                .padding(.horizontal, 44)
+                .padding(.vertical, 20)
+                .background(Color(hue: 0, saturation: 0, brightness: 0.85, opacity: 1.0))
+                .addBorder(Color.clear, width: 1, cornerRadius: 8)
+                
+                Spacer()
+            }
+            .padding(.horizontal)
             
         }
+        
+        
     }
 }
 
-#Preview("11-inch iPad Pro", traits: .landscapeLeft) {
+#Preview("11-inch iPad Pro", traits: .landscapeRight) {
     CalendarView()
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }

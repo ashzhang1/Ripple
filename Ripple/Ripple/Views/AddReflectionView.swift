@@ -13,7 +13,7 @@ struct AddReflectionView: View {
     }
 }
 
-#Preview("11-inch iPad Pro", traits: .landscapeLeft) {
+#Preview("11-inch iPad Pro", traits: .landscapeRight) {
     AddReflectionView()
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }

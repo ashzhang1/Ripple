@@ -16,35 +16,35 @@ struct ContentView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \StepData.stepCount, ascending: true)],
         animation: .default)
     private var items: FetchedResults<StepData>
+    
 
     var body: some View {
         TabView {
-            Tab("Calendar", systemImage: "tray.and.arrow.down.fill") {
+            Tab("Calendar", systemImage: "calendar") {
                 CalendarView()
             }
             
-            Tab("Trends", systemImage: "tray.and.arrow.down.fill") {
+            Tab("Trends", systemImage: "chart.line.uptrend.xyaxis") {
                 TrendsView()
             }
 
 
-            Tab("Add Reflection", systemImage: "tray.and.arrow.up.fill") {
+            Tab("Add Reflection", systemImage: "plus.circle") {
                 AddReflectionView()
             }
 
 
-            Tab("My Reflections", systemImage: "person.crop.circle.fill") {
+            Tab("My Reflections", systemImage: "book.pages") {
                 MyReflectionsView()
             }
         }
-        .environment(\.horizontalSizeClass, .compact)
     }
 
     
 }
 
 
-#Preview("11-inch iPad Pro", traits: .landscapeLeft) {
+#Preview("11-inch iPad Pro", traits: .landscapeRight) {
     ContentView()
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 
