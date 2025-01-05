@@ -54,6 +54,7 @@ struct LegendBox: View {
                         .fixedSize(horizontal: false, vertical: true)
                         .frame(maxWidth: 175)
                     
+                    //if there is a goal then display it (non wear days have no goal)
                     if let goal = goal {
                         Text(goal)
                             .font(.bodyCustom)

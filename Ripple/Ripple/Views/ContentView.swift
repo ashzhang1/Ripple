@@ -38,6 +38,7 @@ struct ContentView: View {
                 MyReflectionsView()
             }
         }
+        .ignoresSafeArea(edges: .top)
     }
 
     

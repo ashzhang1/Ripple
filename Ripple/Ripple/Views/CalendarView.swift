@@ -13,7 +13,7 @@ struct CalendarView: View {
     
     var body: some View {
         
-        VStack {
+        VStack(spacing: 16) {
             HStack {
                 Text("Calendar")
                     .font(.display)
@@ -36,6 +36,7 @@ struct CalendarView: View {
                 }
             }
             .padding(.horizontal)
+            .padding(.top)
             
             HStack {
                 CalendarLegend()
@@ -82,6 +83,7 @@ struct CalendarView: View {
             .padding(.horizontal)
             
         }
+        .ignoresSafeArea(edges: .top)
         
         
     }
