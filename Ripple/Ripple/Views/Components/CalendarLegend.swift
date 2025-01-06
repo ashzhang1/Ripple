@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct CalendarLegend: View {
+    @ObservedObject var viewModel: StepDataViewModel
+    
     var body: some View {
         VStack(spacing: 16) {
             LegendBox(
-                numDays: 66,
+                numDays: viewModel.getCompletedGoalDaysCount(),
                 goalDescription: "100% of Goal Reached",
                 goal: "4000+ Steps",
                 backgroundColor: Color.goalReachedColor,
@@ -19,7 +21,7 @@ struct CalendarLegend: View {
             )
             
             LegendBox(
-                numDays: 45,
+                numDays: viewModel.getNumOverHalfGoalDays(),
                 goalDescription: "Over 50% of Goal",
                 goal: "More than 2000 Steps",
                 backgroundColor: Color.overHalfColor,
@@ -27,7 +29,7 @@ struct CalendarLegend: View {
             )
             
             LegendBox(
-                numDays: 39,
+                numDays: viewModel.getNumUnderHalfGoalsDays(),
                 goalDescription: "Under 50% of Goal",
                 goal: "Less than 2000 Steps",
                 backgroundColor: Color.underHalfColor,
@@ -35,7 +37,7 @@ struct CalendarLegend: View {
             )
             
             LegendBox(
-                numDays: 33,
+                numDays: viewModel.getNumNonWearDays(),
                 goalDescription: "Non-Wear Day",
                 backgroundColor: Color.gray.opacity(0.3),
                 isNonWearDay: true

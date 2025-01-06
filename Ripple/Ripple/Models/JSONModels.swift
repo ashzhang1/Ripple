@@ -7,18 +7,6 @@
 
 import Foundation
 
-// For stepData.json
-struct StepDataResponse: Codable {
-    let steps: [StepDataEntry]
-}
-
-struct StepDataEntry: Codable {
-    let id: UUID
-    let date: Date
-    let stepCount: Int
-    let wearTime: Double
-}
-
 // For questions.json
 struct QuestionResponse: Codable {
     let questions: [QuestionEntry]

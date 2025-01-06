@@ -6,9 +6,15 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct CalendarView: View {
     @State private var showDates = true
+    @StateObject private var viewModel: StepDataViewModel
+        
+    init(viewContext: NSManagedObjectContext) {
+        _viewModel = StateObject(wrappedValue: StepDataViewModel(viewContext: viewContext))
+    }
     
     
     var body: some View {
@@ -38,10 +44,50 @@ struct CalendarView: View {
             .padding(.horizontal)
             .padding(.top)
             
-            HStack {
-                CalendarLegend()
-                Spacer()
+            HStack(alignment: .top, spacing: 16) {
+                CalendarLegend(viewModel: viewModel)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                ScrollView {
+                    if viewModel.isLoading {
+                        ProgressView()
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    } else if let error = viewModel.error {
+                        VStack {
+                            Text("Error loading data")
+                                .font(.headline)
+                            Text(error.localizedDescription)
+                                .font(.subheadline)
+                                .foregroundColor(.red)
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    } else {
+                        LazyVStack(alignment: .leading, spacing: 8) {
+                            ForEach(viewModel.stepData) { stepData in
+                                HStack {
+                                    Text(stepData.date, style: .date)
+                                        .font(.subheadline)
+                                        .foregroundColor(.gray)
+                                    Spacer()
+                                    Text("\(stepData.stepCount) steps")
+                                        .font(.headline)
+                                }
+                                .padding(.vertical, 4)
+                                .padding(.horizontal)
+                                .background(Color(UIColor.secondarySystemBackground))
+                                .cornerRadius(8)
+                            }
+                        }
+                        .padding()
+                    }
+                }
+                .frame(maxWidth: .infinity)
+                .refreshable {
+                    viewModel.refreshStepCount()
+                }
             }
+            .padding(.horizontal)
+
             
             HStack(spacing: 70) {
                 Button(action: {
@@ -90,6 +136,6 @@ struct CalendarView: View {
 }
 
 #Preview("11-inch iPad Pro", traits: .landscapeRight) {
-    CalendarView()
+    CalendarView(viewContext: PersistenceController.preview.container.viewContext)
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }

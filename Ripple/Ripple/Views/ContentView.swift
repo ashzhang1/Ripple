@@ -10,18 +10,12 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        entity: StepData.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \StepData.stepCount, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<StepData>
     
 
     var body: some View {
         TabView {
             Tab("Calendar", systemImage: "calendar") {
-                CalendarView()
+                CalendarView(viewContext: viewContext)
             }
             
             Tab("Trends", systemImage: "chart.line.uptrend.xyaxis") {
