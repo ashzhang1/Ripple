@@ -16,16 +16,15 @@ extension Font {
     
     /// Headline font - 24pt
     static let headline = Font.system(size: 24)
-    
+    static let headlineMedium = Font.system(size: 24, weight: .medium)
     
     /// Subheadline font - 20pt
     static let subheadline = Font.system(size: 20)
-    
     static let subheadlineBold = Font.system(size: 20, weight: .bold)
+    static let subheadlineMedium = Font.system(size: 20, weight: .medium)
     
     /// Body font - 16pt
     static let bodyCustom = Font.system(size: 16)
-    
     static let bodyCustomMedium = Font.system(size: 16, weight: .medium)
     
     
