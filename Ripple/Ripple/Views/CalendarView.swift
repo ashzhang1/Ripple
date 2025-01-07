@@ -45,12 +45,29 @@ struct CalendarView: View {
             .padding(.horizontal)
             .padding(.top)
             
+            
             HStack(alignment: .top, spacing: 16) {
+                // Legend with fixed width instead of infinite
                 CalendarLegend(viewModel: viewModel)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .frame(width: 200)  // You can adjust this width as needed
                 
+                VStack(spacing: 20) {
+                    // First row of months
+                    HStack(spacing: 20) {
+                        CalendarMonth(month: "June")
+                        CalendarMonth(month: "July")
+                        CalendarMonth(month: "August")
+                    }
+                    
+                    // Second row of months
+                    HStack(spacing: 20) {
+                        CalendarMonth(month: "September")
+                        CalendarMonth(month: "October")
+                        CalendarMonth(month: "November")
+                    }
+                }
                 
-                
+                Spacer()  // This will push content to the left
             }
             .padding(.horizontal)
 
