@@ -47,23 +47,22 @@ struct CalendarView: View {
             
             
             HStack(alignment: .top, spacing: 16) {
-                // Legend with fixed width instead of infinite
-                CalendarLegend(viewModel: viewModel)
-                    .frame(width: 200)  // You can adjust this width as needed
                 
+                // The calendar legend on the left
+                CalendarLegend(viewModel: viewModel)
+                    .frame(width: 200)
+                
+                // The actual calendar months
                 VStack(spacing: 20) {
-                    // First row of months
-                    HStack(spacing: 20) {
-                        CalendarMonth(month: "June")
-                        CalendarMonth(month: "July")
-                        CalendarMonth(month: "August")
-                    }
-                    
-                    // Second row of months
-                    HStack(spacing: 20) {
-                        CalendarMonth(month: "September")
-                        CalendarMonth(month: "October")
-                        CalendarMonth(month: "November")
+                    ForEach(Array(viewModel.displayMonths.enumerated()), id: \.offset) { _, row in
+                        HStack(spacing: 20) {
+                            ForEach(row, id: \.self) { month in
+                                CalendarMonth(month: month)
+                            }
+                            if row.count < 2 {
+                                Spacer()
+                            }
+                        }
                     }
                 }
                 

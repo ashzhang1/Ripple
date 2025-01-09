@@ -17,7 +17,7 @@ class StepDataViewModel: ObservableObject {
         static let nonWearDay: Double = 4
     }
     
-    
+    @Published private(set) var displayMonths: [[String]] = [] // computed property of the calendar month names
     @Published private(set) var stepData: [StepDataEntry] = []
     @Published private(set) var isLoading = false
     @Published private(set) var error: Error?
@@ -51,6 +51,7 @@ class StepDataViewModel: ObservableObject {
                     wearTime: coreDataItem.wearTime
                 )
             }
+            updateDisplayMonths()
         } catch {
             self.error = error
         }
@@ -94,6 +95,30 @@ class StepDataViewModel: ObservableObject {
             entry.wearTime < GoalThresholds.nonWearDay
         }.count
     }
+    
+    
+    //this gets all the months needed for the calendar view
+    private func getUniqueMonths() -> [Date] {
+        let calendar = Calendar.current
+        return Array(Set(stepData.compactMap { entry in
+            calendar.startOfMonth(for: entry.date)
+        })).sorted()
+    }
+    
+    private func updateDisplayMonths() {
+        let months = getUniqueMonths().map { date -> String in
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MMM"
+            return formatter.string(from: date)
+        }
+        
+        // Organise the months into rows (2x3 grid)
+        displayMonths = stride(from: 0, to: months.count, by: 3).map {
+            Array(months[$0..<min($0 + 3, months.count)])
+        }
+    }
+    
+    
     
     
     
