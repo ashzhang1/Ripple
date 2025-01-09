@@ -17,7 +17,7 @@ class StepDataViewModel: ObservableObject {
         static let nonWearDay: Double = 4
     }
     
-    @Published private(set) var displayMonths: [[String]] = [] // computed property of the calendar month names
+    @Published private(set) var displayMonths: [[Date]] = [] // computed property of the calendar month names
     @Published private(set) var stepData: [StepDataEntry] = []
     @Published private(set) var isLoading = false
     @Published private(set) var error: Error?
@@ -100,22 +100,42 @@ class StepDataViewModel: ObservableObject {
     //this gets all the months needed for the calendar view
     private func getUniqueMonths() -> [Date] {
         let calendar = Calendar.current
-        return Array(Set(stepData.compactMap { entry in
+        let uniqueMonths = Set(stepData.compactMap { entry in
             calendar.startOfMonth(for: entry.date)
-        })).sorted()
+        })
+        return Array(uniqueMonths).sorted()
     }
     
+//    private func updateDisplayMonths() {
+//        let months = getUniqueMonths().sorted()
+//        
+//        // Organize the months into rows (2x3 grid)
+//        displayMonths = stride(from: 0, to: months.count, by: 3).map {
+//            Array(months[$0..<min($0 + 3, months.count)])
+//        }
+//    }
+    
     private func updateDisplayMonths() {
-        let months = getUniqueMonths().map { date -> String in
-            let formatter = DateFormatter()
-            formatter.dateFormat = "MMM"
-            return formatter.string(from: date)
+        let months = getUniqueMonths().sorted()
+        
+        // Organize the months into rows (2x3 grid)
+        var result: [[Date]] = []
+        var currentRow: [Date] = []
+        
+        for month in months {
+            currentRow.append(month)
+            if currentRow.count == 3 {
+                result.append(currentRow)
+                currentRow = []
+            }
         }
         
-        // Organise the months into rows (2x3 grid)
-        displayMonths = stride(from: 0, to: months.count, by: 3).map {
-            Array(months[$0..<min($0 + 3, months.count)])
+        // Don't forget the last row if it's not complete
+        if !currentRow.isEmpty {
+            result.append(currentRow)
         }
+        
+        displayMonths = result
     }
     
     

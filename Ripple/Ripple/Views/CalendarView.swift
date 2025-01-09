@@ -46,7 +46,7 @@ struct CalendarView: View {
             .padding(.top)
             
             
-            HStack(alignment: .top, spacing: 16) {
+            HStack(alignment: .top, spacing: 20) {
                 
                 // The calendar legend on the left
                 CalendarLegend(viewModel: viewModel)
@@ -54,13 +54,10 @@ struct CalendarView: View {
                 
                 // The actual calendar months
                 VStack(spacing: 20) {
-                    ForEach(Array(viewModel.displayMonths.enumerated()), id: \.offset) { _, row in
+                    ForEach(viewModel.displayMonths.indices, id: \.self) { rowIndex in
                         HStack(spacing: 20) {
-                            ForEach(row, id: \.self) { month in
-                                CalendarMonth(month: month)
-                            }
-                            if row.count < 2 {
-                                Spacer()
+                            ForEach(viewModel.displayMonths[rowIndex], id: \.self) { monthDate in
+                                CalendarMonth(date: monthDate)
                             }
                         }
                     }
