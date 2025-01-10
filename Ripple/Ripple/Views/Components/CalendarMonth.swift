@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CalendarMonth: View {
     let date: Date
+    let showDates: Bool
     let weekdays = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
     
     private var month: String {
@@ -94,10 +95,21 @@ struct CalendarMonth: View {
                         ForEach(weeks.indices, id: \.self) { weekIndex in
                             HStack(spacing: 4) {
                                 ForEach(0..<7) { dayIndex in
-                                    if let day = weeks[weekIndex][dayIndex] {
-                                        Rectangle()
-                                            .fill(Color.blue)
-                                            .aspectRatio(1.0, contentMode: .fit)
+                                    if let date = weeks[weekIndex][dayIndex] {
+                                        
+                                        // These are the date boxes
+                                        ZStack {
+                                            Rectangle()
+                                                .fill(Color.blue)
+                                            
+                                            if showDates {
+                                                Text("\(date)")
+                                                    .foregroundColor(.black)
+                                                    .font(.bodyCustom)
+                                            }
+                                        }
+                                        .aspectRatio(1.0, contentMode: .fit)
+                                        
                                     } else {
                                         Rectangle()
                                             .fill(Color.clear)

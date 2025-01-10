@@ -19,6 +19,7 @@ class StepDataViewModel: ObservableObject {
     
     @Published private(set) var displayMonths: [[Date]] = [] // computed property of the calendar month names
     @Published private(set) var stepData: [StepDataEntry] = []
+    @Published var showDates: Bool = true
     @Published private(set) var isLoading = false
     @Published private(set) var error: Error?
     
@@ -105,15 +106,6 @@ class StepDataViewModel: ObservableObject {
         })
         return Array(uniqueMonths).sorted()
     }
-    
-//    private func updateDisplayMonths() {
-//        let months = getUniqueMonths().sorted()
-//        
-//        // Organize the months into rows (2x3 grid)
-//        displayMonths = stride(from: 0, to: months.count, by: 3).map {
-//            Array(months[$0..<min($0 + 3, months.count)])
-//        }
-//    }
     
     private func updateDisplayMonths() {
         let months = getUniqueMonths().sorted()

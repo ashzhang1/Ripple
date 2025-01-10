@@ -10,7 +10,6 @@ import CoreData
 
 struct CalendarView: View {
     @StateObject private var viewModel: StepDataViewModel
-    @State private var showDates = true
     @State private var showingStepInfo = false
         
     init(viewContext: NSManagedObjectContext) {
@@ -33,12 +32,12 @@ struct CalendarView: View {
                     HStack {
                         Text("Off")
                             .font(.subheadline)
-                            .foregroundStyle(showDates ? .gray : .black)
-                        Toggle("", isOn: $showDates)
+                            .foregroundStyle(viewModel.showDates ? .gray : .black)
+                        Toggle("", isOn: $viewModel.showDates)
                             .labelsHidden()
                         Text("On")
                             .font(.subheadline)
-                            .foregroundStyle(showDates ? .black : .gray)
+                            .foregroundStyle(viewModel.showDates ? .black : .gray)
                     }
                 }
             }
@@ -57,7 +56,7 @@ struct CalendarView: View {
                     ForEach(viewModel.displayMonths.indices, id: \.self) { rowIndex in
                         HStack(spacing: 20) {
                             ForEach(viewModel.displayMonths[rowIndex], id: \.self) { monthDate in
-                                CalendarMonth(date: monthDate)
+                                CalendarMonth(date: monthDate, showDates: viewModel.showDates)
                             }
                         }
                     }
