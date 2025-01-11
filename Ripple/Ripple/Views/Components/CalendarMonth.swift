@@ -72,29 +72,37 @@ struct CalendarMonth: View {
         return result
     }
     
-    private func getColorForDate(_ day: Int) -> Color {
+    private func dateBoxContent(_ day: Int) -> some View {
         let calendar = Calendar.current
         guard let dateForDay = calendar.date(from: DateComponents(
             year: calendar.component(.year, from: date),
             month: calendar.component(.month, from: date),
             day: day
         )) else {
-            return Color.blue
+            return AnyView(Rectangle().fill(Color.blue))
         }
         
         if let dayData = stepData.first(where: { calendar.isDate($0.date, inSameDayAs: dateForDay) }) {
-            if dayData.wearTime < nonWearThreshold {
-                return Color.nonWearDay
-            } else if dayData.stepCount >= goalCompleteThreshold {
-                return Color.goalReachedColor
-            } else if dayData.stepCount >= overHalfThreshold {
-                return Color.overHalfColor
+            
+            // First check if it's a non-wear day
+            if dayData.wearTime < StepCountGoalThresholds.nonWearDay {
+                return AnyView(NonWearDayBoxPattern())
             } else {
-                return Color.underHalfColor
+                
+                // Determine colour based on step count
+                let color: Color
+                if dayData.stepCount >= StepCountGoalThresholds.goalCompleteDay {
+                    color = Color.goalReachedColor
+                } else if dayData.stepCount >= StepCountGoalThresholds.overHalfGoal {
+                    color = Color.overHalfColor
+                } else {
+                    color = Color.underHalfColor
+                }
+                return AnyView(Rectangle().fill(color))
             }
         }
         
-        return Color.blue
+        return AnyView(Rectangle().fill(Color.blue))
     }
     
     var body: some View {
@@ -132,8 +140,7 @@ struct CalendarMonth: View {
                                         
                                         // These are the date boxes
                                         ZStack {
-                                            Rectangle()
-                                                .fill(getColorForDate(date))
+                                            dateBoxContent(date)
                                             
                                             if showDates {
                                                 Text("\(date)")
