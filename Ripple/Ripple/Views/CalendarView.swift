@@ -11,112 +11,52 @@ import CoreData
 struct CalendarView: View {
     @StateObject private var viewModel: StepDataViewModel
     @State private var showingStepInfo = false
-        
+    
     init(viewContext: NSManagedObjectContext) {
         _viewModel = StateObject(wrappedValue: StepDataViewModel(viewContext: viewContext))
     }
     
-    
     var body: some View {
-        
         VStack(spacing: 16) {
-            HStack {
-                Text("Calendar")
-                    .font(.display)
-                
-                Spacer()
-                
-                VStack {
-                    Text("Show Dates")
-                        .font(.headline)
-                    HStack {
-                        Text("Off")
-                            .font(.subheadline)
-                            .foregroundStyle(viewModel.showDates ? .gray : .black)
-                        Toggle("", isOn: $viewModel.showDates)
-                            .labelsHidden()
-                        Text("On")
-                            .font(.subheadline)
-                            .foregroundStyle(viewModel.showDates ? .black : .gray)
-                    }
-                }
-            }
-            .padding(.horizontal)
-            .padding(.top)
-            
+            CalendarHeader(showDates: $viewModel.showDates)
             
             HStack(alignment: .top, spacing: 20) {
-                
-                // The calendar legend on the left
                 CalendarLegend(viewModel: viewModel)
                     .frame(width: 200)
                 
-                // The actual calendar months
-                VStack(spacing: 20) {
-                    ForEach(viewModel.displayMonths.indices, id: \.self) { rowIndex in
-                        HStack(spacing: 20) {
-                            ForEach(viewModel.displayMonths[rowIndex], id: \.self) { monthDate in
-                                CalendarMonth(date: monthDate, showDates: viewModel.showDates)
-                            }
-                        }
-                    }
-                }
+                CalendarGrid(viewModel: viewModel)
                 
-                Spacer()  // This will push content to the left
-            }
-            .padding(.horizontal)
-
-            
-            HStack(spacing: 70) {
-                Button(action: {
-                    showingStepInfo = true
-                }) {
-                    HStack(spacing: 16) {
-                        Image(systemName: "shoeprints.fill")
-                            .font(.title)
-                        
-                        Text("About Step Count")
-                            .font(.headline)
-                    }
-                    .foregroundColor(.black)
-                }
-                .frame(width: 300, height: 60)
-                .padding(.horizontal, 12)
-                .padding(.vertical, 8)
-                .background(Color.grayColour)
-                .addBorder(Color.clear, width: 1, cornerRadius: 20)
-                .shadow(color: Color.black.opacity(0.7), radius: 4, x: 0, y: 5)
-                .sheet(isPresented: $showingStepInfo) {
-                    AboutStepCountModal(isPresented: $showingStepInfo)
-                }
-                
-                Button(action: {
-                    // TODO
-                }) {
-                    HStack(spacing: 16) {
-                        Image(systemName: "questionmark.circle")
-                            .font(.title)
-                        
-                        Text("Help")
-                            .font(.headline)
-                    }
-                    .foregroundColor(.black)
-                }
-                .frame(width: 150, height: 60)
-                .padding(.horizontal, 12)
-                .padding(.vertical, 8)
-                .background(Color.grayColour)
-                .addBorder(Color.clear, width: 1, cornerRadius: 20)
-                .shadow(color: Color.black.opacity(0.7), radius: 4, x: 0, y: 5)
-    
                 Spacer()
             }
             .padding(.horizontal)
             
+            CalendarInfoButtons(showingStepInfo: $showingStepInfo)
         }
         .ignoresSafeArea(edges: .top)
-        
-        
+    }
+}
+
+struct CalendarGrid: View {
+    @ObservedObject var viewModel: StepDataViewModel
+    
+    var body: some View {
+        VStack(spacing: 20) {
+            ForEach(viewModel.displayMonths.indices, id: \.self) { rowIndex in
+                HStack(spacing: 20) {
+                    ForEach(viewModel.displayMonths[rowIndex], id: \.self) { monthDate in
+                        CalendarMonth(
+                            date: monthDate,
+                            showDates: viewModel.showDates,
+                            stepData: viewModel.stepData,
+                            goalCompleteThreshold: StepCountGoalThresholds.goalCompleteDay,
+                            overHalfThreshold: StepCountGoalThresholds.overHalfGoal,
+                            underHalfThreshold: StepCountGoalThresholds.underHalfGoal,
+                            nonWearThreshold: StepCountGoalThresholds.nonWearDay
+                        )
+                    }
+                }
+            }
+        }
     }
 }
 

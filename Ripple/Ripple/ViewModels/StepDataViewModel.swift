@@ -71,29 +71,29 @@ class StepDataViewModel: ObservableObject {
     //The below funcs are used for the calendar legend
     func getCompletedGoalDaysCount() -> Int {
         return stepData.filter { entry in
-            entry.stepCount >= GoalThresholds.goalCompleteDay &&
-            entry.wearTime >= GoalThresholds.nonWearDay
+            entry.stepCount >= StepCountGoalThresholds.goalCompleteDay &&
+            entry.wearTime >= StepCountGoalThresholds.nonWearDay
         }.count
     }
     
     func getNumOverHalfGoalDays() -> Int {
         return stepData.filter { entry in
-            entry.stepCount >= GoalThresholds.overHalfGoal &&
-            entry.stepCount < GoalThresholds.goalCompleteDay &&
-            entry.wearTime >= GoalThresholds.nonWearDay
+            entry.stepCount >= StepCountGoalThresholds.overHalfGoal &&
+            entry.stepCount < StepCountGoalThresholds.goalCompleteDay &&
+            entry.wearTime >= StepCountGoalThresholds.nonWearDay
         }.count
     }
     
     func getNumUnderHalfGoalsDays() -> Int {
         return stepData.filter{ entry in
-            entry.stepCount <= GoalThresholds.underHalfGoal &&
-            entry.wearTime >= GoalThresholds.nonWearDay
+            entry.stepCount <= StepCountGoalThresholds.underHalfGoal &&
+            entry.wearTime >= StepCountGoalThresholds.nonWearDay
         }.count
     }
     
     func getNumNonWearDays() -> Int {
         return stepData.filter { entry in
-            entry.wearTime < GoalThresholds.nonWearDay
+            entry.wearTime < StepCountGoalThresholds.nonWearDay
         }.count
     }
     
@@ -129,6 +129,9 @@ class StepDataViewModel: ObservableObject {
         
         displayMonths = result
     }
+    
+    
+    
     
     
     

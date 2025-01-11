@@ -10,6 +10,14 @@ import SwiftUI
 struct CalendarMonth: View {
     let date: Date
     let showDates: Bool
+    let stepData: [StepDataEntry]
+    
+    //this is needed for the background colour of each date
+    let goalCompleteThreshold: Int
+    let overHalfThreshold: Int
+    let underHalfThreshold: Int
+    let nonWearThreshold: Double
+    
     let weekdays = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
     
     private var month: String {
@@ -64,6 +72,31 @@ struct CalendarMonth: View {
         return result
     }
     
+    private func getColorForDate(_ day: Int) -> Color {
+        let calendar = Calendar.current
+        guard let dateForDay = calendar.date(from: DateComponents(
+            year: calendar.component(.year, from: date),
+            month: calendar.component(.month, from: date),
+            day: day
+        )) else {
+            return Color.blue
+        }
+        
+        if let dayData = stepData.first(where: { calendar.isDate($0.date, inSameDayAs: dateForDay) }) {
+            if dayData.wearTime < nonWearThreshold {
+                return Color.nonWearDay
+            } else if dayData.stepCount >= goalCompleteThreshold {
+                return Color.goalReachedColor
+            } else if dayData.stepCount >= overHalfThreshold {
+                return Color.overHalfColor
+            } else {
+                return Color.underHalfColor
+            }
+        }
+        
+        return Color.blue
+    }
+    
     var body: some View {
         ZStack {
             // Box background
@@ -100,7 +133,7 @@ struct CalendarMonth: View {
                                         // These are the date boxes
                                         ZStack {
                                             Rectangle()
-                                                .fill(Color.blue)
+                                                .fill(getColorForDate(date))
                                             
                                             if showDates {
                                                 Text("\(date)")
