@@ -20,6 +20,7 @@ class StepDataViewModel: ObservableObject {
     @Published private(set) var displayMonths: [[Date]] = [] // computed property of the calendar month names
     @Published private(set) var stepData: [StepDataEntry] = []
     @Published var showDates: Bool = true
+    @Published var selectedFilter : StepGoalFilter? = nil
     @Published private(set) var isLoading = false
     @Published private(set) var error: Error?
     
@@ -128,6 +129,25 @@ class StepDataViewModel: ObservableObject {
         }
         
         displayMonths = result
+    }
+    
+    //these functions are for when user clicks on the legend boxes
+    func toggleStepGoalFilter(filter: StepGoalFilter) {
+        if (selectedFilter == nil) {
+            selectedFilter = filter
+        }
+        else if (selectedFilter == filter) {
+            selectedFilter = nil
+        }
+    }
+    
+    func isLegendBoxDisabled(for filter: StepGoalFilter) -> Bool {
+        if (selectedFilter != nil && selectedFilter != filter) {
+            return true
+        }
+        else {
+            return false
+        }
     }
     
     

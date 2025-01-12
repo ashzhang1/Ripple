@@ -17,6 +17,7 @@ struct CalendarMonth: View {
     let overHalfThreshold: Int
     let underHalfThreshold: Int
     let nonWearThreshold: Double
+    let selectedFilter: StepGoalFilter?
     
     let weekdays = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
     
@@ -72,7 +73,10 @@ struct CalendarMonth: View {
         return result
     }
     
+    //this function determines what colour background each date will be
     private func dateBoxContent(_ day: Int) -> some View {
+        
+        //get the date
         let calendar = Calendar.current
         guard let dateForDay = calendar.date(from: DateComponents(
             year: calendar.component(.year, from: date),
@@ -84,25 +88,63 @@ struct CalendarMonth: View {
         
         if let dayData = stepData.first(where: { calendar.isDate($0.date, inSameDayAs: dateForDay) }) {
             
-            // First check if it's a non-wear day
-            if dayData.wearTime < StepCountGoalThresholds.nonWearDay {
-                return AnyView(NonWearDayBoxPattern())
-            } else {
-                
-                // Determine colour based on step count
-                let color: Color
-                if dayData.stepCount >= StepCountGoalThresholds.goalCompleteDay {
-                    color = Color.goalReachedColor
-                } else if dayData.stepCount >= StepCountGoalThresholds.overHalfGoal {
-                    color = Color.overHalfColor
-                } else {
-                    color = Color.underHalfColor
-                }
-                return AnyView(Rectangle().fill(color))
+            //first we get the category
+            let dayThresholdCategory = getDayCategory(for: dayData)
+            
+            let color: Color
+            //then, we need to check if there is a filter on
+            //if there is, then we only show the dates that align with selected filter
+            switch dayThresholdCategory {
+                case .goalCompleteDay:
+                    if selectedFilter == nil || selectedFilter == .goalCompleteDay {
+                        color = Color.goalReachedColor
+                    } else {
+                        color = Color.gray.opacity(0.3)
+                    }
+                    
+                case .overHalfGoal:
+                    if selectedFilter == nil || selectedFilter == .overHalfGoal {
+                        color = Color.overHalfColor
+                    } else {
+                        color = Color.gray.opacity(0.3)
+                    }
+                    
+                case .underHalfGoal:
+                    if selectedFilter == nil || selectedFilter == .underHalfGoal {
+                        color = Color.underHalfColor
+                    } else {
+                        color = Color.gray.opacity(0.3)
+                    }
+                    
+                case .nonWearDay:
+                    if selectedFilter == nil || selectedFilter == .nonWearDay {
+                        return AnyView(NonWearDayBoxPattern())
+                    } else {
+                        color = Color.gray.opacity(0.3)
+                    }
             }
+            
+            // Return the appropriate view based on the color
+            return AnyView(Rectangle().fill(color))
         }
         
         return AnyView(Rectangle().fill(Color.blue))
+    }
+    
+    func getDayCategory(for dayData: StepDataEntry) -> StepGoalFilter {
+        // check if non-wear first
+        if dayData.wearTime < StepCountGoalThresholds.nonWearDay {
+            return .nonWearDay
+        }
+        
+        //then check the step counts
+        if dayData.stepCount >= StepCountGoalThresholds.goalCompleteDay {
+            return .goalCompleteDay
+        } else if dayData.stepCount >= StepCountGoalThresholds.overHalfGoal {
+            return .overHalfGoal
+        } else {
+            return .underHalfGoal
+        }
     }
     
     var body: some View {

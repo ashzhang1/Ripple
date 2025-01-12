@@ -17,7 +17,11 @@ struct CalendarLegend: View {
                 goalDescription: "100% of Goal Reached",
                 goal: "4000+ Steps",
                 backgroundColor: Color.goalReachedColor,
-                isNonWearDay: false
+                isNonWearDay: false,
+                isDisabled: viewModel.isLegendBoxDisabled(for: .goalCompleteDay),
+                onPress: {
+                    viewModel.toggleStepGoalFilter(filter: .goalCompleteDay)
+                }
             )
             
             LegendBox(
@@ -25,7 +29,11 @@ struct CalendarLegend: View {
                 goalDescription: "Over 50% of Goal",
                 goal: "More than 2000 Steps",
                 backgroundColor: Color.overHalfColor,
-                isNonWearDay: false
+                isNonWearDay: false,
+                isDisabled: viewModel.isLegendBoxDisabled(for: .overHalfGoal),
+                onPress: {
+                    viewModel.toggleStepGoalFilter(filter: .overHalfGoal)
+                }
             )
             
             LegendBox(
@@ -33,14 +41,22 @@ struct CalendarLegend: View {
                 goalDescription: "Under 50% of Goal",
                 goal: "Less than 2000 Steps",
                 backgroundColor: Color.underHalfColor,
-                isNonWearDay: false
+                isNonWearDay: false,
+                isDisabled: viewModel.isLegendBoxDisabled(for: .underHalfGoal),
+                onPress: {
+                    viewModel.toggleStepGoalFilter(filter: .underHalfGoal)
+                }
             )
             
             LegendBox(
                 numDays: viewModel.getNumNonWearDays(),
                 goalDescription: "Non-Wear Day",
                 backgroundColor: Color.gray.opacity(0.3),
-                isNonWearDay: true
+                isNonWearDay: true,
+                isDisabled: viewModel.isLegendBoxDisabled(for: .nonWearDay),
+                onPress: {
+                    viewModel.toggleStepGoalFilter(filter: .nonWearDay)
+                }
             )
         }
         .padding()

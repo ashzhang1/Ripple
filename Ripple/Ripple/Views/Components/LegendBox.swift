@@ -13,18 +13,22 @@ struct LegendBox: View {
     let goal: String?
     let backgroundColor: Color
     let isNonWearDay: Bool
+    let isDisabled: Bool
+    let onPress: () -> Void
     
-    init(numDays: Int, goalDescription: String, goal: String? = nil, backgroundColor: Color, isNonWearDay: Bool) {
+    init(numDays: Int, goalDescription: String, goal: String? = nil, backgroundColor: Color, isNonWearDay: Bool, isDisabled: Bool, onPress: @escaping () -> Void) {
         self.numDays = numDays
         self.goalDescription = goalDescription
         self.goal = goal
         self.backgroundColor = backgroundColor
         self.isNonWearDay = isNonWearDay
+        self.isDisabled = isDisabled
+        self.onPress = onPress
     }
     
     var body: some View {
         Button(action: {
-            // Empty action for now
+            onPress()
         }) {
             VStack(spacing: 12) {
                 VStack(spacing: 0) {
@@ -66,6 +70,7 @@ struct LegendBox: View {
             }
             .padding(.vertical, 8)
         }
+        .disabled(isDisabled)
         .buttonStyle(PlainButtonStyle())
     }
 }

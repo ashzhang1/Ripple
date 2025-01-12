@@ -51,7 +51,8 @@ struct CalendarGrid: View {
                             goalCompleteThreshold: StepCountGoalThresholds.goalCompleteDay,
                             overHalfThreshold: StepCountGoalThresholds.overHalfGoal,
                             underHalfThreshold: StepCountGoalThresholds.underHalfGoal,
-                            nonWearThreshold: StepCountGoalThresholds.nonWearDay
+                            nonWearThreshold: StepCountGoalThresholds.nonWearDay,
+                            selectedFilter: viewModel.selectedFilter
                         )
                     }
                 }

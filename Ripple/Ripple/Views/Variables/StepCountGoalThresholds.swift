@@ -13,3 +13,10 @@ enum StepCountGoalThresholds {
     static let underHalfGoal: Int = 1999
     static let nonWearDay: Double = 4.0
 }
+
+enum StepGoalFilter {
+    case goalCompleteDay
+    case overHalfGoal
+    case underHalfGoal
+    case nonWearDay
+}
