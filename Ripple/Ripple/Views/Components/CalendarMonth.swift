@@ -124,7 +124,7 @@ struct CalendarMonth: View {
                     }
             }
             
-            // Return the appropriate view based on the color
+            //return the appropriate view based on the color
             return AnyView(Rectangle().fill(color))
         }
         
@@ -132,7 +132,7 @@ struct CalendarMonth: View {
     }
     
     func getDayCategory(for dayData: StepDataEntry) -> StepGoalFilter {
-        // check if non-wear first
+        //check if non-wear first
         if dayData.wearTime < StepCountGoalThresholds.nonWearDay {
             return .nonWearDay
         }
@@ -147,6 +147,43 @@ struct CalendarMonth: View {
         }
     }
     
+    private var filteredDaysText: String {
+        if (selectedFilter == nil) {
+            return ""
+        }
+        
+        //count matching days in this month
+        let matchingDaysCount = stepData.filter { dayData in
+            //first, check if day is in this current month
+            let calendar = Calendar.current
+            let isInThisMonth = calendar.isDate(dayData.date, equalTo: date, toGranularity: .month)
+            
+            //next, need to check if its category matches selectedFilter
+            let dayCategory = getDayCategory(for: dayData)
+            let matchesFilter = dayCategory == selectedFilter
+            
+            //teturn true if both conditions match
+            return isInThisMonth && matchesFilter
+        }.count
+        
+        return "\(matchingDaysCount) days"
+    }
+    
+    private var monthHeader: some View {
+        HStack {
+            Text(month)
+                .font(.headlineMedium)
+                .padding(.horizontal, 16)
+                .padding(.top, 12)
+            if (selectedFilter != nil) {
+                Text("\(filteredDaysText)")
+                    .font(.headlineMedium)
+                    .padding(.top, 12)
+                    .foregroundColor(.redColour)
+            }
+        }
+    }
+    
     var body: some View {
         ZStack {
             // Box background
@@ -156,10 +193,7 @@ struct CalendarMonth: View {
             
             // Content
             VStack(alignment: .leading, spacing: 8) {
-                Text(month)
-                    .font(.headlineMedium)
-                    .padding(.horizontal, 16)
-                    .padding(.top, 12)
+                monthHeader
                 
                 VStack(spacing: 4) {
                     // Weekday headers
@@ -209,4 +243,21 @@ struct CalendarMonth: View {
         }
         .frame(width: 275, height: 275)
     }
+    
 }
+
+//
+//struct CalendarMonthTitle: View {
+//    
+//    var body: some View {
+//        HStack {
+//            Text(month)
+//                .font(.headlineMedium)
+//                .padding(.horizontal, 16)
+//                .padding(.top, 12)
+//            Text("15 days")
+//                .font(.headlineMedium)
+//                .padding(.top, 12)
+//        }
+//    }
+//}
