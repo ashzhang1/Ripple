@@ -12,7 +12,7 @@ struct CalendarMonth: View {
     let showDates: Bool
     let stepData: [StepDataEntry]
     
-    //this is needed for the background colour of each date
+    // This is needed for the background colour of each date
     let goalCompleteThreshold: Int
     let overHalfThreshold: Int
     let underHalfThreshold: Int
@@ -39,7 +39,7 @@ struct CalendarMonth: View {
         calendar.firstWeekday(of: date)
     }
     
-    // this computed property is used for calculating the weeks and days displayed for each month
+    // This computed property is used for calculating the weeks and days displayed for each month
     private var weeks: [[Int?]] {
         var result: [[Int?]] = []
         var currentWeek: [Int?] = Array(repeating: nil, count: 7)
@@ -73,10 +73,10 @@ struct CalendarMonth: View {
         return result
     }
     
-    //this function determines what colour background each date will be
+    // This function determines what colour background each date will be
     private func dateBoxContent(_ day: Int) -> some View {
         
-        //get the date
+        // Get the date
         let calendar = Calendar.current
         guard let dateForDay = calendar.date(from: DateComponents(
             year: calendar.component(.year, from: date),
@@ -88,12 +88,12 @@ struct CalendarMonth: View {
         
         if let dayData = stepData.first(where: { calendar.isDate($0.date, inSameDayAs: dateForDay) }) {
             
-            //first we get the category
+            // First we get the category
             let dayThresholdCategory = getDayCategory(for: dayData)
             
             let color: Color
-            //then, we need to check if there is a filter on
-            //if there is, then we only show the dates that align with selected filter
+            // Then, we need to check if there is a filter on
+            // If there is, then we only show the dates that align with selected filter
             switch dayThresholdCategory {
                 case .goalCompleteDay:
                     if selectedFilter == nil || selectedFilter == .goalCompleteDay {
@@ -124,7 +124,7 @@ struct CalendarMonth: View {
                     }
             }
             
-            //return the appropriate view based on the color
+            // Return the appropriate view based on the color
             return AnyView(Rectangle().fill(color))
         }
         
@@ -132,12 +132,12 @@ struct CalendarMonth: View {
     }
     
     func getDayCategory(for dayData: StepDataEntry) -> StepGoalFilter {
-        //check if non-wear first
+        // Check if non-wear first
         if dayData.wearTime < StepCountGoalThresholds.nonWearDay {
             return .nonWearDay
         }
         
-        //then check the step counts
+        // Then check the step counts
         if dayData.stepCount >= StepCountGoalThresholds.goalCompleteDay {
             return .goalCompleteDay
         } else if dayData.stepCount >= StepCountGoalThresholds.overHalfGoal {
@@ -152,17 +152,17 @@ struct CalendarMonth: View {
             return ""
         }
         
-        //count matching days in this month
+        // Count matching days in this month
         let matchingDaysCount = stepData.filter { dayData in
-            //first, check if day is in this current month
+            // First, check if day is in this current month
             let calendar = Calendar.current
             let isInThisMonth = calendar.isDate(dayData.date, equalTo: date, toGranularity: .month)
             
-            //next, need to check if its category matches selectedFilter
+            // Next, need to check if its category matches selectedFilter
             let dayCategory = getDayCategory(for: dayData)
             let matchesFilter = dayCategory == selectedFilter
             
-            //teturn true if both conditions match
+            // Return true if both conditions match
             return isInThisMonth && matchesFilter
         }.count
         
@@ -175,89 +175,78 @@ struct CalendarMonth: View {
                 .font(.headlineMedium)
                 .padding(.horizontal, 16)
                 .padding(.top, 12)
+                .foregroundColor(.black)
             if (selectedFilter != nil) {
                 Text("\(filteredDaysText)")
                     .font(.headlineMedium)
                     .padding(.top, 12)
                     .foregroundColor(.redColour)
+
             }
         }
     }
     
     var body: some View {
-        ZStack {
-            // Box background
-            RoundedRectangle(cornerRadius: 4)
-                .fill(Color.grayColour)
-                .shadow(color: Color.black.opacity(0.5), radius: 4, x: 0, y: 5)
-            
-            // Content
-            VStack(alignment: .leading, spacing: 8) {
-                monthHeader
+        NavigationLink(destination: detailedMonthView(date: date)) {
+            ZStack {
+                // Box background
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(Color.grayColour)
+                    .shadow(color: Color.black.opacity(0.5), radius: 4, x: 0, y: 5)
                 
-                VStack(spacing: 4) {
-                    // Weekday headers
-                    HStack(spacing: 2) {
-                        ForEach(weekdays, id: \.self) { day in
-                            Text(day)
-                                .font(.bodyCustom)
-                                .frame(maxWidth: .infinity)
-                                .multilineTextAlignment(.center)
-                        }
-                    }
-                    .padding(.horizontal, 16)
+                // actual content
+                VStack(alignment: .leading, spacing: 8) {
+                    monthHeader
                     
-                    // Calendar grid
-                    VStack(spacing: 2) {
-                        ForEach(weeks.indices, id: \.self) { weekIndex in
-                            HStack(spacing: 4) {
-                                ForEach(0..<7) { dayIndex in
-                                    if let date = weeks[weekIndex][dayIndex] {
-                                        
-                                        // These are the date boxes
-                                        ZStack {
-                                            dateBoxContent(date)
+                    VStack(spacing: 4) {
+                        // Weekday headers
+                        HStack(spacing: 2) {
+                            ForEach(weekdays, id: \.self) { day in
+                                Text(day)
+                                    .font(.bodyCustom)
+                                    .foregroundColor(.black)
+                                    .frame(maxWidth: .infinity)
+                                    .multilineTextAlignment(.center)
+                            }
+                        }
+                        .padding(.horizontal, 16)
+                        
+                        // Month grid
+                        VStack(spacing: 2) {
+                            ForEach(weeks.indices, id: \.self) { weekIndex in
+                                HStack(spacing: 4) {
+                                    ForEach(0..<7) { dayIndex in
+                                        if let date = weeks[weekIndex][dayIndex] {
                                             
-                                            if showDates {
-                                                Text("\(date)")
-                                                    .foregroundColor(.black)
-                                                    .font(.bodyCustom)
+                                            // These are the date boxes
+                                            ZStack {
+                                                dateBoxContent(date)
+                                                
+                                                if showDates {
+                                                    Text("\(date)")
+                                                        .foregroundColor(.black)
+                                                        .font(.bodyCustom)
+                                                }
                                             }
-                                        }
-                                        .aspectRatio(1.0, contentMode: .fit)
-                                        
-                                    } else {
-                                        Rectangle()
-                                            .fill(Color.clear)
                                             .aspectRatio(1.0, contentMode: .fit)
+                                            
+                                        } else {
+                                            Rectangle()
+                                                .fill(Color.clear)
+                                                .aspectRatio(1.0, contentMode: .fit)
+                                        }
                                     }
                                 }
                             }
                         }
+                        .padding(.horizontal, 16)
                     }
-                    .padding(.horizontal, 16)
+                    
+                    Spacer()
                 }
-                
-                Spacer()
             }
         }
         .frame(width: 275, height: 275)
     }
     
 }
-
-//
-//struct CalendarMonthTitle: View {
-//    
-//    var body: some View {
-//        HStack {
-//            Text(month)
-//                .font(.headlineMedium)
-//                .padding(.horizontal, 16)
-//                .padding(.top, 12)
-//            Text("15 days")
-//                .font(.headlineMedium)
-//                .padding(.top, 12)
-//        }
-//    }
-//}

@@ -17,22 +17,26 @@ struct CalendarView: View {
     }
     
     var body: some View {
-        VStack(spacing: 16) {
-            CalendarHeader(showDates: $viewModel.showDates)
-            
-            HStack(alignment: .top, spacing: 20) {
-                CalendarLegend(viewModel: viewModel)
-                    .frame(width: 200)
+        NavigationStack {
+            VStack(spacing: 16) {
+                CalendarHeader(showDates: $viewModel.showDates)
                 
-                CalendarGrid(viewModel: viewModel)
+                HStack(alignment: .top, spacing: 20) {
+                    CalendarLegend(viewModel: viewModel)
+                        .frame(width: 200)
+                    
+                    CalendarGrid(viewModel: viewModel)
+                    
+                    Spacer()
+                }
+                .padding(.horizontal)
                 
-                Spacer()
+                CalendarInfoButtons(showingStepInfo: $showingStepInfo)
             }
-            .padding(.horizontal)
-            
-            CalendarInfoButtons(showingStepInfo: $showingStepInfo)
+            .ignoresSafeArea(edges: .top)
+            .navigationBarHidden(true) // Without this, the show dates toggle gets disabled for some reason
         }
-        .ignoresSafeArea(edges: .top)
+        
     }
 }
 
@@ -65,48 +69,3 @@ struct CalendarGrid: View {
     CalendarView(viewContext: PersistenceController.preview.container.viewContext)
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }
-
-
-/**
- Below is the scroll view that allows to see the step count for each day (1 June - 30 November)
- ScrollView {
-     if viewModel.isLoading {
-         ProgressView()
-             .frame(maxWidth: .infinity, maxHeight: .infinity)
-     } else if let error = viewModel.error {
-         VStack {
-             Text("Error loading data")
-                 .font(.headline)
-             Text(error.localizedDescription)
-                 .font(.subheadline)
-                 .foregroundColor(.red)
-         }
-         .frame(maxWidth: .infinity, maxHeight: .infinity)
-     } else {
-         LazyVStack(alignment: .leading, spacing: 8) {
-             ForEach(viewModel.stepData) { stepData in
-                 HStack {
-                     Text(stepData.date, style: .date)
-                         .font(.subheadline)
-                         .foregroundColor(.gray)
-                     Spacer()
-                     Text("\(stepData.stepCount) steps")
-                         .font(.headline)
-                 }
-                 .padding(.vertical, 4)
-                 .padding(.horizontal)
-                 .background(Color(UIColor.secondarySystemBackground))
-                 .cornerRadius(8)
-             }
-         }
-         .padding()
-     }
- }
- .frame(maxWidth: .infinity)
- .refreshable {
-     viewModel.refreshStepCount()
- }
-
- 
- 
- */
