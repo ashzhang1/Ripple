@@ -9,11 +9,12 @@ import SwiftUI
 
 struct CalendarInfoButtons: View {
     @Binding var showingStepInfo: Bool
+    @Binding var showingHelpInfo: Bool
     
     var body: some View {
         HStack(spacing: 70) {
             StepInfoButton(showingStepInfo: $showingStepInfo)
-            HelpButton()
+            HelpButton(showingHelpInfo: $showingHelpInfo)
             Spacer()
         }
         .padding(.horizontal)
@@ -46,8 +47,11 @@ struct StepInfoButton: View {
 }
 
 struct HelpButton: View {
+    @Binding var showingHelpInfo: Bool
+    
+    
     var body: some View {
-        Button(action: { /* TODO */ }) {
+        Button(action: { showingHelpInfo = true }) {
             HStack(spacing: 16) {
                 Image(systemName: "questionmark.circle")
                     .font(.title)
@@ -62,5 +66,8 @@ struct HelpButton: View {
         .background(Color.grayColour)
         .addBorder(Color.clear, width: 1, cornerRadius: 20)
         .shadow(color: Color.black.opacity(0.7), radius: 4, x: 0, y: 5)
+        .sheet(isPresented: $showingHelpInfo) {
+            CalendarHelpModal(isPresented: $showingHelpInfo)
+        }
     }
 }

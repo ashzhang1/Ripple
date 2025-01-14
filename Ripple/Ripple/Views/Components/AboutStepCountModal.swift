@@ -54,7 +54,7 @@ struct AboutStepCountModal: View {
                                 Image(systemName: "pip.exit")
                                     .font(.title)
                                     .foregroundColor(Color.redColour)
-                                Text("Back")
+                                Text("Exit")
                                     .font(.bodyCustomMedium)
                                     .foregroundColor(Color.redColour)
                             }

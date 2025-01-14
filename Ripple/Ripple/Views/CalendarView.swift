@@ -11,6 +11,7 @@ import CoreData
 struct CalendarView: View {
     @StateObject private var viewModel: StepDataViewModel
     @State private var showingStepInfo = false
+    @State private var showingHelpInfo = false
     
     init(viewContext: NSManagedObjectContext) {
         _viewModel = StateObject(wrappedValue: StepDataViewModel(viewContext: viewContext))
@@ -31,7 +32,7 @@ struct CalendarView: View {
                 }
                 .padding(.horizontal)
                 
-                CalendarInfoButtons(showingStepInfo: $showingStepInfo)
+                CalendarInfoButtons(showingStepInfo: $showingStepInfo, showingHelpInfo: $showingHelpInfo)
             }
             .ignoresSafeArea(edges: .top)
             .navigationBarHidden(true) // Without this, the show dates toggle gets disabled for some reason
