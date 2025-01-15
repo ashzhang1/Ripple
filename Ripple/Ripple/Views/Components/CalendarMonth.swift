@@ -11,6 +11,7 @@ struct CalendarMonth: View {
     let date: Date
     let showDates: Bool
     let stepData: [StepDataEntry]
+    @ObservedObject var viewModel: StepDataViewModel
     
     // This is needed for the background colour of each date
     let goalCompleteThreshold: Int
@@ -187,7 +188,7 @@ struct CalendarMonth: View {
     }
     
     var body: some View {
-        NavigationLink(destination: detailedMonthView(date: date)) {
+        NavigationLink(destination: DetailedMonthView(date: date, viewModel: viewModel)) {
             ZStack {
                 // Box background
                 RoundedRectangle(cornerRadius: 4)

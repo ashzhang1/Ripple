@@ -53,6 +53,7 @@ struct CalendarGrid: View {
                             date: monthDate,
                             showDates: viewModel.showDates,
                             stepData: viewModel.stepData,
+                            viewModel: viewModel,
                             goalCompleteThreshold: StepCountGoalThresholds.goalCompleteDay,
                             overHalfThreshold: StepCountGoalThresholds.overHalfGoal,
                             underHalfThreshold: StepCountGoalThresholds.underHalfGoal,

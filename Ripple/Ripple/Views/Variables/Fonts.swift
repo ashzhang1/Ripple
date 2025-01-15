@@ -11,6 +11,9 @@ extension Font {
     /// Display font - 64pt
     static let display = Font.system(size: 64)
     
+    /// BigTitle font - 40pt
+    static let bigTitle = Font.system(size: 40)
+    
     /// Title font - 32pt
     static let title = Font.system(size: 32)
     static let titleSemiBold = Font.system(size: 32, weight: .semibold)
