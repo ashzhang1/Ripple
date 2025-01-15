@@ -20,6 +20,7 @@ struct DetailedMonthView: View {
     
     var body: some View {
         VStack(spacing: 0) {
+            
             // Back Button
             Color.clear
                 .frame(height: 0)
@@ -44,6 +45,8 @@ struct DetailedMonthView: View {
                     .padding(.top, 32)
                 }
             
+            
+            
             DetailedCalendarMonth(
                 date: date,
                 stepData: viewModel.stepData,
@@ -54,6 +57,10 @@ struct DetailedMonthView: View {
                 selectedFilter: viewModel.selectedFilter
             )
             .padding(.horizontal)
+            
+            
+            DetailedMonthLegend(viewModel: viewModel, date: date)
+                .padding(.horizontal)
 
             
             Spacer()

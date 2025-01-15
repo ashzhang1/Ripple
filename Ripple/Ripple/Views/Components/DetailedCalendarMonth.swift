@@ -188,11 +188,10 @@ struct DetailedCalendarMonth: View {
             HStack {
                 Text("\(month) Average:")
                     .foregroundColor(.red)
-                    .font(.headlineMedium)
                 Text("\(averageStepsForMonth) Steps")
                     .foregroundColor(.black)
-                    .font(.headlineMedium)
             }
+            .font(.headlineMedium)
             .padding(.leading, 16)
 
                 
