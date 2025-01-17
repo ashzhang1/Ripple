@@ -16,6 +16,7 @@ extension Color {
     
     
     static let grayColour = Color(red: 0.973, green: 0.973, blue: 0.973)
+    static let darkGrayColour = Color(red: 0.851, green: 0.851, blue: 0.851)
     static let redColour = Color(red: 0.922, green: 0.294, blue: 0.384)
     
     

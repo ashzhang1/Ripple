@@ -46,17 +46,23 @@ struct DetailedMonthView: View {
                 }
             
             
+            Spacer()
             
-            DetailedCalendarMonth(
-                date: date,
-                stepData: viewModel.stepData,
-                goalCompleteThreshold: StepCountGoalThresholds.goalCompleteDay,
-                overHalfThreshold: StepCountGoalThresholds.overHalfGoal,
-                underHalfThreshold: StepCountGoalThresholds.underHalfGoal,
-                nonWearThreshold: StepCountGoalThresholds.nonWearDay,
-                selectedFilter: viewModel.selectedFilter
-            )
-            .padding(.horizontal)
+            
+            HStack {
+                DetailedCalendarMonth(
+                    date: date,
+                    stepData: viewModel.stepData,
+                    goalCompleteThreshold: StepCountGoalThresholds.goalCompleteDay,
+                    overHalfThreshold: StepCountGoalThresholds.overHalfGoal,
+                    underHalfThreshold: StepCountGoalThresholds.underHalfGoal,
+                    nonWearThreshold: StepCountGoalThresholds.nonWearDay,
+                    selectedFilter: viewModel.selectedFilter
+                )
+                .padding(.horizontal)
+                
+                DetailedMonthContextualFactors()
+            }
             
             
             DetailedMonthLegend(viewModel: viewModel, date: date)

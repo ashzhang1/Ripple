@@ -168,7 +168,7 @@ struct DetailedCalendarMonth: View {
                                         
                                         Text("\(date)")
                                             .foregroundColor(.black)
-                                            .font(.title3)
+                                            .font(.headline)
                                     }
                                     .aspectRatio(1.0, contentMode: .fit)
                                     

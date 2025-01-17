@@ -43,7 +43,6 @@ struct StaticLegendBox: View {
                 }
             )
             .cornerRadius(4)
-            .shadow(color: Color.black.opacity(0.7), radius: 4, x: 0, y: 5)
             
             // Description text
             VStack {
