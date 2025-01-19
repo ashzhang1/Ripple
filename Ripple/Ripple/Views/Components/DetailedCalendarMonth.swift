@@ -108,11 +108,11 @@ struct DetailedCalendarMonth: View {
             // Get the colour
             switch dayThresholdCategory {
                 case .goalCompleteDay:
-                    return AnyView(Rectangle().fill(Color.goalReachedColor))
+                    return AnyView(Rectangle().fill(Color.goalReachedColour))
                 case .overHalfGoal:
-                    return AnyView(Rectangle().fill(Color.overHalfColor))
+                    return AnyView(Rectangle().fill(Color.overHalfColour))
                 case .underHalfGoal:
-                    return AnyView(Rectangle().fill(Color.underHalfColor))
+                    return AnyView(Rectangle().fill(Color.underHalfColour))
                 case .nonWearDay:
                     return AnyView(NonWearDayBoxPattern())
             }

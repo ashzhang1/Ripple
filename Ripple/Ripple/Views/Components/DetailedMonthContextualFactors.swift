@@ -8,6 +8,26 @@
 import SwiftUI
 
 struct DetailedMonthContextualFactors: View {
+    let date: Date
+    let stepData: [StepDataEntry]
+    
+    private var averageWearTimeForMonth: Double {
+        
+        // Filter step data for current month
+        let wearTimeInMonth = stepData.filter { stepEntry in
+            Calendar.current.isDate(stepEntry.date, equalTo: date, toGranularity: .month)
+        }
+        
+        // Calculate average
+        let totalWearTime = wearTimeInMonth.reduce(0) { $0 + $1.wearTime }
+        let daysCount = wearTimeInMonth.count
+        
+        // Return 0 if no data
+        guard daysCount > 0 else { return 0 }
+        
+        return (totalWearTime / Double(daysCount)).rounded()
+    }
+    
     var body: some View {
         VStack {
             Text("What Influenced Your Step Count")
@@ -51,7 +71,7 @@ struct DetailedMonthContextualFactors: View {
                     Text("Average Daily Wear-Time")
                         .font(.headlineSemiBold)
                         .foregroundStyle(Color.redColour)
-                    Text("5.8 hours per day")
+                    Text(String(format: "%.1f", averageWearTimeForMonth))
                         .font(.subheadlineMedium)
                 }
             }
@@ -64,6 +84,6 @@ struct DetailedMonthContextualFactors: View {
     }
 }
 
-#Preview("11-inch iPad Pro", traits: .landscapeRight) {
-    DetailedMonthContextualFactors()
-}
+//#Preview("11-inch iPad Pro", traits: .landscapeRight) {
+//    DetailedMonthContextualFactors()
+//}

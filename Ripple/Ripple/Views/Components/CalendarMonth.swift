@@ -98,21 +98,21 @@ struct CalendarMonth: View {
             switch dayThresholdCategory {
                 case .goalCompleteDay:
                     if selectedFilter == nil || selectedFilter == .goalCompleteDay {
-                        color = Color.goalReachedColor
+                        color = Color.goalReachedColour
                     } else {
                         color = Color.gray.opacity(0.3)
                     }
                     
                 case .overHalfGoal:
                     if selectedFilter == nil || selectedFilter == .overHalfGoal {
-                        color = Color.overHalfColor
+                        color = Color.overHalfColour
                     } else {
                         color = Color.gray.opacity(0.3)
                     }
                     
                 case .underHalfGoal:
                     if selectedFilter == nil || selectedFilter == .underHalfGoal {
-                        color = Color.underHalfColor
+                        color = Color.underHalfColour
                     } else {
                         color = Color.gray.opacity(0.3)
                     }

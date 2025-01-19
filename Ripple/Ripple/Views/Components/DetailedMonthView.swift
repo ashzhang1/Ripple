@@ -61,7 +61,10 @@ struct DetailedMonthView: View {
                 )
                 .padding(.horizontal)
                 
-                DetailedMonthContextualFactors()
+                DetailedMonthContextualFactors(
+                    date: date,
+                    stepData: viewModel.stepData
+                )
             }
             
             
