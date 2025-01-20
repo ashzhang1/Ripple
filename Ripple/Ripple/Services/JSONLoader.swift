@@ -30,9 +30,20 @@ func loadSampleDataIfNeeded(context: NSManagedObjectContext) {
             step.stepCount = Int64(item.stepCount)
             step.wearTime = item.wearTime
         }
-        
-        print("hello")
     }
+    
+    // Load activity data
+    if let activityData: ActivityDataResponse = try? loadJSON(filename: "activityData") {
+        activityData.activities.forEach { item in
+            let activity = ActivityData(context: context)
+            activity.id = item.id
+            activity.date = item.date
+            activity.activityType = item.activityType
+        }
+    }
+    
+    
+    // Load emotion data
     
     
     

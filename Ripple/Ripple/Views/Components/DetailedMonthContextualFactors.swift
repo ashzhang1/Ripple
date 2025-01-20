@@ -41,7 +41,7 @@ struct DetailedMonthContextualFactors: View {
                         Text("Top Activities")
                             .font(.headlineSemiBold)
                             .foregroundStyle(Color.redColour)
-                        HStack {
+                        HStack(spacing: 16) {
                             // Activity items with icons
                             ContextualFactorsIcon(icon: "🚶‍♂️", title: "Walking", quantity: "18")
                             ContextualFactorsIcon(icon: "🙆‍♀️", title: "Stretching", quantity: "15")
@@ -56,7 +56,7 @@ struct DetailedMonthContextualFactors: View {
                         Text("Top Emotions")
                             .font(.headlineSemiBold)
                             .foregroundStyle(Color.redColour)
-                        HStack {
+                        HStack(spacing: 16) {
                             // Emotion items with icons
                             ContextualFactorsIcon(icon: "😆", title: "Motivated", quantity: "17")
                             ContextualFactorsIcon(icon: "😀", title: "Happy", quantity: "16")
@@ -71,7 +71,7 @@ struct DetailedMonthContextualFactors: View {
                     Text("Average Daily Wear-Time")
                         .font(.headlineSemiBold)
                         .foregroundStyle(Color.redColour)
-                    Text(String(format: "%.1f", averageWearTimeForMonth))
+                    Text(String(format: "%.1f", averageWearTimeForMonth) + " hours per day")
                         .font(.subheadlineMedium)
                 }
             }
