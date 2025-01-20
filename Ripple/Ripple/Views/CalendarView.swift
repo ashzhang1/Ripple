@@ -12,9 +12,11 @@ struct CalendarView: View {
     @StateObject private var viewModel: StepDataViewModel
     @State private var showingStepInfo = false
     @State private var showingHelpInfo = false
+    private let viewContext: NSManagedObjectContext
     
     init(viewContext: NSManagedObjectContext) {
         _viewModel = StateObject(wrappedValue: StepDataViewModel(viewContext: viewContext))
+        self.viewContext = viewContext
     }
     
     var body: some View {
@@ -26,7 +28,7 @@ struct CalendarView: View {
                     CalendarLegend(viewModel: viewModel)
                         .frame(width: 200)
                     
-                    CalendarGrid(viewModel: viewModel)
+                    CalendarGrid(viewModel: viewModel, viewContext: viewContext)
                     
                     Spacer()
                 }
@@ -43,6 +45,7 @@ struct CalendarView: View {
 
 struct CalendarGrid: View {
     @ObservedObject var viewModel: StepDataViewModel
+    let viewContext: NSManagedObjectContext
     
     var body: some View {
         VStack(spacing: 20) {
@@ -54,6 +57,7 @@ struct CalendarGrid: View {
                             showDates: viewModel.showDates,
                             stepData: viewModel.stepData,
                             viewModel: viewModel,
+                            viewContext: viewContext,
                             goalCompleteThreshold: StepCountGoalThresholds.goalCompleteDay,
                             overHalfThreshold: StepCountGoalThresholds.overHalfGoal,
                             underHalfThreshold: StepCountGoalThresholds.underHalfGoal,

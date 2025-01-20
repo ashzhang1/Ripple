@@ -10,6 +10,7 @@ import SwiftUI
 struct DetailedMonthContextualFactors: View {
     let date: Date
     let stepData: [StepDataEntry]
+    let topActivities: [(activityType: String, count: Int)]
     
     private var averageWearTimeForMonth: Double {
         
@@ -28,6 +29,19 @@ struct DetailedMonthContextualFactors: View {
         return (totalWearTime / Double(daysCount)).rounded()
     }
     
+    // Have to use this computed property because we cant directly use topActivities.
+    // The view renders before the data loads causing view to crash
+    private var displayActivities: [(activityType: String, count: Int)] {
+        let emptyActivity = (activityType: "", count: 0)
+        var activities = topActivities.prefix(3).map { $0 }
+        
+        while activities.count < 3 {
+            activities.append(emptyActivity)
+        }
+        
+        return activities
+    }
+    
     var body: some View {
         VStack {
             Text("What Influenced Your Step Count")
@@ -43,9 +57,13 @@ struct DetailedMonthContextualFactors: View {
                             .foregroundStyle(Color.redColour)
                         HStack(spacing: 16) {
                             // Activity items with icons
-                            ContextualFactorsIcon(icon: "🚶‍♂️", title: "Walking", quantity: "18")
-                            ContextualFactorsIcon(icon: "🙆‍♀️", title: "Stretching", quantity: "15")
-                            ContextualFactorsIcon(icon: "🏋️‍♂️", title: "Gym", quantity: "12")
+                            ForEach(0..<3, id: \.self) { index in
+                                ContextualFactorsIcon(
+                                    icon: ActivityIcons(rawValue: displayActivities[index].activityType)?.emoji ?? "❓",
+                                    title: ActivityIcons(rawValue: displayActivities[index].activityType)?.label ?? "unknown",
+                                    quantity: String(displayActivities[index].count)
+                                )
+                            }
                         }
                     }
                     

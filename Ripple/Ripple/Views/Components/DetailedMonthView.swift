@@ -6,11 +6,19 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct DetailedMonthView: View {
     let date: Date
     @Environment(\.dismiss) private var dismiss
-    @ObservedObject var viewModel: StepDataViewModel
+    @ObservedObject var stepDataViewModel: StepDataViewModel
+    @StateObject private var activityDataViewModel: ActivityDataViewModel
+
+    init(date: Date, viewModel: StepDataViewModel, viewContext: NSManagedObjectContext) {
+        self.date = date
+        self.stepDataViewModel = viewModel
+        _activityDataViewModel = StateObject(wrappedValue: ActivityDataViewModel(viewContext: viewContext))
+    }
     
     private var monthName: String {
         let formatter = DateFormatter()
@@ -52,23 +60,24 @@ struct DetailedMonthView: View {
             HStack {
                 DetailedCalendarMonth(
                     date: date,
-                    stepData: viewModel.stepData,
+                    stepData: stepDataViewModel.stepData,
                     goalCompleteThreshold: StepCountGoalThresholds.goalCompleteDay,
                     overHalfThreshold: StepCountGoalThresholds.overHalfGoal,
                     underHalfThreshold: StepCountGoalThresholds.underHalfGoal,
                     nonWearThreshold: StepCountGoalThresholds.nonWearDay,
-                    selectedFilter: viewModel.selectedFilter
+                    selectedFilter: stepDataViewModel.selectedFilter
                 )
                 .padding(.horizontal)
                 
                 DetailedMonthContextualFactors(
                     date: date,
-                    stepData: viewModel.stepData
+                    stepData: stepDataViewModel.stepData,
+                    topActivities: activityDataViewModel.getTopActivitiesForMonth(date)
                 )
             }
             
             
-            DetailedMonthLegend(viewModel: viewModel, date: date)
+            DetailedMonthLegend(viewModel: stepDataViewModel, date: date)
                 .padding(.horizontal)
 
             
