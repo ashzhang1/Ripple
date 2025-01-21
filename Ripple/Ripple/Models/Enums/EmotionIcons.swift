@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Emotion: String, CaseIterable, EmojiRepresentable {
+enum EmotionIcons: String, CaseIterable, EmojiRepresentable {
     case happy
     case motivated
     case relaxed

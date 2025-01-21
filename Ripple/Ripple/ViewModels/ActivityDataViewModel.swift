@@ -67,8 +67,6 @@ class ActivityDataViewModel: ObservableObject {
             .map { (activityType: $0.key, count: $0.value) }
         
         
-        print(Array(topActivities))
-        
         return Array(topActivities)
     }
     

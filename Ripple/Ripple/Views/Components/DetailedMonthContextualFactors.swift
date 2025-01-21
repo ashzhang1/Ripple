@@ -11,6 +11,7 @@ struct DetailedMonthContextualFactors: View {
     let date: Date
     let stepData: [StepDataEntry]
     let topActivities: [(activityType: String, count: Int)]
+    let topEmotions: [(emotionType: String, count: Int)]
     
     private var averageWearTimeForMonth: Double {
         
@@ -41,6 +42,19 @@ struct DetailedMonthContextualFactors: View {
         
         return activities
     }
+    
+    private var displayEmotions: [(emotionType: String, count: Int)] {
+        let emptyEmotion = (emotionType: "", count: 0)
+        var emotions = topEmotions.prefix(3).map { $0 }
+        
+        while emotions.count < 3 {
+            emotions.append(emptyEmotion)
+        }
+        
+        return emotions
+    }
+    
+    
     
     var body: some View {
         VStack {
@@ -76,9 +90,13 @@ struct DetailedMonthContextualFactors: View {
                             .foregroundStyle(Color.redColour)
                         HStack(spacing: 16) {
                             // Emotion items with icons
-                            ContextualFactorsIcon(icon: "😆", title: "Motivated", quantity: "17")
-                            ContextualFactorsIcon(icon: "😀", title: "Happy", quantity: "16")
-                            ContextualFactorsIcon(icon: "🥱", title: "Tired", quantity: "10")
+                            ForEach(0..<3, id: \.self) { index in
+                                ContextualFactorsIcon(
+                                    icon: EmotionIcons(rawValue: displayEmotions[index].emotionType)?.emoji ?? "❓",
+                                    title: EmotionIcons(rawValue: displayEmotions[index].emotionType)?.label ?? "unknown",
+                                    quantity: String(displayEmotions[index].count)
+                                )
+                            }
                         }
                     }
                 }

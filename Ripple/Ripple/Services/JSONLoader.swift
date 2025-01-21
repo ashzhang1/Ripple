@@ -44,6 +44,14 @@ func loadSampleDataIfNeeded(context: NSManagedObjectContext) {
     
     
     // Load emotion data
+    if let emotionData: EmotionDataResponse = try? loadJSON(filename: "emotionData") {
+        emotionData.emotions.forEach { item in
+            let emotion = EmotionData(context: context)
+            emotion.id = item.id
+            emotion.date = item.date
+            emotion.emotionType = item.emotionType
+        }
+    }
     
     
     

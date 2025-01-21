@@ -13,11 +13,13 @@ struct DetailedMonthView: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var stepDataViewModel: StepDataViewModel
     @StateObject private var activityDataViewModel: ActivityDataViewModel
+    @StateObject private var emotionDataViewModel: EmotionDataViewModel
 
     init(date: Date, viewModel: StepDataViewModel, viewContext: NSManagedObjectContext) {
         self.date = date
         self.stepDataViewModel = viewModel
         _activityDataViewModel = StateObject(wrappedValue: ActivityDataViewModel(viewContext: viewContext))
+        _emotionDataViewModel = StateObject(wrappedValue: EmotionDataViewModel(viewContext: viewContext))
     }
     
     private var monthName: String {
@@ -72,7 +74,8 @@ struct DetailedMonthView: View {
                 DetailedMonthContextualFactors(
                     date: date,
                     stepData: stepDataViewModel.stepData,
-                    topActivities: activityDataViewModel.getTopActivitiesForMonth(date)
+                    topActivities: activityDataViewModel.getTopActivitiesForMonth(date),
+                    topEmotions: emotionDataViewModel.getTopEmotionsForMonth(date)
                 )
             }
             
