@@ -6,14 +6,31 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct TrendsView: View {
-    var body: some View {
-        Text("Trends")
+    @StateObject private var viewModel: TrendsViewModel
+    private let viewContext: NSManagedObjectContext
+    
+    init(viewContext: NSManagedObjectContext) {
+        _viewModel = StateObject(wrappedValue: TrendsViewModel(viewContext: viewContext))
+        self.viewContext = viewContext
     }
-}
-
-#Preview("11-inch iPad Pro", traits: .landscapeLeft) {
-    TrendsView()
-        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    
+    var body: some View {
+        VStack(spacing: 24) {
+            TrendsHeader()
+            
+            TimePeriodSelector(viewModel: viewModel)
+            
+            if viewModel.monthlyAverages.isEmpty {
+                Spacer()
+                ProgressView() // Show loading indicator
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                TrendsSummaryPanel(data: viewModel.displayData)
+                    .animation(.easeInOut, value: viewModel.selectedTimeRange)
+            }
+        }
+    }
 }

@@ -27,6 +27,7 @@ extension Font {
     /// Subheadline font - 20pt
     static let subheadline = Font.system(size: 20)
     static let subheadlineBold = Font.system(size: 20, weight: .bold)
+    static let subheadlineSemiBold = Font.system(size: 20, weight: .semibold)
     static let subheadlineMedium = Font.system(size: 20, weight: .medium)
     
     /// Body font - 16pt

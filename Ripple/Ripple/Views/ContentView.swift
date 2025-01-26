@@ -19,7 +19,7 @@ struct ContentView: View {
             }
             
             Tab("Trends", systemImage: "chart.line.uptrend.xyaxis") {
-                TrendsView()
+                TrendsView(viewContext: viewContext)
             }
 
 
