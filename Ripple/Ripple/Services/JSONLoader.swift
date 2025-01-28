@@ -16,10 +16,9 @@ func loadSampleDataIfNeeded(context: NSManagedObjectContext) {
     
     // Check if data has already been loaded
 //    if userDefaults.bool(forKey: hasLoadedDataKey) {
-//
 //        return
 //    }
-//
+
     
     // Load step data
     if let stepData: StepDataResponse = try? loadJSON(filename: "stepData") {

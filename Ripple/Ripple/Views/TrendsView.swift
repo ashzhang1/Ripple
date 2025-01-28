@@ -28,9 +28,13 @@ struct TrendsView: View {
                 ProgressView() // Show loading indicator
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
-                TrendsSummaryPanel(data: viewModel.displayData)
+                TrendsSummaryPanel(data: viewModel.displayData,
+                                   selectedTimeRange: viewModel.selectedTimeRange,
+                                   averageSteps: viewModel.averageStepsData)
                     .animation(.easeInOut, value: viewModel.selectedTimeRange)
             }
+            
+            ContextualFactorsPanel()
         }
     }
 }

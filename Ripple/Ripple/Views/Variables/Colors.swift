@@ -20,5 +20,12 @@ extension Color {
     static let redColour = Color(red: 0.922, green: 0.294, blue: 0.384)
     
     
+//    These are the trend card colours
+    static let greenCardTitleColour = Color(red: 0.403, green: 0.808, blue: 0.404)
+    static let greenCardColour = Color(red: 0.949, green: 0.992, blue: 0.961)
+    static let purpleCardTitleColour = Color(red: 0.698, green: 0.373, blue: 0.918)
+    static let purpleCardColour = Color(red: 0.976, green: 0.945, blue: 1)
+    
+    
     
 }

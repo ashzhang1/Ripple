@@ -173,6 +173,14 @@ class TrendsViewModel: ObservableObject {
         }
     }
     
+    var averageStepsData: Int {
+        guard !displayData.isEmpty else { return 0 }
+        let totalSteps = displayData.reduce(into: 0) { total, data in
+            total += data.average
+        }
+        return Int(round(totalSteps / Double(displayData.count)))
+    }
+    
     
     
 }
