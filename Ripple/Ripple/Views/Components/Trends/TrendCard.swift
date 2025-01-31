@@ -11,6 +11,8 @@ struct TrendCard: View {
     let isStepCounTrendCard: Bool
     let trendTitle: String
     let trendDescription: String
+    let isSelected: Bool
+    let onTap: () -> Void
     
     private var titleColour: Color {
         isStepCounTrendCard ? .greenCardTitleColour : .purpleCardTitleColour
@@ -21,10 +23,7 @@ struct TrendCard: View {
     }
     
     var body: some View {
-        Button(action: {
-            // Empty action for now
-            // We'll add functionality later
-        }) {
+        Button(action: onTap) {
             ZStack {
                 // Background with shadow
                 RoundedRectangle(cornerRadius: 12)
@@ -38,6 +37,7 @@ struct TrendCard: View {
                         Text(trendTitle)
                             .font(.subheadlineSemiBold)
                             .foregroundColor(titleColour)
+                            .multilineTextAlignment(.leading)
                         Text(trendDescription)
                             .font(.subheadline)
                             .foregroundColor(.black)
@@ -48,7 +48,8 @@ struct TrendCard: View {
                     Spacer()
                 }
             }
-            .frame(width: 300, height: 130)
+            .background(isSelected ? cardBackgroundColour.opacity(0.8) : cardBackgroundColour)
+            .frame(width: 340, height: 130)
         }
     }
 }

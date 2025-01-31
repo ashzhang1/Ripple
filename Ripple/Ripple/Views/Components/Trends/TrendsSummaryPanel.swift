@@ -11,6 +11,9 @@ struct TrendsSummaryPanel: View {
     let data: [StepAverage]
     let selectedTimeRange: TrendsViewModel.TimeRange
     let averageSteps: Int
+    let threeMonthTrends: (firstThreeMonths: Double, secondThreeMonths: Double)
+    
+    @State private var isStepTrendSelected: Bool = false
     
     
     private var timePeriodText: String {
@@ -44,17 +47,24 @@ struct TrendsSummaryPanel: View {
             }
             
             HStack {
-                StepCountBarChart(data: data)
+                StepCountBarChart(data: data,
+                                  showTrendLines: isStepTrendSelected, // From your state
+                                  firstPeriodAverage: threeMonthTrends.firstThreeMonths,
+                                  secondPeriodAverage: threeMonthTrends.secondThreeMonths)
                 
-                // Trend cards will go here
+                // Trend cards
                 VStack(spacing: 16) {
                     TrendCard(isStepCounTrendCard: true,
-                              trendTitle: "Step Count Trend",
-                              trendDescription: "Increasing since the last 3 months.")
+                              trendTitle: "Last 6 Months Step Count Trend",
+                              trendDescription: "Increasing since the last 3 months.",
+                              isSelected: isStepTrendSelected,
+                              onTap: { isStepTrendSelected.toggle()})
                     
                     TrendCard(isStepCounTrendCard: false,
-                              trendTitle: "Wear-Time Adherence",
-                              trendDescription: "5.6 hours average per day during the last 6 months.")
+                              trendTitle: "Last 6 Months Wear-Time Trend",
+                              trendDescription: "5.6 hours average per day during the last 6 months.",
+                              isSelected: isStepTrendSelected,
+                              onTap: { isStepTrendSelected.toggle()})
                 }
             }
             

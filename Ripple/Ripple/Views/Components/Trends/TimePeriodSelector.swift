@@ -23,6 +23,6 @@ struct TimePeriodSelector: View {
                 }
             }
         }
-        .font(.subheadlineSemiBold)
+        .font(.headlineSemiBold)
     }
 }

@@ -15,10 +15,17 @@ class TrendsViewModel: ObservableObject {
         case sixMonths = "6 Months"
     }
     
+    enum AdditionalInsightType: String, CaseIterable {
+        case clinicianComments = "Clinician Commments"
+        case supporterComments = "Supporter Comments"
+        case contextualFactors = "Contextual Factors"
+    }
+    
     @Published private(set) var stepData: [StepDataEntry] = []
     @Published private(set) var weeklyAverages: [StepAverage] = [] // For 1M view
     @Published private(set) var monthlyAverages: [StepAverage] = [] // For 6M view - for the 3M view, just use suffix(3)
     @Published var selectedTimeRange: TimeRange = .sixMonths
+    @Published var selectedAdditionalInsightType: AdditionalInsightType = .contextualFactors
     @Published private(set) var isLoading = false
     @Published private(set) var error: Error?
     @Published private(set) var trendDirection: TrendDirection = .maintaining
@@ -179,6 +186,39 @@ class TrendsViewModel: ObservableObject {
             total += data.average
         }
         return Int(round(totalSteps / Double(displayData.count)))
+    }
+    
+    // To determine which one of (clinician comments, supporter comments, contextual factors) is currently selected
+    func isInsightTypeSelected(_ type: AdditionalInsightType) -> Bool {
+        return selectedAdditionalInsightType == type
+    }
+    
+    // Below is for when the user clicks on the step count trend card
+    func calculateThreeMonthTrends() -> (firstThreeMonths: Double, secondThreeMonths: Double) {
+        let allMonths = monthlyAverages
+        
+        // Re-use what I already generated then split into 2
+        let firstThreeMonths = Array(allMonths.prefix(3))
+        let secondThreeMonths = Array(allMonths.suffix(3))
+        
+        // Calculate averages
+        let firstPeriodAverage = firstThreeMonths.reduce(0.0) { $0 + $1.average } / 3.0
+        let secondPeriodAverage = secondThreeMonths.reduce(0.0) { $0 + $1.average } / 3.0
+        
+        return (firstPeriodAverage, secondPeriodAverage)
+    }
+
+    // Add this to help determine trend direction
+    func getTrendDescription() -> String {
+        let (firstPeriod, secondPeriod) = calculateThreeMonthTrends()
+        
+        if secondPeriod > firstPeriod {
+            return "Increasing since the last 3 months."
+        } else if secondPeriod < firstPeriod {
+            return "Decreasing since the last 3 months."
+        } else {
+            return "Maintaining over the last 6 months."
+        }
     }
     
     

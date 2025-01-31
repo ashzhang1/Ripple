@@ -18,7 +18,7 @@ struct TrendsView: View {
     }
     
     var body: some View {
-        VStack(spacing: 24) {
+        VStack(spacing: 16) {
             TrendsHeader()
             
             TimePeriodSelector(viewModel: viewModel)
@@ -30,11 +30,12 @@ struct TrendsView: View {
             } else {
                 TrendsSummaryPanel(data: viewModel.displayData,
                                    selectedTimeRange: viewModel.selectedTimeRange,
-                                   averageSteps: viewModel.averageStepsData)
+                                   averageSteps: viewModel.averageStepsData,
+                                   threeMonthTrends: viewModel.calculateThreeMonthTrends())
                     .animation(.easeInOut, value: viewModel.selectedTimeRange)
             }
             
-            ContextualFactorsPanel()
+            ContextualFactorsPanel(viewModel: viewModel)
         }
     }
 }
