@@ -16,4 +16,3 @@ struct EmotionDataEntry: Codable, Identifiable {
     let date: Date
     let emotionType: String
 }
-

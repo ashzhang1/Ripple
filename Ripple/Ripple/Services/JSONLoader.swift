@@ -53,6 +53,19 @@ func loadSampleDataIfNeeded(context: NSManagedObjectContext) {
     }
     
     
+    // Load comments data
+    if let commentData: CommentDataResponse = try? loadJSON(filename: "commentData") {
+        commentData.comments.forEach { item in
+            let comment = CommentData(context: context)
+            comment.id = item.id
+            comment.date = item.date
+            comment.authorName = item.authorName
+            comment.authorType = item.authorType
+            comment.authorRelation = item.authorRelation
+            comment.comment = item.comment
+        }
+    }
+    
     
     // Load questions
     if let questionData: QuestionResponse = try? loadJSON(filename: "questions") {
