@@ -70,4 +70,26 @@ class EmotionDataViewModel: ObservableObject {
         
         return Array(topEmotions)
     }
+    
+    // This gets the top emotions between two given dates
+    func getTopEmotionsForPeriod(from startDate: Date, to endDate: Date) -> [(emotionType: String, count: Int)] {
+        
+        // Filter by the dates first
+        let emotions = emotionData.filter { emotion in
+            return emotion.date >= startDate && emotion.date <= endDate
+        }
+        
+        // Group by emotion type and count occurrences
+        let emotionCounts = Dictionary(grouping: emotions) { $0.emotionType }
+            .mapValues { $0.count }
+        
+        // Only return the top 3
+        let topEmotions = emotionCounts.sorted { $0.value > $1.value }
+            .prefix(3)
+            .map { (emotionType: $0.key, count: $0.value) }
+        
+        
+        return Array(topEmotions)
+        
+    }
 }

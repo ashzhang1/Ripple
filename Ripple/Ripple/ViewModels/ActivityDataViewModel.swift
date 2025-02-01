@@ -51,6 +51,7 @@ class ActivityDataViewModel: ObservableObject {
     
     // MARK: - Helper Methods
     
+    
     func getTopActivitiesForMonth(_ date: Date) -> [(activityType: String, count: Int)] {
         // Filter activities for the given month
         let monthActivities = activityData.filter { activity in
@@ -69,5 +70,30 @@ class ActivityDataViewModel: ObservableObject {
         
         return Array(topActivities)
     }
+    
+    
+    // This gets the top activities between two given dates
+    func getTopActivitiesForPeriod(from startDate: Date, to endDate: Date) -> [(activityType: String, count: Int)] {
+        
+        // Filter by the dates first
+        let activities = activityData.filter { activity in
+            return activity.date >= startDate && activity.date <= endDate
+        }
+        
+        // Group by activity type and count occurrences
+        let activityCounts = Dictionary(grouping: activities) { $0.activityType }
+            .mapValues { $0.count }
+        
+        // Only return the top 3
+        let topActivities = activityCounts.sorted { $0.value > $1.value }
+            .prefix(3)
+            .map { (activityType: $0.key, count: $0.value) }
+        
+        
+        return Array(topActivities)
+        
+        
+    }
+    
     
 }

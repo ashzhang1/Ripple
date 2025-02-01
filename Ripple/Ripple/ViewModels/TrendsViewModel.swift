@@ -105,7 +105,7 @@ class TrendsViewModel: ObservableObject {
             }
         }
         
-        // This is needed for the label
+        // This is needed for the label under each of the bars of the bar chart
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMM"
 
@@ -180,6 +180,7 @@ class TrendsViewModel: ObservableObject {
         }
     }
     
+    // Averages the step data
     var averageStepsData: Int {
         guard !displayData.isEmpty else { return 0 }
         let totalSteps = displayData.reduce(into: 0) { total, data in
@@ -208,7 +209,7 @@ class TrendsViewModel: ObservableObject {
         return (firstPeriodAverage, secondPeriodAverage)
     }
 
-    // Add this to help determine trend direction
+    // TODO: Work in progress
     func getTrendDescription() -> String {
         let (firstPeriod, secondPeriod) = calculateThreeMonthTrends()
         

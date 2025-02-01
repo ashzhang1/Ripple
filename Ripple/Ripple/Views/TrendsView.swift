@@ -10,10 +10,14 @@ import CoreData
 
 struct TrendsView: View {
     @StateObject private var viewModel: TrendsViewModel
+    @StateObject private var activitiesViewModel: ActivityDataViewModel
+    @StateObject private var emotionsViewModel: EmotionDataViewModel
     private let viewContext: NSManagedObjectContext
     
     init(viewContext: NSManagedObjectContext) {
         _viewModel = StateObject(wrappedValue: TrendsViewModel(viewContext: viewContext))
+        _activitiesViewModel = StateObject(wrappedValue: ActivityDataViewModel(viewContext: viewContext))
+        _emotionsViewModel = StateObject(wrappedValue: EmotionDataViewModel(viewContext: viewContext))
         self.viewContext = viewContext
     }
     
@@ -35,7 +39,9 @@ struct TrendsView: View {
                     .animation(.easeInOut, value: viewModel.selectedTimeRange)
             }
             
-            ContextualFactorsPanel(viewModel: viewModel)
+            ContextualFactorsPanel(viewModel: viewModel, activityViewModel: activitiesViewModel, emotionViewModel: emotionsViewModel)
+            
         }
+        .ignoresSafeArea(.container, edges: .top)
     }
 }
