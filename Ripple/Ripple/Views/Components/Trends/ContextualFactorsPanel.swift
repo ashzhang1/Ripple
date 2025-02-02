@@ -11,6 +11,7 @@ struct ContextualFactorsPanel: View {
     @ObservedObject var viewModel: TrendsViewModel
     @ObservedObject var activityViewModel: ActivityDataViewModel
     @ObservedObject var emotionViewModel: EmotionDataViewModel
+    @ObservedObject var commentViewModel: CommentDataViewModel
     
     
     /*
@@ -62,11 +63,24 @@ struct ContextualFactorsPanel: View {
     }
     
     
+    
     var body: some View {
          VStack(spacing: 4) {
-            InsightTypeSelector(viewModel: viewModel) // These are the buttons (clinician comments, supporter comments, contextual factors)
+             
+             // These are the buttons (clinician comments, supporter comments, contextual factors)
+             InsightTypeSelector(viewModel: viewModel)
 
-            ContextualFactors(displayActivities: displayActivities, displayEmotions: displayEmotions)
+             
+             
+             switch viewModel.selectedAdditionalInsightType {
+             case .contextualFactors:
+                 ContextualFactors(displayActivities: displayActivities,
+                                 displayEmotions: displayEmotions)
+             case .clinicianComments:
+                 Comments(commentData: commentViewModel.clinicianCommentData)
+             case .supporterComments:
+                 Comments(commentData: commentViewModel.supporterCommentData)
+             }
          }
     }
  }

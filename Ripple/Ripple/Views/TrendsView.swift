@@ -12,12 +12,14 @@ struct TrendsView: View {
     @StateObject private var viewModel: TrendsViewModel
     @StateObject private var activitiesViewModel: ActivityDataViewModel
     @StateObject private var emotionsViewModel: EmotionDataViewModel
+    @StateObject private var commentViewModel: CommentDataViewModel
     private let viewContext: NSManagedObjectContext
     
     init(viewContext: NSManagedObjectContext) {
         _viewModel = StateObject(wrappedValue: TrendsViewModel(viewContext: viewContext))
         _activitiesViewModel = StateObject(wrappedValue: ActivityDataViewModel(viewContext: viewContext))
         _emotionsViewModel = StateObject(wrappedValue: EmotionDataViewModel(viewContext: viewContext))
+        _commentViewModel = StateObject(wrappedValue: CommentDataViewModel(viewContext: viewContext))
         self.viewContext = viewContext
     }
     
@@ -39,7 +41,10 @@ struct TrendsView: View {
                     .animation(.easeInOut, value: viewModel.selectedTimeRange)
             }
             
-            ContextualFactorsPanel(viewModel: viewModel, activityViewModel: activitiesViewModel, emotionViewModel: emotionsViewModel)
+            ContextualFactorsPanel(viewModel: viewModel,
+                                   activityViewModel: activitiesViewModel,
+                                   emotionViewModel: emotionsViewModel,
+                                   commentViewModel: commentViewModel)
             
         }
         .ignoresSafeArea(.container, edges: .top)
