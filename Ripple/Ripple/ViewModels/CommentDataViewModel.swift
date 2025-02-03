@@ -29,10 +29,11 @@ class CommentDataViewModel: ObservableObject {
         
         do {
             let request = NSFetchRequest<CommentData>(entityName: "CommentData")
-            request.sortDescriptors = [NSSortDescriptor(keyPath: \CommentData.date, ascending: true)]
+            request.sortDescriptors = [NSSortDescriptor(keyPath: \CommentData.date, ascending: false)]
             
             let results = try viewContext.fetch(request)
             
+            // Don't need to include the author relation here bc its optional
             for comment in results {
                 guard let id = comment.id,
                       let date = comment.date,
@@ -40,16 +41,18 @@ class CommentDataViewModel: ObservableObject {
                       let authorType = comment.authorType,
                       let commentText = comment.comment else { continue }
                 
-                // authorRelation is now optional and handled separately
+                
+                // authorRelation is optional and handled separately
                 let commentEntry = CommentDataEntry(
                     id: id,
                     date: date,
                     authorName: authorName,
                     authorType: authorType,
-                    authorRelation: comment.authorRelation,  // This is now optional
+                    authorRelation: comment.authorRelation,
                     comment: commentText
                 )
                 
+                // Load into different arrays
                 if let authorType = CommentAuthorTypes(rawValue: authorType) {
                     switch authorType {
                     case .clinician:

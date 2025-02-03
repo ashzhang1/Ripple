@@ -71,7 +71,7 @@ struct ContextualFactorsPanel: View {
              InsightTypeSelector(viewModel: viewModel)
 
              
-             
+             // Show the component corresponding to currently selected insight type
              switch viewModel.selectedAdditionalInsightType {
              case .contextualFactors:
                  ContextualFactors(displayActivities: displayActivities,

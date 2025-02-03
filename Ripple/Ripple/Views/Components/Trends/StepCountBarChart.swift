@@ -31,8 +31,8 @@ struct StepCountBarChart: View {
     
     
     // Below are computed properties for the trend lines
-    private var chartWidth: CGFloat { 700.0 }
-    private var chartHeight: CGFloat { 300.0 }
+    private var chartWidth: CGFloat { 720.0 }
+    private var chartHeight: CGFloat { 250.0 }
     private var monthWidth: CGFloat { chartWidth / CGFloat(data.count) }
     
     // Helper function for clipping the trend lines correctly
@@ -95,7 +95,7 @@ struct StepCountBarChart: View {
                 .foregroundStyle(Color.redColour)
             }
         }
-        .frame(width: 700, height: 300)
+        .frame(width: 720, height: 250)
         .chartYAxis {
             AxisMarks(position: .leading) { mark in
                 AxisGridLine(stroke: StrokeStyle(lineWidth: 0.5))

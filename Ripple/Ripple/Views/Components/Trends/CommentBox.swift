@@ -16,6 +16,9 @@ struct CommentBox: View {
     
     private var daysPast: Int {
         let calendar = Calendar.current
+        
+        // Calculating it from Dec 1 bc synthetic data is from June 1 to Nov 30
+        // So treat Dec 1 as current day
         let startDate = calendar.date(from: DateComponents(year: 2024, month: 12, day: 1))!
         
         // Calculate difference in days
@@ -25,12 +28,16 @@ struct CommentBox: View {
     }
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Text(authorName)
+                    .font(.subheadlineMedium)
                 
+                // Only show relation if it is available (i.e, only for supporters)
                 if let relation = authorRelation {
                     Text("(\(relation))")
+                        .font(.subheadlineMedium)
+                        .foregroundColor(.gray)
                 } else {
                     Text("")
                 }
@@ -38,15 +45,21 @@ struct CommentBox: View {
                 Spacer()
                 
                 Text("\(daysPast)d ago")
+                    .font(.subheadlineMedium)
+                    .foregroundColor(.gray)
             }
             
             Text(comment)
-                .font(.bodyCustom)
+                .font(.subheadline)
                 .multilineTextAlignment(.leading)
+                .frame(height: 85)
             
             CommentBoxCheckBox(isRead: false)
         }
-        .frame(width: 350, height: 180)
+        .padding()
+        .background(Color.grayColour)
+        .cornerRadius(8)
+        .frame(width: 380, height: 200)
     }
 }
 
@@ -56,12 +69,13 @@ struct CommentBoxCheckBox: View {
     
     
     var body: some View {
-        HStack(spacing: 8) { // Reduced spacing to match image
-            // Custom square checkbox
+        HStack(spacing: 8) {
+            
+            // Checkbox
             Rectangle()
                 .stroke(Color.black, lineWidth: 1)
                 .background(
-                    isRead ? Color.blue : Color.white
+                    isRead ? Color.green : Color.white
                 )
                 .frame(width: 24, height: 24)
                 .overlay {
@@ -72,10 +86,10 @@ struct CommentBoxCheckBox: View {
                     }
                 }
             
-            // Text that changes based on state
+            // Change to read/not read on tap
             Text(isRead ? "Read" : "Not Read")
-                .foregroundColor(.orange) // Using orange to match image
-                .font(.system(size: 16))
+                .foregroundColor(isRead ? Color.green : Color.orange)
+                .font(.subheadline)
         }
         .onTapGesture {
             withAnimation(.spring(response: 0.2)) {

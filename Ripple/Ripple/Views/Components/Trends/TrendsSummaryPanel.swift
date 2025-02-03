@@ -69,7 +69,7 @@ struct TrendsSummaryPanel: View {
             }
             
         }
-        .frame(width: 1120, height: 420)
+        .frame(width: 1120, height: 380)
         .background(Color.grayColour)
         .cornerRadius(12)
     }
