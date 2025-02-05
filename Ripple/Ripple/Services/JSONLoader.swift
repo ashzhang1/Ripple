@@ -66,35 +66,6 @@ func loadSampleDataIfNeeded(context: NSManagedObjectContext) {
         }
     }
     
-    
-    // Load questions
-    if let questionData: QuestionResponse = try? loadJSON(filename: "questions") {
-        questionData.questions.forEach { item in
-            let question = Question(context: context)
-            question.id = item.id
-            question.questionText = item.questionText
-        }
-    }
-    
-    // Load reflections
-    if let reflectionData: ReflectionResponse = try? loadJSON(filename: "reflections") {
-        reflectionData.reflections.forEach { item in
-            let reflection = ReflectionData(context: context)
-            reflection.id = item.id
-            reflection.date = item.date
-            reflection.activities = item.activities
-            reflection.emotions = item.emotions
-            reflection.response = item.response
-            
-            // Link to question if it exists
-            let questionFetch: NSFetchRequest<Question> = Question.fetchRequest()
-            questionFetch.predicate = NSPredicate(format: "id == %@", item.questionId as CVarArg)
-            if let question = try? context.fetch(questionFetch).first {
-                reflection.question = question
-            }
-        }
-    }
-    
     // Save context
     do {
         try context.save()

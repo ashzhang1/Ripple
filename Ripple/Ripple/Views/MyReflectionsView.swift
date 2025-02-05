@@ -9,11 +9,14 @@ import SwiftUI
 
 struct MyReflectionsView: View {
     var body: some View {
-        Text("My Reflections")
+        
+        VStack {
+            MyReflectionsHeader()
+            
+            MyReflectionsGrid()
+        }
+        .ignoresSafeArea(.container, edges: .top)
+        
+        
     }
-}
-
-#Preview("11-inch iPad Pro", traits: .landscapeRight) {
-    MyReflectionsView()
-        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }
