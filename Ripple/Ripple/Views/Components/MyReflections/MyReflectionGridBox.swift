@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MyReflectionGridBox: View {
     let month: String
+    let reflection: String
     
     
     var body: some View {
@@ -17,31 +18,36 @@ struct MyReflectionGridBox: View {
         Button(action: {
             
         }) {
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: 8) {
                 Text(month)
                     .font(.title)
-                    .foregroundStyle(.black)
-                
-                Spacer()
+                    .foregroundStyle(reflection.isEmpty ? .gray : .black)
+
                 
                 HStack {
-                    Text("View Reflection")
+                    Text(reflection.isEmpty ? "No Reflection Recorded" : "View Reflection")
                         .font(.subheadline)
-                        .foregroundStyle(.black)
+                        .foregroundStyle(reflection.isEmpty ? .gray : .black)
                         .multilineTextAlignment(.leading)
                     
                     Spacer()
-                    
-                    Image(systemName: "arrowshape.forward.circle")
-                        .font(.headline)
-                        .foregroundStyle(.black)
+                    if (!reflection.isEmpty) {
+                        Image(systemName: "arrowshape.forward.circle")
+                            .font(.headline)
+                            .foregroundStyle(.blue)
+                    }
                 }
             }
         }
         .padding(12)
-        .background(Color.grayColour)
+        .background(reflection.isEmpty ? Color.darkGrayColour : Color.grayColour)
         .cornerRadius(8)
-        .shadow(color: Color.black.opacity(0.5), radius: 4, x: 0, y: 5)
+        .shadow(
+            color: Color.black.opacity(!reflection.isEmpty ? 0.5 : 0),
+            radius: 4,
+            x: 0,
+            y: 5
+        )
         .frame(width: 168, height: 140)
         
     }

@@ -38,7 +38,7 @@ struct MyReflectionsGrid: View {
             // Add actual grid below
             LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(months, id: \.self) { month in
-                    MyReflectionGridBox(month: month)
+                    MyReflectionGridBox(month: month, reflection: "hello for now")
                 }
             }
             .padding()
