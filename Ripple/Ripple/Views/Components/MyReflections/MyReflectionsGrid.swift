@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MyReflectionsGrid: View {
     let reflections: [MonthlyReflectionDataEntry]
+    let activitiesViewModel: ActivityDataViewModel
+    let emotionsViewModel: EmotionDataViewModel
     
     // Define grid layout
     private let columns = [
@@ -32,7 +34,11 @@ struct MyReflectionsGrid: View {
             // Add actual grid below
             LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(reflections) { reflection in
-                    MyReflectionGridBox(reflection: reflection)
+                    MyReflectionGridBox(
+                        reflection: reflection,
+                        activitiesViewModel: activitiesViewModel,
+                        emotionsViewModel: emotionsViewModel
+                    )
                 }
             }
             .padding()

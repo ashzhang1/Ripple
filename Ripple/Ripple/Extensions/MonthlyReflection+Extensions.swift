@@ -40,6 +40,16 @@ extension MonthlyReflectionDataEntry {
         return ""
     }
     
+    var monthAsDate: Date? {
+        let calendar = Calendar.current
+        var dateComponents = DateComponents()
+        dateComponents.year = 2024  // Since its only working with 2024 data
+        dateComponents.month = Int(reflectionMonth)
+        dateComponents.day = 1      // Just use first day of the month to make it easy
+
+        return calendar.date(from: dateComponents)
+    }
+    
     var isEmpty: Bool {
         reflectionQuestion == nil
         && reflectionResponse == nil

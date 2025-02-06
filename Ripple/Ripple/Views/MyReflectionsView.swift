@@ -10,11 +10,15 @@ import CoreData
 
 struct MyReflectionsView: View {
     @StateObject private var monthlyReflectionsViewModel: MonthlyReflectionDataViewModel
+    @StateObject private var activitiesViewModel: ActivityDataViewModel
+    @StateObject private var emotionsViewModel: EmotionDataViewModel
     
     private let viewContext: NSManagedObjectContext
     
     init(viewContext: NSManagedObjectContext) {
         _monthlyReflectionsViewModel = StateObject(wrappedValue: MonthlyReflectionDataViewModel(viewContext: viewContext))
+        _activitiesViewModel = StateObject(wrappedValue: ActivityDataViewModel(viewContext: viewContext))
+        _emotionsViewModel = StateObject(wrappedValue: EmotionDataViewModel(viewContext: viewContext))
         self.viewContext = viewContext
     }
     
@@ -24,7 +28,11 @@ struct MyReflectionsView: View {
         VStack {
             MyReflectionsHeader()
             
-            MyReflectionsGrid(reflections: monthlyReflectionsViewModel.monthlyReflectionData)
+            MyReflectionsGrid(
+                reflections: monthlyReflectionsViewModel.monthlyReflectionData,
+                activitiesViewModel: activitiesViewModel,
+                emotionsViewModel: emotionsViewModel
+            )
         }
         .ignoresSafeArea(.container, edges: .top)
         

@@ -9,13 +9,18 @@ import SwiftUI
 
 struct MyReflectionGridBox: View {
     let reflection: MonthlyReflectionDataEntry
+    let activitiesViewModel: ActivityDataViewModel
+    let emotionsViewModel: EmotionDataViewModel
     @State private var showingModal = false
+    
     
     
     var body: some View {
         
         Button(action: {
-            showingModal = true
+            if (!reflection.isEmpty) {
+                showingModal = true
+            }
         }) {
             VStack(alignment: .leading, spacing: 8) {
                 Text(reflection.shortMonthName)
@@ -49,7 +54,13 @@ struct MyReflectionGridBox: View {
         )
         .frame(width: 168, height: 140)
         .sheet(isPresented: $showingModal) {
-            MyReflectionModal(reflection: reflection)
+            if let monthDate = reflection.monthAsDate {
+                MyReflectionModal(
+                    reflection: reflection,
+                    topActivities: activitiesViewModel.getTopActivitiesForMonth(monthDate),
+                    topEmotions: emotionsViewModel.getTopEmotionsForMonth(monthDate)
+                )
+            }
         }
         
     }
