@@ -29,7 +29,7 @@ struct ContentView: View {
 
 
             Tab("My Reflections", systemImage: "book.pages") {
-                MyReflectionsView()
+                MyReflectionsView(viewContext: viewContext)
             }
         }
 

@@ -66,6 +66,18 @@ func loadSampleDataIfNeeded(context: NSManagedObjectContext) {
         }
     }
     
+    // Load monthly reflection data
+    if let monthlyReflectionData: MonthlyReflectionDataResponse = try? loadJSON(filename: "monthlyReflectionData") {
+        monthlyReflectionData.monthlyReflections.forEach{ item in
+            let monthlyReflection = MonthlyReflectionData(context: context)
+            monthlyReflection.id = item.id
+            monthlyReflection.recordedDate = item.recordedDate
+            monthlyReflection.reflectionMonth = item.reflectionMonth
+            monthlyReflection.reflectionQuestion = item.reflectionQuestion
+            monthlyReflection.reflectionResponse = item.reflectionResponse
+        }
+    }
+    
     // Save context
     do {
         try context.save()

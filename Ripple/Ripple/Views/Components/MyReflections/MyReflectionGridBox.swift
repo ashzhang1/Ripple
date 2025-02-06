@@ -8,18 +8,17 @@
 import SwiftUI
 
 struct MyReflectionGridBox: View {
-    let month: String
-    let reflection: String
+    let reflection: MonthlyReflectionDataEntry
+    @State private var showingModal = false
     
     
     var body: some View {
         
-        
         Button(action: {
-            
+            showingModal = true
         }) {
             VStack(alignment: .leading, spacing: 8) {
-                Text(month)
+                Text(reflection.shortMonthName)
                     .font(.title)
                     .foregroundStyle(reflection.isEmpty ? .gray : .black)
 
@@ -49,6 +48,9 @@ struct MyReflectionGridBox: View {
             y: 5
         )
         .frame(width: 168, height: 140)
+        .sheet(isPresented: $showingModal) {
+            MyReflectionModal(reflection: reflection)
+        }
         
     }
 }

@@ -8,13 +8,7 @@
 import SwiftUI
 
 struct MyReflectionsGrid: View {
-    
-    private let months = [
-            "Jan", "Feb", "Mar",
-            "Apr", "May", "Jun",
-            "Jul", "Aug", "Sep",
-            "Oct", "Nov", "Dec"
-    ]
+    let reflections: [MonthlyReflectionDataEntry]
     
     // Define grid layout
     private let columns = [
@@ -37,8 +31,8 @@ struct MyReflectionsGrid: View {
             
             // Add actual grid below
             LazyVGrid(columns: columns, spacing: 16) {
-                ForEach(months, id: \.self) { month in
-                    MyReflectionGridBox(month: month, reflection: "hello for now")
+                ForEach(reflections) { reflection in
+                    MyReflectionGridBox(reflection: reflection)
                 }
             }
             .padding()

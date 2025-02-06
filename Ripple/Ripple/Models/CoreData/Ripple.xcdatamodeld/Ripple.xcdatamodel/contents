@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23507" systemVersion="24D60" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23605" systemVersion="24D60" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ActivityData" representedClassName="ActivityData" syncable="YES" codeGenerationType="class">
         <attribute name="activityType" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -23,16 +23,16 @@
     </entity>
     <entity name="MonthlyReflectionData" representedClassName="MonthlyReflectionData" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="question" optional="YES" attributeType="String"/>
         <attribute name="recordedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="reflectionMonth" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="response" optional="YES" attributeType="String"/>
+        <attribute name="reflectionQuestion" optional="YES" attributeType="String"/>
+        <attribute name="reflectionResponse" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="Question" representedClassName="Question" syncable="YES" codeGenerationType="class">
+    <entity name="QuestionOld" representedClassName="QuestionOld" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="questionText" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="ReflectionData" representedClassName="ReflectionData" syncable="YES" codeGenerationType="class">
+    <entity name="ReflectionDataOld" representedClassName="ReflectionDataOld" syncable="YES" codeGenerationType="class">
         <attribute name="activities" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="emotions" optional="YES" attributeType="String"/>

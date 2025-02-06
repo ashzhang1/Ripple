@@ -8,13 +8,13 @@
 import Foundation
 
 struct MonthlyReflectionDataResponse: Codable {
-    let reflections: [MonthlyReflectionDataEntry]
+    let monthlyReflections: [MonthlyReflectionDataEntry]
 }
 
 struct MonthlyReflectionDataEntry: Codable, Identifiable {
     let id: UUID
-    let recordedDate: Date
+    let recordedDate: Date?
     let reflectionMonth: Int16
-    let question: String
-    let response: String?
+    let reflectionQuestion: String?
+    let reflectionResponse: String?
 }
