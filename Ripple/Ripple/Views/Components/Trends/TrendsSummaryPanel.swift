@@ -53,19 +53,23 @@ struct TrendsSummaryPanel: View {
                                   secondPeriodAverage: threeMonthTrends.secondThreeMonths)
                 
                 // Trend cards
-                VStack(spacing: 16) {
-                    TrendCard(isStepCounTrendCard: true,
-                              trendTitle: "Last 6 Months Step Count Trend",
-                              trendDescription: "Increasing since the last 3 months.",
-                              isSelected: isStepTrendSelected,
-                              onTap: { isStepTrendSelected.toggle()})
-                    
-                    TrendCard(isStepCounTrendCard: false,
-                              trendTitle: "Last 6 Months Wear-Time Trend",
-                              trendDescription: "5.6 hours average per day during the last 6 months.",
-                              isSelected: isStepTrendSelected,
-                              onTap: { isStepTrendSelected.toggle()})
-                }
+//                VStack(spacing: 16) {
+//                    TrendCard(isStepCounTrendCard: true,
+//                              trendTitle: "Last 6 Months Step Count Trend",
+//                              trendDescription: "Increasing since the last 3 months.",
+//                              isSelected: isStepTrendSelected,
+//                              onTap: { isStepTrendSelected.toggle()})
+//                    
+//                    TrendCard(isStepCounTrendCard: false,
+//                              trendTitle: "Last 6 Months Wear-Time Trend",
+//                              trendDescription: "5.6 hours average per day during the last 6 months.",
+//                              isSelected: isStepTrendSelected,
+//                              onTap: { isStepTrendSelected.toggle()})
+//                }
+                TrendsInsightPanel(averageStepTrend: "increasing",
+                                   trendStartMonth: "August",
+                                   averageWearTime: 6.5,
+                                   timePeriod: 6)
             }
             
         }

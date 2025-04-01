@@ -27,6 +27,11 @@ extension Color {
     static let purpleCardTitleColour = Color(red: 0.698, green: 0.373, blue: 0.918)
     static let purpleCardColour = Color(red: 0.976, green: 0.945, blue: 1)
     
+    static let darkBlueTitleColour = Color(red: 0.094, green: 0.309, blue: 0.662)
+    static let lightBlueColour = Color(red: 0.922, green: 0.961, blue: 1)
+    static let blueTrendFontColour = Color(red: 0.227, green: 0.509, blue: 0.969)
+    
+    
     
     
 }
