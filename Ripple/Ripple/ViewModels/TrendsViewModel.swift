@@ -93,15 +93,18 @@ class TrendsViewModel: ObservableObject {
                 return
         }
         
-        // Create a dictionary and then filter the data to only the days are within 4 weeks
-        var weeklyData: [Date: [Int]] = [:]
+        // Create dictionaries to track steps and wear time data
+        var weeklyStepData: [Date: [Int]] = [:]
+        var weeklyWearTimeData: [Date: [Double]] = [:]
+        
         let fourWeekData = stepData.filter { $0.date >= fourWeeksAgo }
 
         for entry in fourWeekData {
             
             // Get the start of the week for this entry
             if let weekStart = calendar.startOfWeek(for: entry.date) {
-                weeklyData[weekStart, default: []].append(entry.stepCount)
+                weeklyStepData[weekStart, default: []].append(entry.stepCount)
+                weeklyWearTimeData[weekStart, default: []].append(entry.wearTime)
             }
         }
         
@@ -109,12 +112,16 @@ class TrendsViewModel: ObservableObject {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMM"
 
-        weeklyAverages = weeklyData.map { (date, steps) in
-            let average = Double(steps.reduce(0, +)) / Double(steps.count)
+        weeklyAverages = weeklyStepData.map { (date, steps) in
+            let averageSteps = Double(steps.reduce(0, +)) / Double(steps.count)
+            
+            // Get wear time data for the same week
+            let wearTimes = weeklyWearTimeData[date, default: []]
+            let averageWearTime = wearTimes.isEmpty ? 0.0 : wearTimes.reduce(0, +) / Double(wearTimes.count)
             
             // Calculate the end date --> 6 days because inclusive
             guard let endDate = Calendar.current.date(byAdding: .day, value: 6, to: date) else {
-                return StepAverage(period: date, average: average, label: "Invalid date")
+                return StepAverage(period: date, averageStepCount: averageSteps, averageWearTime: averageWearTime, label: "Invalid date")
             }
             
             // Label for the bar
@@ -123,7 +130,8 @@ class TrendsViewModel: ObservableObject {
             
             return StepAverage(
                 period: date,
-                average: average,
+                averageStepCount: averageSteps,
+                averageWearTime: averageWearTime,
                 label: "\(startDateString) - \(endDateString)"
             )
         }
@@ -136,12 +144,14 @@ class TrendsViewModel: ObservableObject {
     // A bit sketch but its ok because I only have 6 months of json data
     private func calculateSixMonthAverages() {
         let calendar = Calendar.current
-        var monthlyData: [Date: [Int]] = [:]
+        var monthlyStepData: [Date: [Int]] = [:]
+        var monthlyWearTimeData: [Date: [Double]] = [:]
         
         // No need to filter for date range since we know we have 6 months
         for entry in stepData {
             if let monthStart = calendar.startOfMonth(for: entry.date) {
-                monthlyData[monthStart, default: []].append(entry.stepCount)
+                monthlyStepData[monthStart, default: []].append(entry.stepCount)
+                monthlyWearTimeData[monthStart, default: []].append(entry.wearTime)
             }
         }
         
@@ -149,16 +159,21 @@ class TrendsViewModel: ObservableObject {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM" // "Jan", "Feb", etc.
         
-        monthlyAverages = monthlyData.map { (date, steps) in
-            let average = Double(steps.reduce(0, +)) / Double(steps.count)
+        monthlyAverages = monthlyStepData.map { (date, steps) in
+            let averageSteps = Double(steps.reduce(0, +)) / Double(steps.count)
+            
+            // Get wear time data for the same month
+            let wearTimes = monthlyWearTimeData[date, default: []]
+            let averageWearTime = wearTimes.isEmpty ? 0.0 : wearTimes.reduce(0, +) / Double(wearTimes.count)
+            
             return StepAverage(
                 period: date,
-                average: average,
+                averageStepCount: averageSteps,
+                averageWearTime: averageWearTime,
                 label: dateFormatter.string(from: date)
             )
         }
         .sorted { $0.period < $1.period }
-
     }
     
     
@@ -183,10 +198,19 @@ class TrendsViewModel: ObservableObject {
     // Averages the step data
     var averageStepsData: Int {
         guard !displayData.isEmpty else { return 0 }
-        let totalSteps = displayData.reduce(into: 0) { total, data in
-            total += data.average
+        let totalSteps = displayData.reduce(into: 0.0) { total, data in
+            total += data.averageStepCount
         }
         return Int(round(totalSteps / Double(displayData.count)))
+    }
+    
+    // Averages the wear time data
+    var averageWearTimeData: Double {
+        guard !displayData.isEmpty else { return 0.0 }
+        let totalWearTime = displayData.reduce(into: 0.0) { total, data in
+            total += data.averageWearTime
+        }
+        return (totalWearTime / Double(displayData.count)).rounded()
     }
     
     // To determine which one of (clinician comments, supporter comments, contextual factors) is currently selected
@@ -195,18 +219,22 @@ class TrendsViewModel: ObservableObject {
     }
     
     // Below is for when the user clicks on the step count trend card
-    func calculateThreeMonthTrends() -> (firstThreeMonths: Double, secondThreeMonths: Double) {
+    func calculateThreeMonthTrends() -> (stepCount: (first: Double, second: Double), wearTime: (first: Double, second: Double)) {
         let allMonths = monthlyAverages
-        
-        // Re-use what I already generated then split into 2
+
         let firstThreeMonths = Array(allMonths.prefix(3))
         let secondThreeMonths = Array(allMonths.suffix(3))
         
-        // Calculate averages
-        let firstPeriodAverage = firstThreeMonths.reduce(0.0) { $0 + $1.average } / 3.0
-        let secondPeriodAverage = secondThreeMonths.reduce(0.0) { $0 + $1.average } / 3.0
+        // Calculate step count averages
+        let firstPeriodStepAverage = firstThreeMonths.reduce(0.0) { $0 + $1.averageStepCount } / 3.0
+        let secondPeriodStepAverage = secondThreeMonths.reduce(0.0) { $0 + $1.averageStepCount } / 3.0
         
-        return (firstPeriodAverage, secondPeriodAverage)
+        // Calculate wear time averages
+        let firstPeriodWearTimeAverage = firstThreeMonths.reduce(0.0) { $0 + $1.averageWearTime } / 3.0
+        let secondPeriodWearTimeAverage = secondThreeMonths.reduce(0.0) { $0 + $1.averageWearTime } / 3.0
+        
+        return ((firstPeriodStepAverage, secondPeriodStepAverage),
+                (firstPeriodWearTimeAverage, secondPeriodWearTimeAverage))
     }
 
     // TODO: Work in progress

@@ -10,10 +10,9 @@ import Charts
 
 struct StepCountBarChart: View {
     let data: [StepAverage]
-    let goalLine: Int = 2000
-    let showTrendLines: Bool
-    let firstPeriodAverage: Double
-    let secondPeriodAverage: Double
+    let goalLine: Int = 3000
+    let firstPeriodAverages: (stepCount: Double, wearTime: Double)
+    let secondPeriodAverages: (stepCount: Double, wearTime: Double)
     
     
     // Define ranges for each period
@@ -45,55 +44,39 @@ struct StepCountBarChart: View {
         ))
     }
     
+    private func barColour(value: Double) -> Color {
+        switch value {
+            case ..<4.0:
+                return .lightestGreenColour
+            case 4.0..<7.0:
+                return .mediumLightGreenColour
+            case 7.0..<10.0:
+                return .mediumDarkGreenColour
+            case 10.0...:
+                return .darkestGreenColour
+            default:
+                return .blue
+        }
+    }
+    
     var body: some View {
         Chart {
             // Bar marks for the data
             ForEach(data) { stepAverage in
                 BarMark(
                     x: .value("Label", stepAverage.label),
-                    y: .value("Average Steps", stepAverage.average)
+                    y: .value("Average Steps", stepAverage.averageStepCount)
                 )
-                .foregroundStyle(showTrendLines ? Color.darkGrayColour : Color.overHalfColour)
+                .foregroundStyle(barColour(value: stepAverage.averageWearTime))
             }
             
+            // Goal line
+            RuleMark(
+                y: .value("Goal", goalLine)
+            )
+            .lineStyle(StrokeStyle(lineWidth: 3, dash: [5, 5])) // Keeps the dotted style
+            .foregroundStyle(Color.orangeColour)
             
-            if showTrendLines {
-                
-                // First trend line
-                RuleMark(
-                    y: .value("First Period Average", firstPeriodAverage)
-                )
-                .lineStyle(StrokeStyle(lineWidth: 5))
-                .foregroundStyle(Color.green)
-                .annotation(position: .top, alignment: .leading) {
-                    Text("\(Int(firstPeriodAverage)) steps")
-                        .font(.subheadlineMedium)
-                        .foregroundColor(.green)
-                }
-                .clipShape(periodClipShape(startMonth: 0, monthCount: 3))
-
-                // Second trend line
-                RuleMark(
-                    y: .value("Second Period Average", secondPeriodAverage)
-                )
-                .lineStyle(StrokeStyle(lineWidth: 5))
-                .foregroundStyle(Color.green)
-                .annotation(position: .top) {
-                    Text("\(Int(secondPeriodAverage)) steps")
-                        .font(.subheadlineMedium)
-                        .foregroundColor(.green)
-                }
-                .clipShape(periodClipShape(startMonth: 3, monthCount: 3))
-                
-            }
-            // Trend card not selected, so show og goal line
-            else {
-                RuleMark(
-                    y: .value("Goal", goalLine)
-                )
-                .lineStyle(StrokeStyle(lineWidth: 3, dash: [5, 5])) // Keeps the dotted style
-                .foregroundStyle(Color.redColour)
-            }
         }
         .frame(width: 720, height: 250)
         .chartYAxis {

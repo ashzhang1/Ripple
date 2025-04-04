@@ -10,6 +10,7 @@ import CoreData
 struct StepAverage: Identifiable {
     let id = UUID()
     let period: Date    // This will denote the start of week or month
-    let average: Double
+    let averageStepCount: Double
+    let averageWearTime: Double
     let label: String   // "Week 1" or "January"
 }

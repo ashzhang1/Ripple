@@ -11,9 +11,7 @@ struct TrendsSummaryPanel: View {
     let data: [StepAverage]
     let selectedTimeRange: TrendsViewModel.TimeRange
     let averageSteps: Int
-    let threeMonthTrends: (firstThreeMonths: Double, secondThreeMonths: Double)
-    
-    @State private var isStepTrendSelected: Bool = false
+    let threeMonthTrends: (stepCount: (first: Double, second: Double), wearTime: (first: Double, second: Double))
     
     
     private var timePeriodText: String {
@@ -26,6 +24,7 @@ struct TrendsSummaryPanel: View {
             return "6 Month Average: "
         }
     }
+    
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -42,30 +41,22 @@ struct TrendsSummaryPanel: View {
                 
                 Text("---- Your Goal")
                     .font(.headlineSemiBold)
-                    .foregroundStyle(Color.redColour)
+                    .foregroundStyle(Color.orangeColour)
                 
             }
             
             HStack {
-                StepCountBarChart(data: data,
-                                  showTrendLines: isStepTrendSelected, // From your state
-                                  firstPeriodAverage: threeMonthTrends.firstThreeMonths,
-                                  secondPeriodAverage: threeMonthTrends.secondThreeMonths)
-                
-                // Trend cards
-//                VStack(spacing: 16) {
-//                    TrendCard(isStepCounTrendCard: true,
-//                              trendTitle: "Last 6 Months Step Count Trend",
-//                              trendDescription: "Increasing since the last 3 months.",
-//                              isSelected: isStepTrendSelected,
-//                              onTap: { isStepTrendSelected.toggle()})
-//                    
-//                    TrendCard(isStepCounTrendCard: false,
-//                              trendTitle: "Last 6 Months Wear-Time Trend",
-//                              trendDescription: "5.6 hours average per day during the last 6 months.",
-//                              isSelected: isStepTrendSelected,
-//                              onTap: { isStepTrendSelected.toggle()})
-//                }
+                StepCountBarChart(
+                    data: data,
+                    firstPeriodAverages: (
+                        stepCount: threeMonthTrends.stepCount.first,
+                        wearTime: threeMonthTrends.wearTime.first
+                    ),
+                    secondPeriodAverages: (
+                        stepCount: threeMonthTrends.stepCount.second,
+                        wearTime: threeMonthTrends.wearTime.second
+                    )
+                )
                 TrendsInsightPanel(averageStepTrend: "increasing",
                                    trendStartMonth: "August",
                                    averageWearTime: 6.5,
