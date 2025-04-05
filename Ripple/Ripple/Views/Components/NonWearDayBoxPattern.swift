@@ -34,7 +34,8 @@ struct NonWearDayBoxPattern: View {
             for i in -numberOfStripes...numberOfStripes {
                 let x = CGFloat(i) * (stripeWidth + spacing)
                 let stripePath = Path(CGRect(x: x, y: 0, width: stripeWidth, height: diagonal))
-                context.fill(stripePath, with: .color(Color(red: 176/255, green: 176/255, blue: 176/255)))
+//                context.fill(stripePath, with: .color(Color(red: 176/255, green: 176/255, blue: 176/255)))
+                context.fill(stripePath, with: .color(Color(red: 255/255, green: 255/255, blue: 0/255)))
             }
         }
     }

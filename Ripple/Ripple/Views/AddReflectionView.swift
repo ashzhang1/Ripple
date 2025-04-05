@@ -6,14 +6,23 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct AddReflectionView: View {
     var body: some View {
-        Text("Add Reflection")
+        VStack(spacing: 16) {
+            AddReflectionHeader()
+            
+            Spacer()
+            
+            HStack() {
+                AddReflectionInfoPanel()
+                
+                
+            }
+            
+            Spacer()
+        }
+        .ignoresSafeArea(.container, edges: .top)
     }
-}
-
-#Preview("11-inch iPad Pro", traits: .landscapeRight) {
-    AddReflectionView()
-        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }
