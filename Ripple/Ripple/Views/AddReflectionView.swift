@@ -10,14 +10,15 @@ import CoreData
 
 struct AddReflectionView: View {
     var body: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 20) {
             AddReflectionHeader()
             
             Spacer()
             
-            HStack() {
+            HStack(spacing: 20) {
                 AddReflectionInfoPanel()
                 
+                TaskCardPanel()
                 
             }
             
