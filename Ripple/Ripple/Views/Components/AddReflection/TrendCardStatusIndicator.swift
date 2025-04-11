@@ -23,8 +23,10 @@ struct TrendCardStatusIndicator: View {
                 }
             }
             
+            
             Text(isCompleted ? "Completed" : "Not Yet Completed")
                 .foregroundColor(isCompleted ? .blue : .orange)
+                .font(.headline)
         }
     }
 }
