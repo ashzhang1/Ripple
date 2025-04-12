@@ -14,17 +14,13 @@ struct TaskCardPanel: View {
                 title: "Record Your Monthly Reflection",
                 dueDate: "November 30th",
                 buttonLabel: "Record"
-            ) {
-                print("TaskCard tapped!")
-            }
+            )
             Spacer()
             TaskCard(
                 title: "Log Your Activities and Emotions for Today, December 1st",
                 dueDate: nil,
                 buttonLabel: "Log"
-            ) {
-                print("TaskCard tapped!")
-            }
+            )
         }
         .frame(height: 560)
     }

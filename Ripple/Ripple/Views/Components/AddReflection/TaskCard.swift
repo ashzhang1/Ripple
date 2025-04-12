@@ -11,16 +11,13 @@ struct TaskCard: View {
     let title: String
     let dueDate: String?
     let buttonLabel: String
-    var action: () -> Void
 
     var body: some View {
-        Button(action: {
-            action()
-        }) {
+        NavigationLink(destination: LogContextualFactors()) {
             VStack(alignment: .leading, spacing: 16) {
                 Text(title)
                     .font(.titleMedium)
-
+                
                 if let dueDate = dueDate {
                     Text("Due \(dueDate)")
                         .font(.headline)
@@ -28,7 +25,7 @@ struct TaskCard: View {
                 }
                 
                 Spacer()
-
+                
                 HStack(spacing: 20) {
                     TrendCardStatusIndicator(isCompleted: false)
                     Spacer()
@@ -43,6 +40,8 @@ struct TaskCard: View {
             .cornerRadius(20)
             .shadow(color: Color.black.opacity(0.5), radius: 4, x: 0, y: 5)
         }
-        .buttonStyle(PlainButtonStyle()) // to prevent the default blue highlight
+        .buttonStyle(PlainButtonStyle())
+        
     }
+    
 }
