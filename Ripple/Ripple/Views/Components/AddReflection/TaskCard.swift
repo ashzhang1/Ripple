@@ -7,13 +7,14 @@
 
 import SwiftUI
 
-struct TaskCard: View {
+struct TaskCard<Destination: View>: View {
     let title: String
     let dueDate: String?
     let buttonLabel: String
+    let destination: Destination
 
     var body: some View {
-        NavigationLink(destination: LogContextualFactors()) {
+        NavigationLink(destination: destination) {
             VStack(alignment: .leading, spacing: 16) {
                 Text(title)
                     .font(.titleMedium)

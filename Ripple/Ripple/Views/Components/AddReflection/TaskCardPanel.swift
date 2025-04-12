@@ -13,13 +13,15 @@ struct TaskCardPanel: View {
             TaskCard(
                 title: "Record Your Monthly Reflection",
                 dueDate: "November 30th",
-                buttonLabel: "Record"
+                buttonLabel: "Record",
+                destination: LogContextualFactors()
             )
             Spacer()
             TaskCard(
                 title: "Log Your Activities and Emotions for Today, December 1st",
                 dueDate: nil,
-                buttonLabel: "Log"
+                buttonLabel: "Log",
+                destination: LogContextualFactors()
             )
         }
         .frame(height: 560)
