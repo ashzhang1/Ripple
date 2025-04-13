@@ -35,6 +35,13 @@ struct MyReflectionsView: View {
             )
         }
         .ignoresSafeArea(.container, edges: .top)
+        .onAppear {
+            // Reload data when view appears
+            Task {
+               activitiesViewModel.loadActivityData()
+               emotionsViewModel.loadEmotionData()
+            }
+        }
         
         
     }

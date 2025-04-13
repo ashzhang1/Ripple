@@ -24,7 +24,7 @@ struct ContentView: View {
 
 
             Tab("Add Reflection", systemImage: "plus.circle") {
-                AddReflectionView()
+                AddReflectionView(viewContext: viewContext)
             }
 
 

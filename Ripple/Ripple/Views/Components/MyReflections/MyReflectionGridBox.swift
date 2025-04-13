@@ -9,17 +9,23 @@ import SwiftUI
 
 struct MyReflectionGridBox: View {
     let reflection: MonthlyReflectionDataEntry
-    let activitiesViewModel: ActivityDataViewModel
-    let emotionsViewModel: EmotionDataViewModel
+    @ObservedObject var activitiesViewModel: ActivityDataViewModel
+    @ObservedObject var emotionsViewModel: EmotionDataViewModel
     @State private var showingModal = false
     
-    
-    
     var body: some View {
-        
         Button(action: {
             if (!reflection.isEmpty) {
-                showingModal = true
+                // Ensure data is loaded before showing the modal
+                Task {
+                    await MainActor.run {
+                        activitiesViewModel.loadActivityData()
+                        emotionsViewModel.loadEmotionData()
+                    }
+                    await MainActor.run {
+                        showingModal = true
+                    }
+                }
             }
         }) {
             VStack(alignment: .leading, spacing: 8) {
@@ -54,14 +60,15 @@ struct MyReflectionGridBox: View {
         )
         .frame(width: 168, height: 140)
         .sheet(isPresented: $showingModal) {
-            if let monthDate = reflection.monthAsDate {
-                MyReflectionModal(
-                    reflection: reflection,
-                    topActivities: activitiesViewModel.getTopActivitiesForMonth(monthDate),
-                    topEmotions: emotionsViewModel.getTopEmotionsForMonth(monthDate)
-                )
+            Group {
+                if reflection.monthAsDate != nil {
+                    MyReflectionModal(
+                        reflection: reflection,
+                        activitiesViewModel: activitiesViewModel,
+                        emotionsViewModel: emotionsViewModel
+                    )
+                }
             }
         }
-        
     }
 }

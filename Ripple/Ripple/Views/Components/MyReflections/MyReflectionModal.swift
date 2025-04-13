@@ -10,9 +10,8 @@ import SwiftUI
 struct MyReflectionModal: View {
     @Environment(\.dismiss) private var dismiss
     let reflection: MonthlyReflectionDataEntry
-    let topActivities: [(activityType: String, count: Int)]
-    let topEmotions: [(emotionType: String, count: Int)]
-    
+    @ObservedObject var activitiesViewModel: ActivityDataViewModel
+    @ObservedObject var emotionsViewModel: EmotionDataViewModel
     
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -20,6 +19,21 @@ struct MyReflectionModal: View {
         return formatter
     }()
     
+    // Compute top activities dynamically based on current view model data
+    private var topActivities: [(activityType: String, count: Int)] {
+        if let monthDate = reflection.monthAsDate {
+            return activitiesViewModel.getTopActivitiesForMonth(monthDate)
+        }
+        return []
+    }
+    
+    // Compute top emotions dynamically based on current view model data
+    private var topEmotions: [(emotionType: String, count: Int)] {
+        if let monthDate = reflection.monthAsDate {
+            return emotionsViewModel.getTopEmotionsForMonth(monthDate)
+        }
+        return []
+    }
     
     // Have to use this computed property because we cant directly use topActivities.
     // The view renders before the data loads causing view to crash
@@ -45,7 +59,6 @@ struct MyReflectionModal: View {
         return emotions
     }
     
-    
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: true) {
@@ -56,7 +69,6 @@ struct MyReflectionModal: View {
                         monthName: reflection.fullMonthName,
                         dismiss: dismiss
                     )
-                    
                     
                     // Only show date if it exists
                     if let date = reflection.recordedDate {
@@ -117,11 +129,9 @@ struct MyReflectionModal: View {
                                 .font(.subheadline)
                         }
                         
-                        
                         Text("Your Response:")
                             .foregroundColor(.redColour)
                             .font(.subheadlineMedium)
-                        
                         
                         if let reflectionResponse = reflection.reflectionResponse {
                             Text(reflectionResponse)
@@ -137,12 +147,19 @@ struct MyReflectionModal: View {
                     .padding(.horizontal, 24) // External padding
                     
                     Spacer()
-                    
+                }
+            }
+            .onAppear {
+                // Reload data when the modal appears
+                Task {
+                    await MainActor.run {
+                        activitiesViewModel.loadActivityData()
+                        emotionsViewModel.loadEmotionData()
+                    }
                 }
             }
         }
     }
-    
 }
 
 private struct ReflectionModalHeader: View {

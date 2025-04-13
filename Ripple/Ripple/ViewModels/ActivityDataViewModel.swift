@@ -23,7 +23,7 @@ class ActivityDataViewModel: ObservableObject {
     }
 
     @MainActor
-    private func loadActivityData() {
+    public func loadActivityData() {
         isLoading = true
         
         do {
@@ -50,8 +50,6 @@ class ActivityDataViewModel: ObservableObject {
     }
     
     // MARK: - Helper Methods
-    
-    
     func getTopActivitiesForMonth(_ date: Date) -> [(activityType: String, count: Int)] {
         // Filter activities for the given month
         let monthActivities = activityData.filter { activity in
@@ -93,6 +91,44 @@ class ActivityDataViewModel: ObservableObject {
         return Array(topActivities)
         
         
+    }
+    
+    // This is for saving the newly logged activities in add new reflection page
+    @MainActor
+    func saveActivities(_ selectedActivities: Set<ActivityIcons>, forDate date: Date = Calendar.current.date(from: DateComponents(year: 2024, month: 11, day: 30))!) {
+        // Begin transaction
+        do {
+            print("Attempting to save \(selectedActivities.count) activities for date \(date)")
+            
+            // Create a new Core Data entry for each selected activity
+            for activity in selectedActivities {
+                let newActivityData = ActivityData(context: viewContext)
+                newActivityData.id = UUID()
+                newActivityData.date = date
+                newActivityData.activityType = activity.rawValue  // Use rawValue to ensure consistency
+                
+                // Add to our published property so UI can update immediately
+                self.activityData.append(ActivityDataEntry(
+                    id: newActivityData.id!,
+                    date: date,
+                    activityType: activity.rawValue
+                ))
+                
+                print("Added activity: \(activity.rawValue) for date \(date)")
+            }
+            
+            // Save the context
+            try viewContext.save()
+            print("Successfully saved activities to Core Data")
+            
+            // Reload data to ensure consistency
+            loadActivityData()
+            
+        } catch {
+            // Handle any errors
+            self.error = error
+            print("Error saving activities: \(error.localizedDescription)")
+        }
     }
     
     

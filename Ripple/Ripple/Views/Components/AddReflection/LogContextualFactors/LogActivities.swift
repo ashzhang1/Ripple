@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LogActivities: View {
-    @State private var selectedActivities: Set<ActivityIcons> = []
+    @Binding var selectedActivities: Set<ActivityIcons>
     
     private let columns = [
         GridItem(.flexible(), spacing: 0),

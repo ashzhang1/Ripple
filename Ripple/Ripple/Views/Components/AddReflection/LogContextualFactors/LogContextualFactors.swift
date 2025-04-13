@@ -6,9 +6,21 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct LogContextualFactors: View {
+    let viewContext: NSManagedObjectContext
+    @StateObject private var activitiesViewModel: ActivityDataViewModel
+    @StateObject private var emotionsViewModel: EmotionDataViewModel
+    @State private var selectedActivities = Set<ActivityIcons>()
+    @State private var selectedEmotions = Set<EmotionIcons>()
     @Environment(\.dismiss) private var dismiss
+    
+    init(viewContext: NSManagedObjectContext) {
+        self.viewContext = viewContext
+        _activitiesViewModel = StateObject(wrappedValue: ActivityDataViewModel(viewContext: viewContext))
+        _emotionsViewModel = StateObject(wrappedValue: EmotionDataViewModel(viewContext: viewContext))
+    }
     
     
     var body: some View {
@@ -33,13 +45,16 @@ struct LogContextualFactors: View {
             }
             .padding(.top, 8)
             
-            LogActivities()
-            
-            LogEmotions()
+            LogActivities(selectedActivities: $selectedActivities)
+            LogEmotions(selectedEmotions: $selectedEmotions)
             
             VStack(spacing: 8) {
                 Button("Log") {
-                    print("Button Clicked")
+                    activitiesViewModel.saveActivities(selectedActivities)
+                    emotionsViewModel.saveEmotions(selectedEmotions)
+                    print("Selected activities: \(selectedActivities.map { $0.label }.joined(separator: ", "))")
+                    print("Selected emotions: \(selectedEmotions.map { $0.label }.joined(separator: ", "))")
+                    dismiss()
                 }
                 .frame(width: 100, height: 50)
                 .font(.headlineSemiBold)

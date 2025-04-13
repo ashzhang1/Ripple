@@ -9,6 +9,8 @@ import SwiftUI
 import CoreData
 
 struct AddReflectionView: View {
+    let viewContext: NSManagedObjectContext
+    
     var body: some View {
         NavigationStack {
             VStack(spacing: 20) {
@@ -19,7 +21,7 @@ struct AddReflectionView: View {
                 HStack(spacing: 20) {
                     AddReflectionInfoPanel()
                     
-                    TaskCardPanel()
+                    TaskCardPanel(viewContext: viewContext)
                 }
                 
                 Spacer()

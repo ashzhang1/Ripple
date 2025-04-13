@@ -23,7 +23,7 @@ class EmotionDataViewModel: ObservableObject {
     }
 
     @MainActor
-    private func loadEmotionData() {
+    public func loadEmotionData() {
         isLoading = true
         
         do {
@@ -91,5 +91,43 @@ class EmotionDataViewModel: ObservableObject {
         
         return Array(topEmotions)
         
+    }
+    
+    // This is for saving the newly logged emotions in add new reflection page
+    @MainActor
+    func saveEmotions(_ selectedEmotions: Set<EmotionIcons>, forDate date: Date = Calendar.current.date(from: DateComponents(year: 2024, month: 11, day: 30))!) {
+        // Begin transaction
+        do {
+            print("Attempting to save \(selectedEmotions.count) emotions for date \(date)")
+            
+            // Create a new Core Data entry for each selected emotion
+            for emotion in selectedEmotions {
+                let newEmotionData = EmotionData(context: viewContext)
+                newEmotionData.id = UUID()
+                newEmotionData.date = date
+                newEmotionData.emotionType = emotion.rawValue  // Use rawValue to ensure consistency
+                
+                // Add to our published property so UI can update immediately
+                self.emotionData.append(EmotionDataEntry(
+                    id: newEmotionData.id!,
+                    date: date,
+                    emotionType: emotion.rawValue
+                ))
+                
+                print("Added emotion: \(emotion.rawValue) for date \(date)")
+            }
+            
+            // Save the context
+            try viewContext.save()
+            print("Successfully saved emotions to Core Data")
+            
+            // Reload data to ensure consistency
+            loadEmotionData()
+            
+        } catch {
+            // Handle any errors
+            self.error = error
+            print("Error saving emotions: \(error.localizedDescription)")
+        }
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LogEmotions: View {
-    @State private var selectedEmotions: Set<EmotionIcons> = []
+    @Binding var selectedEmotions: Set<EmotionIcons>
     
     private let columns = [
         GridItem(.flexible(), spacing: 0),
