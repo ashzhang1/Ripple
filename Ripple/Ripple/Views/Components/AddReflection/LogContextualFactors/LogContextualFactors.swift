@@ -12,10 +12,9 @@ struct LogContextualFactors: View {
     
     
     var body: some View {
-        VStack(spacing: 0) { // Set spacing to 0 to control it manually
+        VStack(spacing: 0) {
             AddReflectionHeader()
             
-            // Back button directly in the VStack
             HStack {
                 Button(action: {
                     dismiss()
@@ -32,11 +31,28 @@ struct LogContextualFactors: View {
                 
                 Spacer()
             }
-            .padding(.top, 8) // Reduced from 32 to 8
+            .padding(.top, 8)
             
             LogActivities()
             
             LogEmotions()
+            
+            VStack(spacing: 8) {
+                Button("Log") {
+                    print("Button Clicked")
+                }
+                .frame(width: 100, height: 50)
+                .font(.headlineSemiBold)
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .cornerRadius(12)
+                .shadow(color: Color.black.opacity(0.5), radius: 4, x: 0, y: 5)
+                
+                
+                Text("Click Log Once Finished")
+                    .font(.headlineMedium)
+            }
+            
             
             Spacer()
         }

@@ -17,10 +17,10 @@ struct ContextualFactorsItem<Item: EmojiRepresentable>: View {
             ZStack {
                 Circle()
                     .fill(Color.gray.opacity(0.2))
-                    .frame(width: 60, height: 60)
+                    .frame(width: 52, height: 52)
                 
                 Text(item.emoji)
-                    .font(.system(size: 40))
+                    .font(.system(size: 36))
             }
             .overlay(
                 Circle()
