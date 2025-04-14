@@ -16,9 +16,9 @@ func loadSampleDataIfNeeded(context: NSManagedObjectContext) {
     
     // Check if data has already been loaded
     // Comment out when installing onto iPad
-    if userDefaults.bool(forKey: hasLoadedDataKey) {
-        return
-    }
+//    if userDefaults.bool(forKey: hasLoadedDataKey) {
+//        return
+//    }
 
     
     // Load step data

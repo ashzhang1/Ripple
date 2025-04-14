@@ -26,7 +26,10 @@ struct MyReflectionsView: View {
     var body: some View {
         
         VStack {
-            MyReflectionsHeader()
+            MyReflectionsHeader(
+                activitiesViewModel: activitiesViewModel,
+                emotionsViewModel: emotionsViewModel
+            )
             
             MyReflectionsGrid(
                 reflections: monthlyReflectionsViewModel.monthlyReflectionData,

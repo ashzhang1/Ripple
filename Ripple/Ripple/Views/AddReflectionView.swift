@@ -15,7 +15,6 @@ struct AddReflectionView: View {
         NavigationStack {
             VStack(spacing: 20) {
                 AddReflectionHeader()
-                
                 Spacer()
                 
                 HStack(spacing: 20) {
@@ -27,6 +26,7 @@ struct AddReflectionView: View {
                 Spacer()
             }
             .ignoresSafeArea(.container, edges: .top)
+            .navigationBarHidden(true) // Need this here or else help button can't be clicked in the header
         }
     }
 }

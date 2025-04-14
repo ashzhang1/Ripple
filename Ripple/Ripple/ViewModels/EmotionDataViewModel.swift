@@ -130,4 +130,35 @@ class EmotionDataViewModel: ObservableObject {
             print("Error saving emotions: \(error.localizedDescription)")
         }
     }
+    
+    // This will be used for resetting Ripple to original state for each user in the study.
+    @MainActor
+    func deleteMostRecent(forDate date: Date = Calendar.current.date(from: DateComponents(year: 2024, month: 11, day: 30))!) {
+        do {
+            // Create a fetch request to get all records for the target date
+            let request = NSFetchRequest<EmotionData>(entityName: "EmotionData")
+            request.predicate = NSPredicate(format: "date == %@", date as NSDate)
+            
+            // Fetch the records
+            let emotionsToDelete = try viewContext.fetch(request)
+            print("Found \(emotionsToDelete.count) emotions to delete for date \(date)") // It will print Nov 29 but thats cus its UTC
+            
+            // Delete each record
+            for emotion in emotionsToDelete {
+                viewContext.delete(emotion)
+            }
+            
+            // Save the context to persist changes
+            try viewContext.save()
+            print("Successfully deleted emotions for \(date)")
+            
+            // Reload to update the UI
+            loadEmotionData()
+            
+        } catch {
+            // Handle any errors
+            self.error = error
+            print("Error deleting emotions: \(error.localizedDescription)")
+        }
+    }
 }

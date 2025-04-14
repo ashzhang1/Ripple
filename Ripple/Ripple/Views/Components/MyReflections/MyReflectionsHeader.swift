@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MyReflectionsHeader: View {
     @State private var showingHelpInfo = false
+    let activitiesViewModel: ActivityDataViewModel
+    let emotionsViewModel: EmotionDataViewModel
     
     
     var body: some View {
@@ -18,7 +20,11 @@ struct MyReflectionsHeader: View {
             
             Spacer()
             
-            TrendsHelpButton(showingHelpInfo: $showingHelpInfo)
+            MyReflectionsHelpButton(
+                showingHelpInfo: $showingHelpInfo,
+                activitiesViewModel: activitiesViewModel,
+                emotionsViewModel: emotionsViewModel
+            )
         }
         .padding(.horizontal)
         .padding(.top)
