@@ -17,7 +17,7 @@ struct TaskCardPanel: View {
                 title: "Record Your Monthly Reflection",
                 dueDate: "November 30th",
                 buttonLabel: "Record",
-                destination: LogContextualFactors(viewContext: viewContext)
+                destination: RecordNewReflection(viewContext: viewContext)
             )
             Spacer()
             TaskCard(
