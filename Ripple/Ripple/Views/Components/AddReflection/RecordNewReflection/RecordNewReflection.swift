@@ -11,11 +11,13 @@ import CoreData
 struct RecordNewReflection: View {
     let viewContext: NSManagedObjectContext
     @StateObject private var stepDataViewModel: StepDataViewModel
+    @StateObject private var reflectionViewModel: MonthlyReflectionDataViewModel
     @Environment(\.dismiss) private var dismiss
     
     init(viewContext: NSManagedObjectContext) {
         self.viewContext = viewContext
         _stepDataViewModel = StateObject(wrappedValue: StepDataViewModel(viewContext: viewContext))
+        _reflectionViewModel = StateObject(wrappedValue: MonthlyReflectionDataViewModel(viewContext: viewContext))
     }
     
     var body: some View {
@@ -58,6 +60,7 @@ struct RecordNewReflection: View {
                 )
                     
                 MonthlyReflectionCard()
+                    .environmentObject(reflectionViewModel)
             }
             
             Spacer()

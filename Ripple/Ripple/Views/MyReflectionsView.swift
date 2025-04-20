@@ -41,8 +41,9 @@ struct MyReflectionsView: View {
         .onAppear {
             // Reload data when view appears
             Task {
-               activitiesViewModel.loadActivityData()
-               emotionsViewModel.loadEmotionData()
+                activitiesViewModel.loadActivityData()
+                emotionsViewModel.loadEmotionData()
+                monthlyReflectionsViewModel.loadMonthlyReflectionData()
             }
         }
         

@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct MonthlyReflectionCard: View {
+    @EnvironmentObject var reflectionViewModel: MonthlyReflectionDataViewModel
+    @StateObject private var speechManager = SpeechRecognitionManager()
+    @State private var showSuccessAlert = false
     @State private var reflectionText: String = ""
     
     
@@ -25,11 +28,22 @@ struct MonthlyReflectionCard: View {
             Text("What stood out to you this November?")
                 .font(.headlineMedium)
             
-            ReflectionTextInput(text: $reflectionText, placeholder: "")
+            ReflectionTextInput(
+                text: $speechManager.transcribedText,
+                placeholder: "Your reflection will appear here as you speak...",
+                isRecording: speechManager.isRecording
+            )
             
-            RecordNewReflectionButton {
-                // Need to add actual action implementation here later
-                print("Starting voice recording...")
+            RecordNewReflectionButton(
+                speechManager: speechManager,
+                submitAction: {
+                    submitReflection()
+                }
+            )
+            
+            if reflectionViewModel.isSaving {
+                ProgressView()
+                    .padding(.top, 8)
             }
             
             
@@ -38,5 +52,32 @@ struct MonthlyReflectionCard: View {
         .frame(width: 512, height: 680)
         .background(Color.grayColour)
         .cornerRadius(12)
+        .alert("Reflection Saved", isPresented: $showSuccessAlert) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text("Your November reflection has been saved successfully.")
+        }
+        .onDisappear {
+            // Clean up speech resources when view disappears
+            speechManager.cleanup()
+        }
+    }
+    
+    private func submitReflection() {
+        // Save the transcribed text to Core Data
+        Task {
+            let success = await reflectionViewModel.saveReflection(
+                reflectionText: speechManager.transcribedText
+            )
+            
+            if success {
+                // Show success alert and reset the UI
+                await MainActor.run {
+                    showSuccessAlert = true
+                    speechManager.transcribedText = ""
+                    speechManager.showSubmitButton = false
+                }
+            }
+        }
     }
 }

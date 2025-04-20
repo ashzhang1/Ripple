@@ -8,27 +8,47 @@
 import SwiftUI
 
 struct RecordNewReflectionButton: View {
-    var action: () -> Void
+    @ObservedObject var speechManager: SpeechRecognitionManager
+    var submitAction: () -> Void
     
     var body: some View {
         HStack(spacing: 4) {
-            Text("Click to Record Response")
+            Text(speechManager.isRecording ? "Currently recording..." : "Click to Record Response")
                 .font(.subheadlineMedium)
                 .frame(width: 100)
                 .multilineTextAlignment(.center)
             
-            Button(action: action) {
+            Button(action: {
+                speechManager.toggleRecording()
+            }) {
                 ZStack {
                     Circle()
-                        .fill(Color.blue)
+                        .fill(speechManager.isRecording ? Color.red : Color.blue)
                         .frame(width: 60, height: 60)
                     
-                    Image(systemName: "mic.fill")
+                    Image(systemName: speechManager.isRecording ? "stop.fill" : "mic.fill")
                         .font(.system(size: 28))
                         .foregroundColor(.white)
                 }
             }
+            .disabled(!speechManager.isButtonEnabled)
+            
+            // Submit button that appears after recording stops
+            if speechManager.showSubmitButton {
+                Button(action: submitAction) {
+                    Text("Submit")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 8)
+                        .background(Color.blue)
+                        .cornerRadius(8)
+                }
+                .transition(.opacity)
+            }
         }
+        .animation(.easeInOut, value: speechManager.isRecording)
+        .animation(.easeInOut, value: speechManager.showSubmitButton)
     }
 }
 
