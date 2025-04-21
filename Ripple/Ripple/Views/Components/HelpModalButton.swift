@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TrendsHelpButton: View {
+struct HelpModalButton: View {
     @Binding var showingHelpInfo: Bool
     
     
@@ -28,7 +28,7 @@ struct TrendsHelpButton: View {
         .addBorder(Color.clear, width: 1, cornerRadius: 20)
         .shadow(color: Color.black.opacity(0.7), radius: 4, x: 0, y: 5)
         .sheet(isPresented: $showingHelpInfo) {
-            TrendsHelpModal(isPresented: $showingHelpInfo)
+            HelpModal(isPresented: $showingHelpInfo)
         }
     }
 }

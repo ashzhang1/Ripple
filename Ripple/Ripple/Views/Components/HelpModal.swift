@@ -1,12 +1,13 @@
 //
-//  TrendsHelpModal.swift
+//  CalendarHelpModal.swift
 //  Ripple
 //
-//  Created by Ashley Zhang on 25/1/2025.
+//  Created by Ashley Zhang on 14/1/2025.
 //
+
 import SwiftUI
 
-struct TrendsHelpModal: View {
+struct HelpModal: View {
     @Binding var isPresented: Bool
     @Environment(\.dismiss) private var dismiss
     @State private var currentPage = 0
@@ -44,7 +45,7 @@ struct TrendsHelpModal: View {
             // Header section with gray background
             VStack {
                 HStack {
-                    Text("Calendar Page Help")
+                    Text("Help: How to Use Ripple")
                         .font(.headlineMedium)
                     Spacer()
                     Button(action: {
@@ -99,3 +100,5 @@ struct TrendsHelpModal: View {
         }
     }
 }
+
+

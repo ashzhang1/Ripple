@@ -17,7 +17,7 @@ struct TrendsHeader: View {
             
             Spacer()
             
-            TrendsHelpButton(showingHelpInfo: $showingHelpInfo)
+            HelpModalButton(showingHelpInfo: $showingHelpInfo)
         }
         .padding(.horizontal)
         .padding(.top)

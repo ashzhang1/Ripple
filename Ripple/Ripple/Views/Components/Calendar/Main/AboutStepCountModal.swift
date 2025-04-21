@@ -11,26 +11,40 @@ struct AboutStepCountModal: View {
     @Binding var isPresented: Bool
     
     private var stepCountText: AttributedString {
-        var text = AttributedString("Step count is the number of steps you take throughout the day. Activity trackers can help you determine your step count for any activity that involves step-like movement, including walking, running, and even movement as you go about your daily activities.")
+        var text = AttributedString("Step count is the total number of steps you take in a day. Try to reach 5,500 steps to complete your daily goal. Activity trackers count your steps by tracking movements like walking, and other daily activities.")
         
         if let range = text.range(of: "Step count") {
             text[range].foregroundColor = .blue //makes the step count phrase blue
+        }
+        
+        if let range = text.range(of: "5,500") {
+            text[range].foregroundColor = .blue
         }
         
         return text
     }
     
     private var wearTimeText: AttributedString {
-        var text = AttributedString("Non-wear days are those days where your activity tracker has recorded a wear-time below 4 hours. Obtaining a high wear-time is important as it ensures that you receive accurate step count data that you can trust.")
+        var text = AttributedString("A non-wear day occurs when your tracker is worn for less than 7 hours. Wearing it for longer gives you more accurate step count data!")
         
-        if let range = text.range(of: "Non-wear days") {
+        if let range = text.range(of: "non-wear day") {
             text[range].foregroundColor = .blue
         }
         
-        if let range = text.range(of: "4 hours") {
-            text[range].foregroundColor = .orange
+        if let range = text.range(of: "7 hours") {
+            text[range].foregroundColor = .blue
         }
         
+        
+        return text
+    }
+    
+    private var encouragementText: AttributedString {
+        var text = AttributedString("Remember! Consistently meeting the step count goal can help you improve your mobility, balance, and your overall health.")
+        
+        if let range = text.range(of: "Remember!") {
+            text[range].foregroundColor = .blue
+        }
         
         return text
     }
@@ -72,6 +86,10 @@ struct AboutStepCountModal: View {
                             .lineSpacing(8)
                             .fixedSize(horizontal: false, vertical: true)
                         Text(wearTimeText)
+                            .font(.headlineMedium)
+                            .lineSpacing(8)
+                            .fixedSize(horizontal: false, vertical: true)
+                        Text(encouragementText)
                             .font(.headlineMedium)
                             .lineSpacing(8)
                             .fixedSize(horizontal: false, vertical: true)

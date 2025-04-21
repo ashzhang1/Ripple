@@ -17,7 +17,7 @@ struct AddReflectionHeader: View {
             
             Spacer()
             
-            TrendsHelpButton(showingHelpInfo: $showingHelpInfo)
+            HelpModalButton(showingHelpInfo: $showingHelpInfo)
         }
         .padding(.horizontal)
         .padding(.top)

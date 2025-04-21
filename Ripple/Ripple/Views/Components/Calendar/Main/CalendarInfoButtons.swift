@@ -12,7 +12,7 @@ struct CalendarInfoButtons: View {
     @Binding var showingHelpInfo: Bool
     
     var body: some View {
-        HStack(spacing: 70) {
+        HStack(spacing: 60) {
             StepInfoButton(showingStepInfo: $showingStepInfo)
             HelpButton(showingHelpInfo: $showingHelpInfo)
             Spacer()
@@ -29,7 +29,7 @@ struct StepInfoButton: View {
             HStack(spacing: 16) {
                 Image(systemName: "shoeprints.fill")
                     .font(.title)
-                Text("About Step Count")
+                Text("About Step Count & Wear-Time")
                     .font(.headline)
             }
             .foregroundColor(.black)
@@ -67,7 +67,7 @@ struct HelpButton: View {
         .addBorder(Color.clear, width: 1, cornerRadius: 20)
         .shadow(color: Color.black.opacity(0.7), radius: 4, x: 0, y: 5)
         .sheet(isPresented: $showingHelpInfo) {
-            CalendarHelpModal(isPresented: $showingHelpInfo)
+            HelpModal(isPresented: $showingHelpInfo)
         }
     }
 }
