@@ -13,6 +13,7 @@ struct CommentBox: View {
     let authorType: String
     let authorRelation: String?
     let comment: String
+    @State private var showingFullComment = false
     
     private var daysPast: Int {
         let calendar = Calendar.current
@@ -60,6 +61,18 @@ struct CommentBox: View {
         .background(Color.grayColour)
         .cornerRadius(8)
         .frame(width: 380, height: 200)
+        .onTapGesture {
+            showingFullComment = true
+        }
+        .sheet(isPresented: $showingFullComment) {
+            CommentModal(
+                date: date,
+                authorName: authorName,
+                authorType: authorType,
+                authorRelation: authorRelation,
+                comment: comment
+            )
+        }
     }
 }
 

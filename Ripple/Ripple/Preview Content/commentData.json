@@ -4,25 +4,25 @@
         "id": "1A2B3C4D-2222-2222-2222-111111111111",
         "date": "2024-11-28T00:00:00Z",
         "authorName": "Jane",
-        "authorRelation": "Daughter",
+        "authorRelation": "Friend",
         "authorType": "supporter",
-        "comment": "Ever since you joined your weekend walking social group, your step count has been steadily increasing!"
+        "comment": "Ever since you joined our weekend walking social group, your step count has been steadily increasing!"
       },
       {
         "id": "1A2B3C4D-2222-2222-2222-111111111112",
         "date": "2024-11-24T00:00:00Z",
         "authorName": "Matt",
-        "authorRelation": "Son",
+        "authorRelation": "Cousin",
         "authorType": "supporter",
-        "comment": "I've noticed your step count has been going up since you started walking to the market Mum. "
+        "comment": "I’ve noticed your average daily steps have increased since you said you started walking to the market."
       },
       {
         "id": "1A2B3C4D-2222-2222-2222-111111111113",
         "date": "2024-11-17T00:00:00Z",
         "authorName": "Eric",
-        "authorRelation": "Grandson",
+        "authorRelation": "Neighbour",
         "authorType": "supporter",
-        "comment": "Thanks for taking care of the dog, Grandma! I can tell you two went on lots of walks—your step count has gone up!"
+        "comment": "Thanks for taking care of our dog last weekend, I can tell you two went on lots of walks—your step count really shot up those two days!"
       },
       {
         "id": "1A2B3C4D-2222-2222-2222-111111111114",
