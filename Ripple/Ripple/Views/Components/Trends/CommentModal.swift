@@ -33,33 +33,35 @@ struct CommentModal: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
                     // Header
-                    HStack {
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(authorName)
-                                .font(.title3)
-                                .fontWeight(.bold)
-                            
-                            HStack {
-                                // Only show relation if it is available (i.e, only for supporters)
-                                if let relation = authorRelation {
-                                    Text("\(relation)")
-                                        .font(.subheadline)
-                                        .foregroundColor(.gray)
+                    VStack {
+                        HStack {
+                            Text("Comment From \(authorName)")
+                                .font(.headlineMedium)
+                                .foregroundStyle(Color.redColour)
+                            Spacer()
+                            Button(action: {
+                                dismiss()
+                            }) {
+                                VStack {
+                                    Image(systemName: "pip.exit")
+                                        .font(.title)
+                                        .foregroundColor(Color.redColour)
+                                    Text("Exit")
+                                        .font(.bodyCustomMedium)
+                                        .foregroundColor(Color.redColour)
                                 }
-                                
-                                Text("• \(daysPast)d ago")
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
                             }
                         }
-                        
-                        Spacer()
+                        .padding()
                     }
-                    .padding(.bottom, 8)
+                    
+                    // Days ago
+                    Text("Posted \(daysPast)d ago")
+                        .font(.headline)
                     
                     // Full comment text
                     Text(comment)
-                        .font(.body)
+                        .font(.headlineMedium)
                         .multilineTextAlignment(.leading)
                     
                     Spacer()
@@ -67,17 +69,6 @@ struct CommentModal: View {
                 .padding()
             }
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        dismiss()
-                    }) {
-                        Image(systemName: "xmark.circle.fill")
-                            .foregroundStyle(.gray)
-                            .font(.title3)
-                    }
-                }
-            }
         }
     }
 }
