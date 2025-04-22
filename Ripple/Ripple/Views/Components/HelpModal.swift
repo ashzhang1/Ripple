@@ -13,29 +13,26 @@ struct HelpModal: View {
     @State private var currentPage = 0
     
     let pages: [ModalContent] = [
-        ModalContent(title: "How to navigate Ripple",
-                     image: "navigationHelpImage",
+        ModalContent(title: "Calendar Page",
+                     image: "CalendarHelpImage",
                      description: """
-                                Calendar: See how many days you met your step count goal.
-                                Trends: Spot increases or decreases in steps or wear time.
-                                Add Reflection: Log activities, emotions, or monthly reflections.
-                                My Reflections: View your past reflections.
+                                Use the calendar to see how your step count compares to your daily goal. Click on a month to explore your activity for that month. Use the filters on the left to highlight the days when you reached different goal levels.
                                 """),
-        ModalContent(title: "Each legend box is interactive",
-                     image: "CalendarLegendHelpImage",
+        ModalContent(title: "Trends Page",
+                     image: "TrendsHelpImage",
                      description: """
-                     Tap a legend box to filter the calendar and see how many days fall into that category for each month. 
-                     Tap on the same legend box again to remove the filter.
+                     Use the graph to identify if your step count has gone up or down over time.
+                     You can also view comments from your supporters and clinicians, along with the top activities and emotions you’ve logged. These can help you understand what may have affected your steps.
                      """),
-        ModalContent(title: "Toggle the dates on and off",
-                     image: "CalendarShowDatesHelpImage",
+        ModalContent(title: "Add Reflection Page",
+                     image: "AddReflectionHelpImage",
                      description: """
-                     Tap on the toggle to display dates on the calendar, making it easier to find and explore specific days.
+                     On the Add Reflection page, you can record what you did and how you felt each day. You can also record your monthly reflection by speaking instead of typing.
                      """),
-        ModalContent(title: "Dive into your monthly details",
-                     image: "CalendarMonthHelpImage",
+        ModalContent(title: "My Reflections Page",
+                     image: "MyReflectionsHelpImage",
                      description: """
-                     Tap on a month to see detailed insights, including your average step count, wear-time data, and the top activities and emotions you logged the most.
+                     On the My Reflections page, you can review your past reflections and see your most logged activities and emotions on Ripple.
                      """)
     ]
     

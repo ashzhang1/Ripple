@@ -11,7 +11,7 @@ struct CalendarLegend: View {
     @ObservedObject var viewModel: StepDataViewModel
     
     var body: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 12) {
             LegendBox(
                 numDays: viewModel.getCompletedGoalDaysCount(),
                 goalDescription: "100% of Goal Reached",
@@ -51,6 +51,7 @@ struct CalendarLegend: View {
             LegendBox(
                 numDays: viewModel.getNumNonWearDays(),
                 goalDescription: "Non-Wear Day",
+                goal: "Less than 7hrs Wear-Time",
                 backgroundColor: Color.gray.opacity(0.3),
                 isNonWearDay: true,
                 isDisabled: viewModel.isLegendBoxDisabled(for: .nonWearDay),

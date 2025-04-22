@@ -21,7 +21,7 @@ struct CalendarView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(spacing: 16) {
+            VStack(spacing: 8) {
                 CalendarHeader(showDates: $viewModel.showDates)
                 
                 HStack(alignment: .top, spacing: 20) {
@@ -33,8 +33,10 @@ struct CalendarView: View {
                     Spacer()
                 }
                 .padding(.horizontal)
+            
                 
                 CalendarInfoButtons(showingStepInfo: $showingStepInfo, showingHelpInfo: $showingHelpInfo)
+                    .padding(.bottom, 20)
             }
             .ignoresSafeArea(edges: .top)
             .navigationBarHidden(true) // Without this, the show dates toggle gets disabled for some reason

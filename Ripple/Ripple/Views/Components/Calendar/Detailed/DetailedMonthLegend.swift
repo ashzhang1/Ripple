@@ -68,6 +68,7 @@ struct DetailedMonthLegend: View {
             StaticLegendBox(
                 numDays: countDaysInMonth(for: .nonWearDay),
                 goalDescription: "Non-Wear Day",
+                goal: "Less than 7 hours Wear-Time",
                 backgroundColor: Color.gray.opacity(0.3),
                 isNonWearDay: true
             )
