@@ -12,6 +12,7 @@ struct MonthlyReflectionCard: View {
     @StateObject private var speechManager = SpeechRecognitionManager()
     @State private var showSuccessAlert = false
     @State private var reflectionText: String = ""
+    @Environment(\.dismiss) private var dismiss
     
     
     var body: some View {
@@ -53,7 +54,9 @@ struct MonthlyReflectionCard: View {
         .background(Color.grayColour)
         .cornerRadius(12)
         .alert("Reflection Saved", isPresented: $showSuccessAlert) {
-            Button("OK", role: .cancel) { }
+            Button("OK", role: .cancel) {
+                dismiss()
+            }
         } message: {
             Text("Your November reflection has been saved successfully.")
         }

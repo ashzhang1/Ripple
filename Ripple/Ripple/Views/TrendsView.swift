@@ -37,6 +37,8 @@ struct TrendsView: View {
                 TrendsSummaryPanel(data: viewModel.displayData,
                                    selectedTimeRange: viewModel.selectedTimeRange,
                                    averageSteps: viewModel.averageStepsData,
+                                   averageWearTime: viewModel.averageWearTimeData,
+                                   trendDescription: viewModel.getTrendDescription(timeRange: viewModel.selectedTimeRange),
                                    threeMonthTrends: viewModel.calculateThreeMonthTrends())
                     .animation(.easeInOut, value: viewModel.selectedTimeRange)
             }

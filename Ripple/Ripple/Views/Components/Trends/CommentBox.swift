@@ -61,6 +61,7 @@ struct CommentBox: View {
         .background(Color.grayColour)
         .cornerRadius(8)
         .frame(width: 380, height: 200)
+        .shadow(color: Color.black.opacity(0.5), radius: 4, x: 0, y: 5)
         .onTapGesture {
             showingFullComment = true
         }

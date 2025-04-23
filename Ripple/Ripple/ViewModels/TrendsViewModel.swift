@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 import CoreData
 
 class TrendsViewModel: ObservableObject {
@@ -237,19 +238,16 @@ class TrendsViewModel: ObservableObject {
                 (firstPeriodWearTimeAverage, secondPeriodWearTimeAverage))
     }
 
-    // TODO: Work in progress
-    func getTrendDescription() -> String {
-        let (firstPeriod, secondPeriod) = calculateThreeMonthTrends()
-        
-        if secondPeriod > firstPeriod {
-            return "Increasing since the last 3 months."
-        } else if secondPeriod < firstPeriod {
-            return "Decreasing since the last 3 months."
-        } else {
-            return "Maintaining over the last 6 months."
+    // Hard-coded because of demo purposes
+    func getTrendDescription(timeRange: TimeRange) -> String {
+        switch timeRange {
+        case .oneMonth:
+            return "Your average step count has been stable throughout November."
+        case .threeMonths:
+            return "Your average step count has been increasing since September."
+        case .sixMonths:
+            return "Your average step count has been increasing since June."
         }
     }
-    
-    
     
 }

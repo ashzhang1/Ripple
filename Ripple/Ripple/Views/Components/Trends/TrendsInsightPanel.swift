@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct TrendsInsightPanel: View {
-    let averageStepTrend: String // "increasing", "decreasing", or "stable"
-    let trendStartMonth: String // e.g., "August"
+    let trendText: String // Hard-coded string from the trends view model
     let averageWearTime: Double // in hours
     let timePeriod: Int64 // in months
     
@@ -21,13 +20,11 @@ struct TrendsInsightPanel: View {
             
             // Step count trend info
             VStack(alignment: .leading, spacing: 8) {
-                Text("Your average step count has been ")
-                + Text(averageStepTrend)
-                    .foregroundColor(.blueTrendFontColour)
-                    .fontWeight(.semibold)
-                + Text(" since \(trendStartMonth).")
+                Text("\(trendText)")
+                    .font(.system(size: 18))
                 
-                Text("You are averaging \(String(format: "%.1f", averageWearTime)) hours of wear-time per day for the last \(String(timePeriod)) months.")
+                Text("You are averaging \(String(format: "%.1f", averageWearTime)) hours of wear-time per day for the last \(String(timePeriod)) month(s).")
+                    .font(.system(size: 18))
             }
             
             VStack {
@@ -45,7 +42,7 @@ struct TrendsInsightPanel: View {
             .multilineTextAlignment(.center)
         }
         .padding(12)
-        .frame(width: 320, height: 260, alignment: .top)
+        .frame(width: 320, height: 280, alignment: .top)
         .background(Color.lightBlueColour)
         .cornerRadius(16)
                         

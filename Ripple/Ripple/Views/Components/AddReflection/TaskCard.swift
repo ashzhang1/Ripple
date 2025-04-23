@@ -28,7 +28,7 @@ struct TaskCard<Destination: View>: View {
                 Spacer()
                 
                 HStack(spacing: 20) {
-                    TrendCardStatusIndicator(isCompleted: false)
+                    TrendCardStatusIndicator(isCompleted: true)
                     Spacer()
                     Text(buttonLabel)
                         .font(.headlineMedium)

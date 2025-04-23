@@ -11,6 +11,8 @@ struct TrendsSummaryPanel: View {
     let data: [StepAverage]
     let selectedTimeRange: TrendsViewModel.TimeRange
     let averageSteps: Int
+    let averageWearTime: Double
+    let trendDescription: String
     let threeMonthTrends: (stepCount: (first: Double, second: Double), wearTime: (first: Double, second: Double))
     
     
@@ -22,6 +24,17 @@ struct TrendsSummaryPanel: View {
             return "3 Month Average: "
         case .sixMonths:
             return "6 Month Average: "
+        }
+    }
+    
+    private var timePeriodInt: Int64 {
+        switch selectedTimeRange {
+        case .oneMonth:
+            return 1
+        case .threeMonths:
+            return 3
+        case .sixMonths:
+            return 6
         }
     }
     
@@ -57,10 +70,9 @@ struct TrendsSummaryPanel: View {
                         wearTime: threeMonthTrends.wearTime.second
                     )
                 )
-                TrendsInsightPanel(averageStepTrend: "increasing",
-                                   trendStartMonth: "August",
-                                   averageWearTime: 6.5,
-                                   timePeriod: 6)
+                TrendsInsightPanel(trendText: trendDescription,
+                                   averageWearTime: averageWearTime,
+                                   timePeriod: timePeriodInt)
             }
             
         }
