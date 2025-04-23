@@ -44,7 +44,7 @@ struct RecordReflectionMonthLegend: View {
             StaticLegendBox(
                 numDays: countDaysInMonth(for: .goalCompleteDay),
                 goalDescription: "100% of Goal Reached",
-                goal: "4000+ Steps",
+                goal: "5500+ Steps",
                 backgroundColor: Color.goalReachedColour,
                 isNonWearDay: false
             )
@@ -52,7 +52,7 @@ struct RecordReflectionMonthLegend: View {
             StaticLegendBox(
                 numDays: countDaysInMonth(for: .overHalfGoal),
                 goalDescription: "Over 50% of Goal",
-                goal: "More than 2000 Steps",
+                goal: "More than 2750 Steps",
                 backgroundColor: Color.overHalfColour,
                 isNonWearDay: false
             )
@@ -60,7 +60,7 @@ struct RecordReflectionMonthLegend: View {
             StaticLegendBox(
                 numDays: countDaysInMonth(for: .underHalfGoal),
                 goalDescription: "Under 50% of Goal",
-                goal: "Less than 2000 Steps",
+                goal: "Less than 2750 Steps",
                 backgroundColor: Color.underHalfColour,
                 isNonWearDay: false
             )
@@ -68,7 +68,7 @@ struct RecordReflectionMonthLegend: View {
             StaticLegendBox(
                 numDays: countDaysInMonth(for: .nonWearDay),
                 goalDescription: "Non-Wear Day",
-                goal: "Less than 7 hours Wear-Time",
+                goal: "Less than 7hrs Wear-Time",
                 backgroundColor: Color.gray.opacity(0.3),
                 isNonWearDay: true
             )

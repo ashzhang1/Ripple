@@ -39,7 +39,7 @@ struct TrendsSummaryPanel: View {
                 .padding(.top, 12)
                 
                 
-                Text("---- Your Goal")
+                Text("---- Your Daily Step Count Goal")
                     .font(.headlineSemiBold)
                     .foregroundStyle(Color.orangeColour)
                 

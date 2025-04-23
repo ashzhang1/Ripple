@@ -15,7 +15,7 @@ struct CalendarLegend: View {
             LegendBox(
                 numDays: viewModel.getCompletedGoalDaysCount(),
                 goalDescription: "100% of Goal Reached",
-                goal: "4000+ Steps",
+                goal: "5500+ Steps",
                 backgroundColor: Color.goalReachedColour,
                 isNonWearDay: false,
                 isDisabled: viewModel.isLegendBoxDisabled(for: .goalCompleteDay),
@@ -27,7 +27,7 @@ struct CalendarLegend: View {
             LegendBox(
                 numDays: viewModel.getNumOverHalfGoalDays(),
                 goalDescription: "Over 50% of Goal",
-                goal: "More than 2000 Steps",
+                goal: "More than 2750 Steps",
                 backgroundColor: Color.overHalfColour,
                 isNonWearDay: false,
                 isDisabled: viewModel.isLegendBoxDisabled(for: .overHalfGoal),
@@ -39,7 +39,7 @@ struct CalendarLegend: View {
             LegendBox(
                 numDays: viewModel.getNumUnderHalfGoalsDays(),
                 goalDescription: "Under 50% of Goal",
-                goal: "Less than 2000 Steps",
+                goal: "Less than 2750 Steps",
                 backgroundColor: Color.underHalfColour,
                 isNonWearDay: false,
                 isDisabled: viewModel.isLegendBoxDisabled(for: .underHalfGoal),

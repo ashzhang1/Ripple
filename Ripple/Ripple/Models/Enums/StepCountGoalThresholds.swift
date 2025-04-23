@@ -8,10 +8,10 @@
 import Foundation
 
 enum StepCountGoalThresholds {
-    static let goalCompleteDay: Int = 4000
-    static let overHalfGoal: Int = 2001
-    static let underHalfGoal: Int = 1999
-    static let nonWearDay: Double = 4.0
+    static let goalCompleteDay: Int = 5500
+    static let overHalfGoal: Int = 2750
+    static let underHalfGoal: Int = 2749
+    static let nonWearDay: Double = 7.0
 }
 
 enum StepGoalFilter {

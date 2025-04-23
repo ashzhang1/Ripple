@@ -10,7 +10,7 @@ import Charts
 
 struct StepCountBarChart: View {
     let data: [StepAverage]
-    let goalLine: Int = 3000
+    let goalLine: Int = StepCountGoalThresholds.goalCompleteDay
     let firstPeriodAverages: (stepCount: Double, wearTime: Double)
     let secondPeriodAverages: (stepCount: Double, wearTime: Double)
     
@@ -46,11 +46,11 @@ struct StepCountBarChart: View {
     
     private func barColour(value: Double) -> Color {
         switch value {
-            case ..<4.0:
+            case ..<6.0:
                 return .lightestGreenColour
-            case 4.0..<7.0:
+            case 6.0..<8.0:
                 return .mediumLightGreenColour
-            case 7.0..<10.0:
+            case 8.0..<10.0:
                 return .mediumDarkGreenColour
             case 10.0...:
                 return .darkestGreenColour
@@ -103,7 +103,7 @@ struct StepCountBarChart: View {
                 }
             }
         }
-        .chartYScale(domain: 0...6000)
+        .chartYScale(domain: 0...8000)
         .padding()
     }
 }
