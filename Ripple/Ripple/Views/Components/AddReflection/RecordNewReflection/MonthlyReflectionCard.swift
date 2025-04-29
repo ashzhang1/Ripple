@@ -31,7 +31,6 @@ struct MonthlyReflectionCard: View {
             
             ReflectionTextInput(
                 text: $speechManager.transcribedText,
-                placeholder: "Your reflection will appear here as you speak...",
                 isRecording: speechManager.isRecording
             )
             

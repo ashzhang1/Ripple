@@ -75,7 +75,8 @@ class SpeechRecognitionManager: ObservableObject {
             print("Recognition request or audio engine setup failed")
             return
         }
-
+        
+        // Audio microphone input
         let inputNode = audioEngine.inputNode
         
         // Configure request for real-time transcription
