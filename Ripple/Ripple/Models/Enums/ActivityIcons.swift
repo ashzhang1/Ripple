@@ -14,7 +14,7 @@ enum ActivityIcons: String, CaseIterable, EmojiRepresentable {
     case reading
     case cooking
     case gardening
-    case chores
+    case balanceTraining
     case television
     
     var emoji: String {
@@ -25,12 +25,19 @@ enum ActivityIcons: String, CaseIterable, EmojiRepresentable {
         case .reading: return "📖"
         case .cooking: return "🍳"
         case .gardening: return "🪴"
-        case .chores: return "🧹"
+        case .balanceTraining: return "🧘"
         case .television: return "📺"
         }
     }
     
     var label: String {
-        rawValue.capitalized
+        switch self {
+        case .television:
+            return "Television & Entertainment"
+        case .balanceTraining:
+            return "Balance Training"
+        default:
+            return rawValue.capitalized
+        }
     }
 }

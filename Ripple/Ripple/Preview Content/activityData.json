@@ -18,7 +18,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111114",
       "date": "2024-06-01T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111115",
@@ -98,7 +98,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111130",
       "date": "2024-06-04T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111132",
@@ -168,7 +168,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111145",
       "date": "2024-06-07T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111146",
@@ -198,7 +198,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111151",
       "date": "2024-06-08T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111152",
@@ -238,7 +238,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111159",
       "date": "2024-06-09T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111160",
@@ -263,7 +263,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111164",
       "date": "2024-06-10T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111165",
@@ -273,7 +273,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111166",
       "date": "2024-06-11T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111167",
@@ -353,7 +353,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111182",
       "date": "2024-06-13T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111183",
@@ -363,7 +363,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111184",
       "date": "2024-06-14T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111185",
@@ -423,7 +423,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111196",
       "date": "2024-06-17T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111197",
@@ -458,7 +458,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111203",
       "date": "2024-06-19T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111204",
@@ -508,7 +508,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111213",
       "date": "2024-06-21T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111214",
@@ -523,7 +523,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111216",
       "date": "2024-06-22T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111217",
@@ -533,7 +533,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111218",
       "date": "2024-06-23T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111219",
@@ -558,7 +558,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111223",
       "date": "2024-06-24T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111224",
@@ -598,7 +598,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111231",
       "date": "2024-06-25T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111232",
@@ -608,7 +608,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111233",
       "date": "2024-06-26T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111234",
@@ -633,7 +633,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111238",
       "date": "2024-06-27T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111239",
@@ -643,7 +643,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111240",
       "date": "2024-06-28T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111241",
@@ -658,7 +658,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111243",
       "date": "2024-06-29T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111244",
@@ -678,7 +678,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111247",
       "date": "2024-06-30T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111248",
@@ -758,7 +758,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111276",
       "date": "2024-07-05T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111277",
@@ -808,7 +808,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111286",
       "date": "2024-07-07T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111287",
@@ -838,7 +838,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111292",
       "date": "2024-07-09T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111293",
@@ -868,7 +868,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111298",
       "date": "2024-07-10T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111299",
@@ -913,7 +913,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111307",
       "date": "2024-07-11T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111308",
@@ -933,7 +933,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111311",
       "date": "2024-07-12T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111312",
@@ -948,7 +948,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111314",
       "date": "2024-07-13T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111315",
@@ -958,7 +958,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111316",
       "date": "2024-07-14T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111317",
@@ -1023,12 +1023,12 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111329",
       "date": "2024-07-16T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111330",
       "date": "2024-07-17T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111331",
@@ -1073,7 +1073,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111339",
       "date": "2024-07-18T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111340",
@@ -1088,7 +1088,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111342",
       "date": "2024-07-19T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111343",
@@ -1113,7 +1113,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111347",
       "date": "2024-07-21T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111348",
@@ -1123,7 +1123,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111349",
       "date": "2024-07-22T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111350",
@@ -1138,7 +1138,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111352",
       "date": "2024-07-23T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111353",
@@ -1168,7 +1168,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111358",
       "date": "2024-07-24T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111359",
@@ -1178,7 +1178,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111360",
       "date": "2024-07-25T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111361",
@@ -1188,7 +1188,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111362",
       "date": "2024-07-26T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111363",
@@ -1223,7 +1223,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111369",
       "date": "2024-07-27T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111370",
@@ -1253,7 +1253,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111375",
       "date": "2024-07-28T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111376",
@@ -1268,12 +1268,12 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111378",
       "date": "2024-07-29T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111379",
       "date": "2024-07-30T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111380",
@@ -1283,7 +1283,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111381",
       "date": "2024-07-31T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111382",
@@ -1293,7 +1293,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111383",
       "date": "2024-08-01T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111384",
@@ -1338,7 +1338,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111392",
       "date": "2024-08-02T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111393",
@@ -1373,7 +1373,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111399",
       "date": "2024-08-04T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111400",
@@ -1443,7 +1443,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111413",
       "date": "2024-08-06T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111414",
@@ -1488,7 +1488,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111422",
       "date": "2024-08-08T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111423",
@@ -1623,7 +1623,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111449",
       "date": "2024-08-12T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111450",
@@ -1653,7 +1653,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111455",
       "date": "2024-08-14T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111456",
@@ -1678,7 +1678,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111460",
       "date": "2024-08-15T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111461",
@@ -1743,7 +1743,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111473",
       "date": "2024-08-18T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111474",
@@ -1758,7 +1758,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111476",
       "date": "2024-08-19T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111477",
@@ -1808,7 +1808,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111486",
       "date": "2024-08-20T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111487",
@@ -1838,7 +1838,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111492",
       "date": "2024-08-21T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111493",
@@ -1873,7 +1873,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111499",
       "date": "2024-08-23T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111500",
@@ -1958,7 +1958,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111516",
       "date": "2024-08-26T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111517",
@@ -1983,7 +1983,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111521",
       "date": "2024-08-28T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111522",
@@ -2023,7 +2023,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111529",
       "date": "2024-08-29T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111530",
@@ -2043,7 +2043,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111533",
       "date": "2024-08-30T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111534",
@@ -2073,7 +2073,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111539",
       "date": "2024-09-01T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111540",
@@ -2128,7 +2128,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111550",
       "date": "2024-09-03T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111551",
@@ -2153,7 +2153,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111555",
       "date": "2024-09-04T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111556",
@@ -2188,7 +2188,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111562",
       "date": "2024-09-05T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111563",
@@ -2243,7 +2243,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111573",
       "date": "2024-09-08T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111574",
@@ -2303,7 +2303,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111585",
       "date": "2024-09-09T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111586",
@@ -2343,7 +2343,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111593",
       "date": "2024-09-11T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111594",
@@ -2373,7 +2373,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111599",
       "date": "2024-09-12T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111600",
@@ -2418,7 +2418,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111608",
       "date": "2024-09-13T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111609",
@@ -2438,7 +2438,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111612",
       "date": "2024-09-14T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111613",
@@ -2503,7 +2503,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111625",
       "date": "2024-09-16T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111626",
@@ -2563,7 +2563,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111637",
       "date": "2024-09-20T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111638",
@@ -2578,7 +2578,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111640",
       "date": "2024-09-21T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111641",
@@ -2618,7 +2618,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111648",
       "date": "2024-09-22T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111649",
@@ -2678,7 +2678,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111660",
       "date": "2024-09-27T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111661",
@@ -2718,7 +2718,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111668",
       "date": "2024-09-29T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111669",
@@ -2738,7 +2738,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111672",
       "date": "2024-10-01T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111673",
@@ -2788,7 +2788,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111682",
       "date": "2024-10-04T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111683",
@@ -2848,7 +2848,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111694",
       "date": "2024-10-06T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111695",
@@ -2963,7 +2963,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111717",
       "date": "2024-10-10T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111718",
@@ -3003,7 +3003,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111725",
       "date": "2024-10-12T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111726",
@@ -3053,7 +3053,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111735",
       "date": "2024-10-13T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111736",
@@ -3098,7 +3098,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111744",
       "date": "2024-10-14T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111745",
@@ -3118,7 +3118,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111748",
       "date": "2024-10-15T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111749",
@@ -3128,7 +3128,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111750",
       "date": "2024-10-16T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111751",
@@ -3163,7 +3163,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111757",
       "date": "2024-10-18T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111758",
@@ -3208,7 +3208,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111766",
       "date": "2024-10-19T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111767",
@@ -3238,7 +3238,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111772",
       "date": "2024-10-20T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111773",
@@ -3293,7 +3293,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111783",
       "date": "2024-10-22T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111784",
@@ -3308,7 +3308,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111786",
       "date": "2024-10-23T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111787",
@@ -3343,7 +3343,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111793",
       "date": "2024-10-25T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111794",
@@ -3373,7 +3373,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111799",
       "date": "2024-10-27T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111800",
@@ -3408,7 +3408,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111806",
       "date": "2024-10-28T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111807",
@@ -3453,12 +3453,12 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111815",
       "date": "2024-10-30T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111816",
       "date": "2024-10-31T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111817",
@@ -3498,7 +3498,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111824",
       "date": "2024-11-01T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111825",
@@ -3563,7 +3563,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111837",
       "date": "2024-11-04T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111838",
@@ -3613,7 +3613,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111847",
       "date": "2024-11-06T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111848",
@@ -3733,7 +3733,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111871",
       "date": "2024-11-09T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111872",
@@ -3753,7 +3753,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111875",
       "date": "2024-11-10T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111876",
@@ -3788,7 +3788,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111882",
       "date": "2024-11-11T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111883",
@@ -3798,7 +3798,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111884",
       "date": "2024-11-12T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111885",
@@ -3858,7 +3858,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111896",
       "date": "2024-11-14T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111897",
@@ -3883,7 +3883,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111901",
       "date": "2024-11-15T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111902",
@@ -3893,7 +3893,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111903",
       "date": "2024-11-16T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111904",
@@ -3908,7 +3908,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111906",
       "date": "2024-11-17T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111907",
@@ -3928,7 +3928,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111910",
       "date": "2024-11-18T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111911",
@@ -3953,7 +3953,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111915",
       "date": "2024-11-19T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111916",
@@ -3963,7 +3963,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111917",
       "date": "2024-11-20T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111918",
@@ -3993,7 +3993,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111923",
       "date": "2024-11-22T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111924",
@@ -4048,7 +4048,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111934",
       "date": "2024-11-26T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111935",
@@ -4058,7 +4058,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111936",
       "date": "2024-11-27T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111937",
@@ -4068,7 +4068,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111938",
       "date": "2024-11-28T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111939",
@@ -4103,7 +4103,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111945",
       "date": "2024-11-29T00:00:00Z",
-      "activityType": "chores"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111946",
