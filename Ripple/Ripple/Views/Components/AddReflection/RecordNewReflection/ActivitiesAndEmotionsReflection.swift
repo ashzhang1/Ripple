@@ -27,9 +27,9 @@ struct ActivitiesAndEmotionsReflection: View {
                     }
                     
                     HStack(spacing: 8) {
-                        Text("🧹")
+                        Text("🧘")
                             .font(.subheadline)
-                        Text("Chores")
+                        Text("Balance Training")
                             .font(.subheadline)
                     }
                 }
