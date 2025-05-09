@@ -16,6 +16,11 @@ class SpeechRecognitionManager: ObservableObject {
     @Published var isButtonEnabled = false
     @Published var showSubmitButton = false
     
+    // Timer
+    @Published var isCountingDown = false
+    @Published var countdownValue = 3
+    private var countdownTimer: Timer?
+    
     // Speech recognition properties
     private var audioEngine: AVAudioEngine?
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
@@ -40,7 +45,34 @@ class SpeechRecognitionManager: ObservableObject {
         if isRecording {
             stopRecording()
         } else {
-            startRecording()
+            startCountdown()
+        }
+    }
+    
+    func startCountdown() {
+        // Reset countdown value
+        countdownValue = 3
+        isCountingDown = true
+        
+        // Create and schedule the countdown timer
+        countdownTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
+            guard let self = self else {
+                timer.invalidate()
+                return
+            }
+            
+            DispatchQueue.main.async {
+                if self.countdownValue > 1 {
+                    // Decrease countdown
+                    self.countdownValue -= 1
+                } else {
+                    // Countdown finished, invalidate timer and start recording
+                    timer.invalidate()
+                    self.countdownTimer = nil
+                    self.isCountingDown = false
+                    self.startRecording()
+                }
+            }
         }
     }
     
@@ -123,6 +155,13 @@ class SpeechRecognitionManager: ObservableObject {
     }
     
     func stopRecording() {
+        // Cancel countdown if it's running
+        if isCountingDown {
+            countdownTimer?.invalidate()
+            countdownTimer = nil
+            isCountingDown = false
+        }
+        
         // Stop the audio engine and recognition task
         audioEngine?.stop()
         recognitionRequest?.endAudio()
@@ -142,6 +181,9 @@ class SpeechRecognitionManager: ObservableObject {
     
     // Clean up resources when no longer needed
     func cleanup() {
+        countdownTimer?.invalidate()
+        countdownTimer = nil
+        
         audioEngine?.stop()
         audioEngine?.inputNode.removeTap(onBus: 0)
         recognitionTask?.cancel()

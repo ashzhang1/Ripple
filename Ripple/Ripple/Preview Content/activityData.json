@@ -2313,7 +2313,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111639",
       "date": "2024-09-20T00:00:00Z",
-      "activityType": "reading"
+      "activityType": "walking"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111640",
@@ -2363,7 +2363,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111649",
       "date": "2024-09-22T00:00:00Z",
-      "activityType": "reading"
+      "activityType": "walking"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111650",
@@ -2438,7 +2438,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111664",
       "date": "2024-09-29T00:00:00Z",
-      "activityType": "cooking"
+      "activityType": "walking"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111665",
@@ -2653,7 +2653,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111707",
       "date": "2024-10-09T00:00:00Z",
-      "activityType": "cooking"
+      "activityType": "gardening"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111708",
@@ -2723,7 +2723,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111721",
       "date": "2024-10-11T00:00:00Z",
-      "activityType": "cooking"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111722",
@@ -2848,7 +2848,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111746",
       "date": "2024-10-15T00:00:00Z",
-      "activityType": "reading"
+      "activityType": "gardening"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111747",
@@ -2918,7 +2918,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111760",
       "date": "2024-10-18T00:00:00Z",
-      "activityType": "stretching"
+      "activityType": "gardening"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111761",
@@ -2951,11 +2951,6 @@
       "activityType": "balanceTraining"
     },
     {
-      "id": "1A2B3C4D-1111-1111-1111-111111111767",
-      "date": "2024-10-19T00:00:00Z",
-      "activityType": "reading"
-    },
-    {
       "id": "1A2B3C4D-1111-1111-1111-111111111768",
       "date": "2024-10-19T00:00:00Z",
       "activityType": "walking"
@@ -2964,11 +2959,6 @@
       "id": "1A2B3C4D-1111-1111-1111-111111111769",
       "date": "2024-10-20T00:00:00Z",
       "activityType": "gardening"
-    },
-    {
-      "id": "1A2B3C4D-1111-1111-1111-111111111770",
-      "date": "2024-10-20T00:00:00Z",
-      "activityType": "stretching"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111771",
@@ -2996,14 +2986,9 @@
       "activityType": "walking"
     },
     {
-      "id": "1A2B3C4D-1111-1111-1111-111111111776",
-      "date": "2024-10-21T00:00:00Z",
-      "activityType": "reading"
-    },
-    {
       "id": "1A2B3C4D-1111-1111-1111-111111111777",
       "date": "2024-10-21T00:00:00Z",
-      "activityType": "stretching"
+      "activityType": "balanceTraining"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111778",
@@ -3034,16 +3019,6 @@
       "id": "1A2B3C4D-1111-1111-1111-111111111783",
       "date": "2024-10-22T00:00:00Z",
       "activityType": "balanceTraining"
-    },
-    {
-      "id": "1A2B3C4D-1111-1111-1111-111111111784",
-      "date": "2024-10-22T00:00:00Z",
-      "activityType": "stretching"
-    },
-    {
-      "id": "1A2B3C4D-1111-1111-1111-111111111785",
-      "date": "2024-10-23T00:00:00Z",
-      "activityType": "stretching"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111786",
@@ -3103,12 +3078,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111797",
       "date": "2024-10-26T00:00:00Z",
-      "activityType": "reading"
-    },
-    {
-      "id": "1A2B3C4D-1111-1111-1111-111111111798",
-      "date": "2024-10-26T00:00:00Z",
-      "activityType": "stretching"
+      "activityType": "walking"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111799",
@@ -3128,7 +3098,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111802",
       "date": "2024-10-28T00:00:00Z",
-      "activityType": "cooking"
+      "activityType": "walking"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111803",
@@ -3318,7 +3288,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111840",
       "date": "2024-11-04T00:00:00Z",
-      "activityType": "reading"
+      "activityType": "walking"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111841",
@@ -3338,7 +3308,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111844",
       "date": "2024-11-05T00:00:00Z",
-      "activityType": "cooking"
+      "activityType": "walking"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111845",
@@ -3358,7 +3328,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111848",
       "date": "2024-11-06T00:00:00Z",
-      "activityType": "reading"
+      "activityType": "walking"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111849",
@@ -3416,11 +3386,6 @@
       "activityType": "gym"
     },
     {
-      "id": "1A2B3C4D-1111-1111-1111-111111111860",
-      "date": "2024-11-08T00:00:00Z",
-      "activityType": "reading"
-    },
-    {
       "id": "1A2B3C4D-1111-1111-1111-111111111861",
       "date": "2024-11-08T00:00:00Z",
       "activityType": "walking"
@@ -3468,7 +3433,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111870",
       "date": "2024-11-09T00:00:00Z",
-      "activityType": "cooking"
+      "activityType": "walking"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111871",
@@ -3483,7 +3448,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111873",
       "date": "2024-11-10T00:00:00Z",
-      "activityType": "reading"
+      "activityType": "walking"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111874",
@@ -3636,11 +3601,6 @@
       "activityType": "balanceTraining"
     },
     {
-      "id": "1A2B3C4D-1111-1111-1111-111111111904",
-      "date": "2024-11-16T00:00:00Z",
-      "activityType": "walking"
-    },
-    {
       "id": "1A2B3C4D-1111-1111-1111-111111111905",
       "date": "2024-11-16T00:00:00Z",
       "activityType": "television"
@@ -3683,7 +3643,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111913",
       "date": "2024-11-19T00:00:00Z",
-      "activityType": "stretching"
+      "activityType": "walking"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111914",
@@ -3703,7 +3663,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111917",
       "date": "2024-11-20T00:00:00Z",
-      "activityType": "balanceTraining"
+      "activityType": "walking"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111918",
@@ -3758,7 +3718,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111928",
       "date": "2024-11-24T00:00:00Z",
-      "activityType": "reading"
+      "activityType": "gardening"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111929",
@@ -3803,7 +3763,7 @@
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111937",
       "date": "2024-11-27T00:00:00Z",
-      "activityType": "reading"
+      "activityType": "walking"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111938",
@@ -3816,14 +3776,9 @@
       "activityType": "television"
     },
     {
-      "id": "1A2B3C4D-1111-1111-1111-111111111940",
-      "date": "2024-11-28T00:00:00Z",
-      "activityType": "reading"
-    },
-    {
       "id": "1A2B3C4D-1111-1111-1111-111111111941",
       "date": "2024-11-28T00:00:00Z",
-      "activityType": "stretching"
+      "activityType": "gardening"
     },
     {
       "id": "1A2B3C4D-1111-1111-1111-111111111942",
@@ -3844,11 +3799,6 @@
       "id": "1A2B3C4D-1111-1111-1111-111111111945",
       "date": "2024-11-29T00:00:00Z",
       "activityType": "balanceTraining"
-    },
-    {
-      "id": "1A2B3C4D-1111-1111-1111-111111111946",
-      "date": "2024-11-29T00:00:00Z",
-      "activityType": "reading"
     }
   ]
 }

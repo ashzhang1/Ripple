@@ -33,7 +33,7 @@ enum ActivityIcons: String, CaseIterable, EmojiRepresentable {
     var label: String {
         switch self {
         case .television:
-            return "Television & Entertainment"
+            return "Entertainment"
         case .balanceTraining:
             return "Balance Training"
         default:

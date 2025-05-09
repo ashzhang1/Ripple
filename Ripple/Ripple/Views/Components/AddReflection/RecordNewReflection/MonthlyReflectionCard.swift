@@ -16,42 +16,45 @@ struct MonthlyReflectionCard: View {
     
     
     var body: some View {
-        VStack(spacing: 16) {
-            
-            Text("November Reflection")
-                .font(.titleSemiBold)
-            
-            Text("During the month of November, these were the top activities and emotions that you logged on Ripple!")
-                .font(.headline)
-            
-            ActivitiesAndEmotionsReflection()
-            
-            Text("What stood out to you this November?")
-                .font(.headlineMedium)
-            
-            ReflectionTextInput(
-                text: $speechManager.transcribedText,
-                isRecording: speechManager.isRecording
-            )
-            
-            RecordNewReflectionButton(
-                speechManager: speechManager,
-                submitAction: {
-                    submitReflection()
+        ZStack {
+            // Main content
+            VStack(spacing: 16) {
+                Text("November Reflection")
+                    .font(.titleSemiBold)
+                
+                Text("During the month of November, these were the top activities and emotions that you logged on Ripple!")
+                    .font(.headline)
+                
+                ActivitiesAndEmotionsReflection()
+                
+                Text("What stood out to you this November?")
+                    .font(.headlineMedium)
+                
+                ReflectionTextInput(
+                    text: $speechManager.transcribedText,
+                    isRecording: speechManager.isRecording
+                )
+                
+                RecordNewReflectionButton(
+                    speechManager: speechManager,
+                    submitAction: {
+                        submitReflection()
+                    }
+                )
+                
+                if reflectionViewModel.isSaving {
+                    ProgressView()
+                        .padding(.top, 8)
                 }
-            )
-            
-            if reflectionViewModel.isSaving {
-                ProgressView()
-                    .padding(.top, 8)
             }
+            .padding(20)
+            .frame(width: 512, height: 680)
+            .background(Color.grayColour)
+            .cornerRadius(12)
             
-            
+            // Overlay the countdown
+            CountDown(speechManager: speechManager)
         }
-        .padding(20)
-        .frame(width: 512, height: 680)
-        .background(Color.grayColour)
-        .cornerRadius(12)
         .alert("Reflection Saved", isPresented: $showSuccessAlert) {
             Button("OK", role: .cancel) {
                 dismiss()
