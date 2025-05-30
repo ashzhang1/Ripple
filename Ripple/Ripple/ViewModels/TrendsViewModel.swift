@@ -17,7 +17,7 @@ class TrendsViewModel: ObservableObject {
     }
     
     enum AdditionalInsightType: String, CaseIterable {
-        case clinicianComments = "Clinician Commments"
+        case clinicianComments = "Clinician Comments"
         case supporterComments = "Supporter Comments"
         case contextualFactors = "Contextual Factors"
     }

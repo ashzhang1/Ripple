@@ -16,7 +16,7 @@ struct ReflectionTextInput: View {
             // Text area with binding
             TextEditor(text: $text)
                 .padding(8)
-                .frame(height: 160)
+                .frame(height: 170)
                 .background(Color(.systemGray6))
                 .cornerRadius(8)
                 .overlay(
@@ -35,7 +35,7 @@ struct ReflectionTextInput: View {
                         .foregroundColor(.gray)
                     
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("• How did this month compare to the past months?")
+                        Text("• How did you go with your step count goal this month?")
                             .foregroundColor(.gray)
                         Text("• Are you proud with your current goal progress?")
                             .foregroundColor(.gray)
